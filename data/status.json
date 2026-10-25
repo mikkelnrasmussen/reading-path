@@ -10,8 +10,9 @@
   "readOn": "2026-10-25"
  },
  "spliceai": {
-  "state": "known",
-  "at": "2026-10-25T11:08:03+00:00"
+  "state": "read",
+  "at": "2026-10-25T11:14:22+00:00",
+  "readOn": "2026-10-25"
  },
  "fmguide": {
   "state": "known",
