@@ -9,7 +9,9 @@
   "PML": "Probabilistic ML foundations",
   "PROT": "Protein LMs & SE(3) generation",
   "SC": "Single-cell ML",
-  "TRF": "Transformers & LLM fine-tuning"
+  "TRF": "Transformers & LLM fine-tuning",
+  "GEO": "Differential geometry",
+  "GRL": "Graphs & GNNs"
  },
  "papers": [
   {
@@ -124,7 +126,9 @@
    "inZotero": false,
    "key": "egnn",
    "pass": 1,
-   "prereqs": [],
+   "prereqs": [
+    "grl-5"
+   ],
    "seq": 7,
    "source": "canon",
    "title": "E(n) Equivariant Graph Neural Networks",
@@ -1291,7 +1295,8 @@
    "key": "rsgm",
    "pass": 1,
    "prereqs": [
-    "scoresde"
+    "scoresde",
+    "geo-5"
    ],
    "seq": 71,
    "source": "zotero",
@@ -1346,7 +1351,8 @@
    "pass": 1,
    "prereqs": [
     "lipman23",
-    "rsgm"
+    "rsgm",
+    "geo-5"
    ],
    "seq": 74,
    "source": "zotero",
@@ -2531,7 +2537,9 @@
    "inZotero": false,
    "key": "riemlaplace",
    "pass": 2,
-   "prereqs": [],
+   "prereqs": [
+    "geo-5"
+   ],
    "seq": 139,
    "source": "canon",
    "title": "Riemannian Laplace approximations for Bayesian neural networks",
@@ -3293,7 +3301,8 @@
    "key": "latentoddity",
    "pass": 2,
    "prereqs": [
-    "vae13"
+    "vae13",
+    "geo-4"
    ],
    "seq": 181,
    "source": "canon",
@@ -3474,7 +3483,8 @@
    "key": "metricfm",
    "pass": 3,
    "prereqs": [
-    "otcfm"
+    "otcfm",
+    "geo-5"
    ],
    "seq": 191,
    "source": "zotero",
@@ -3694,7 +3704,8 @@
    "key": "riemdiff",
    "pass": 3,
    "prereqs": [
-    "rsgm"
+    "rsgm",
+    "geo-7"
    ],
    "seq": 203,
    "source": "zotero",
@@ -3803,7 +3814,8 @@
    "pass": 3,
    "prereqs": [
     "dirichletfm",
-    "rfm"
+    "rfm",
+    "geo-9"
    ],
    "seq": 209,
    "source": "zotero",
@@ -4054,7 +4066,8 @@
    "key": "statmanif",
    "pass": 3,
    "prereqs": [
-    "fisherfm"
+    "fisherfm",
+    "geo-9"
    ],
    "seq": 223,
    "source": "zotero",
@@ -4200,7 +4213,8 @@
    "key": "tgnn",
    "pass": 3,
    "prereqs": [
-    "vaswani17"
+    "vaswani17",
+    "grl-5"
    ],
    "seq": 231,
    "source": "zotero",
@@ -4488,7 +4502,8 @@
    "key": "syrota",
    "pass": 3,
    "prereqs": [
-    "latentoddity"
+    "latentoddity",
+    "geo-4"
    ],
    "seq": 247,
    "source": "zotero",
@@ -5032,6 +5047,486 @@
    "why": "A continuous flow language model scaled to 8B parameters by adapting a pretrained autoregressive model: causal attention over the prefix and bidirectional, asynchronous flow within each block. Trained on fewer than 30B tokens.",
    "year": 2026,
    "zotero": ""
+  },
+  {
+   "key": "geo-1",
+   "seq": 6.3,
+   "track": "GEO",
+   "pass": 1,
+   "title": "Ch. 1–2: Introduction and making maps",
+   "authors": "Hauberg",
+   "year": 2025,
+   "url": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf#page=11",
+   "book": "Differential geometry for generative modeling",
+   "pages": "11–22",
+   "file": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [],
+   "why": "Why geometry at all: latent spaces of generative models are not identifiable, so distances measured there are arbitrary. The map-making analogy sets up the whole book, and it matters every time you interpret an scVI-style latent space.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "grl-1",
+   "seq": 10.3,
+   "track": "GRL",
+   "pass": 1,
+   "title": "Ch. 1–2.2: Machine learning on graphs, statistics and kernels",
+   "authors": "Hamilton",
+   "year": 2020,
+   "url": "books/Hamilton_2020_Graph_Representation_Learning.pdf#page=9",
+   "book": "Graph Representation Learning",
+   "pages": "9–28",
+   "file": "books/Hamilton_2020_Graph_Representation_Learning.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [],
+   "why": "The graph learning tasks (node, edge and graph level) and the classic hand-built features and kernels. A quick foundation; splice graphs and gene-regulatory networks are both graph data close to your work.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "geo-2",
+   "seq": 14.3,
+   "track": "GEO",
+   "pass": 1,
+   "title": "Ch. 3: Embedded and immersed manifolds",
+   "authors": "Hauberg",
+   "year": 2025,
+   "url": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf#page=23",
+   "book": "Differential geometry for generative modeling",
+   "pages": "23–30",
+   "file": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "geo-1"
+   ],
+   "why": "Manifold learning as reparametrisation, statistical identifiability, and the embedded vs immersed distinction the rest of the book relies on.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "grl-2",
+   "seq": 18.3,
+   "track": "GRL",
+   "pass": 1,
+   "title": "Ch. 2.3–2.4: Graph Laplacians and spectral methods",
+   "authors": "Hamilton",
+   "year": 2020,
+   "url": "books/Hamilton_2020_Graph_Representation_Learning.pdf#page=29",
+   "book": "Graph Representation Learning",
+   "pages": "29–36",
+   "file": "books/Hamilton_2020_Graph_Representation_Learning.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "grl-1"
+   ],
+   "why": "The graph Laplacian, graph cuts and spectral clustering. The Laplacian is also the generator of diffusion on a graph, a direct bridge to CTMCs and discrete diffusion.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "geo-3",
+   "seq": 22.3,
+   "track": "GEO",
+   "pass": 1,
+   "title": "Ch. 4: Distances on manifolds",
+   "authors": "Hauberg",
+   "year": 2025,
+   "url": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf#page=31",
+   "book": "Differential geometry for generative modeling",
+   "pages": "31–40",
+   "file": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "geo-2"
+   ],
+   "why": "Curve lengths and why they are invariant to reparametrisation: the core argument for measuring in data space instead of latent space.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "grl-3",
+   "seq": 26.3,
+   "track": "GRL",
+   "pass": 1,
+   "title": "Ch. 3: Node embeddings by neighbourhood reconstruction",
+   "authors": "Hamilton",
+   "year": 2020,
+   "url": "books/Hamilton_2020_Graph_Representation_Learning.pdf#page=37",
+   "book": "Graph Representation Learning",
+   "pages": "37–45",
+   "file": "books/Hamilton_2020_Graph_Representation_Learning.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "grl-2"
+   ],
+   "why": "The encoder–decoder view, matrix factorisation and random-walk embeddings (DeepWalk, node2vec), and why shallow embeddings are limited.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "geo-4",
+   "seq": 30.3,
+   "track": "GEO",
+   "pass": 1,
+   "title": "Ch. 5–6: Riemannian metrics and learned metrics",
+   "authors": "Hauberg",
+   "year": 2025,
+   "url": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf#page=41",
+   "book": "Differential geometry for generative modeling",
+   "pages": "41–54",
+   "file": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "geo-3"
+   ],
+   "why": "The central chapter: tangent spaces, local inner products, the pull-back metric JᵀJ, and metrics learned from densities, autoencoders and classifiers. This is the language behind Riemannian flow matching and Fisher–Rao geometry on the simplex.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "grl-5",
+   "seq": 34.3,
+   "track": "GRL",
+   "pass": 1,
+   "title": "Ch. 5.1–5.2: Message passing and neighbourhood aggregation",
+   "authors": "Hamilton",
+   "year": 2020,
+   "url": "books/Hamilton_2020_Graph_Representation_Learning.pdf#page=55",
+   "book": "Graph Representation Learning",
+   "pages": "55–65",
+   "file": "books/Hamilton_2020_Graph_Representation_Learning.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "grl-3"
+   ],
+   "why": "The core GNN: message passing, normalisation, set aggregators and attention. The basis for the equivariant GNNs (EGNN) on your protein track.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "geo-5",
+   "seq": 38.3,
+   "track": "GEO",
+   "pass": 1,
+   "title": "Ch. 7: Geodesics",
+   "authors": "Hauberg",
+   "year": 2025,
+   "url": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf#page=55",
+   "book": "Differential geometry for generative modeling",
+   "pages": "55–66",
+   "file": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "geo-4"
+   ],
+   "why": "Curve energy and the geodesic ODE. Geodesics are the 'straight lines' that Riemannian flow matching and Riemannian score models interpolate along.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "grl-6",
+   "seq": 42.3,
+   "track": "GRL",
+   "pass": 1,
+   "title": "Ch. 5.3–5.6: Updates, edge features and pooling",
+   "authors": "Hamilton",
+   "year": 2020,
+   "url": "books/Hamilton_2020_Graph_Representation_Learning.pdf#page=66",
+   "book": "Graph Representation Learning",
+   "pages": "66–75",
+   "file": "books/Hamilton_2020_Graph_Representation_Learning.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "grl-5"
+   ],
+   "why": "Skip and gated updates, relational GNNs, graph pooling and generalised message passing.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "geo-6",
+   "seq": 46.3,
+   "track": "GEO",
+   "pass": 1,
+   "title": "Ch. 8: Computing geodesics numerically (+ appendix on ODEs)",
+   "authors": "Hauberg",
+   "year": 2025,
+   "url": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf#page=67",
+   "book": "Differential geometry for generative modeling",
+   "pages": "67–76, 137–140",
+   "file": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "geo-5"
+   ],
+   "why": "Direct length minimisation vs shooting geodesics. The short appendix on Euler's method and Picard–Lindelöf is the same toolkit as ODE samplers for flows.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "grl-8",
+   "seq": 50.3,
+   "track": "GRL",
+   "pass": 1,
+   "title": "Ch. 7.1: GNNs and graph convolutions",
+   "authors": "Hamilton",
+   "year": 2020,
+   "url": "books/Hamilton_2020_Graph_Representation_Learning.pdf#page=83",
+   "book": "Graph Representation Learning",
+   "pages": "83–95",
+   "file": "books/Hamilton_2020_Graph_Representation_Learning.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "grl-6"
+   ],
+   "why": "From the Fourier transform to spectral graph convolutions, and why GCNs act as low-pass filters on the graph.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "geo-7",
+   "seq": 54.3,
+   "track": "GEO",
+   "pass": 1,
+   "title": "Ch. 9–10: Arithmetic and integration on manifolds",
+   "authors": "Hauberg",
+   "year": 2025,
+   "url": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf#page=77",
+   "book": "Differential geometry for generative modeling",
+   "pages": "77–90",
+   "file": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "geo-6"
+   ],
+   "why": "Exp and log maps, means on manifolds, volume measures and densities. What you need to define probability densities and expectations on curved spaces, as manifold flow and diffusion models do.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "grl-9",
+   "seq": 58.3,
+   "track": "GRL",
+   "pass": 1,
+   "title": "Ch. 7.2–7.3: GNNs, graphical models and the WL test",
+   "authors": "Hamilton",
+   "year": 2020,
+   "url": "books/Hamilton_2020_Graph_Representation_Learning.pdf#page=96",
+   "book": "Graph Representation Learning",
+   "pages": "96–109",
+   "file": "books/Hamilton_2020_Graph_Representation_Learning.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "grl-8"
+   ],
+   "why": "GNNs as embedded mean-field inference, and the expressiveness limits set by the Weisfeiler–Lehman test. Links GNNs back to the probabilistic models of your group.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "geo-8",
+   "seq": 62.3,
+   "track": "GEO",
+   "pass": 1,
+   "title": "Ch. 11–12.3: Submanifolds and noisy manifolds",
+   "authors": "Hauberg",
+   "year": 2025,
+   "url": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf#page=91",
+   "book": "Differential geometry for generative modeling",
+   "pages": "91–98",
+   "file": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "geo-7"
+   ],
+   "why": "Composite maps, ambient metrics and manifolds observed through noise: the realistic setting for learned data manifolds.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "grl-10",
+   "seq": 66.3,
+   "track": "GRL",
+   "pass": 1,
+   "title": "Ch. 8–9.1: Graph generation: classic models and VAEs",
+   "authors": "Hamilton",
+   "year": 2020,
+   "url": "books/Hamilton_2020_Graph_Representation_Learning.pdf#page=111",
+   "book": "Graph Representation Learning",
+   "pages": "111–122",
+   "file": "books/Hamilton_2020_Graph_Representation_Learning.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "grl-9"
+   ],
+   "why": "Erdős–Rényi, stochastic block models and preferential attachment, then graph VAEs with node- and graph-level latents.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "geo-9",
+   "seq": 70.3,
+   "track": "GEO",
+   "pass": 1,
+   "title": "Ch. 12.4: Statistical submanifolds",
+   "authors": "Hauberg",
+   "year": 2025,
+   "url": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf#page=99",
+   "book": "Differential geometry for generative modeling",
+   "pages": "99–108",
+   "file": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "geo-8"
+   ],
+   "why": "Families of distributions as manifolds with the Fisher information metric, i.e. information geometry. Directly relevant to isoform proportions on the simplex, where Fisher–Rao geometry is the sphere geometry used by Fisher flow matching.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "grl-11",
+   "seq": 74.3,
+   "track": "GRL",
+   "pass": 1,
+   "title": "Ch. 9.2–9.5: Autoregressive graph generation and molecules",
+   "authors": "Hamilton",
+   "year": 2020,
+   "url": "books/Hamilton_2020_Graph_Representation_Learning.pdf#page=123",
+   "book": "Graph Representation Learning",
+   "pages": "123–131",
+   "file": "books/Hamilton_2020_Graph_Representation_Learning.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "grl-10"
+   ],
+   "why": "Adversarial and autoregressive graph generators, how to evaluate them, and molecule generation. A springboard to graph diffusion (e.g. DiGress) if you want to go further.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "geo-11",
+   "seq": 78.3,
+   "track": "GEO",
+   "pass": 1,
+   "title": "Ch. 14–15: Parameter manifolds and further reading",
+   "authors": "Hauberg",
+   "year": 2025,
+   "url": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf#page=123",
+   "book": "Differential geometry for generative modeling",
+   "pages": "123–136",
+   "file": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "geo-9"
+   ],
+   "why": "Metrics on network parameters (function-space and information metrics, overparametrisation), then Hauberg's own guide to where to go next.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "grl-4",
+   "seq": 95.3,
+   "track": "GRL",
+   "pass": 2,
+   "title": "Ch. 4: Multi-relational data and knowledge graphs",
+   "authors": "Hamilton",
+   "year": 2020,
+   "url": "books/Hamilton_2020_Graph_Representation_Learning.pdf#page=46",
+   "book": "Graph Representation Learning",
+   "pages": "46–53",
+   "file": "books/Hamilton_2020_Graph_Representation_Learning.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "grl-3"
+   ],
+   "why": "Embedding typed relations. Background if you ever combine gene, isoform and protein relations in one graph; lower priority.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "grl-7",
+   "seq": 110.3,
+   "track": "GRL",
+   "pass": 2,
+   "title": "Ch. 6: GNNs in practice",
+   "authors": "Hamilton",
+   "year": 2020,
+   "url": "books/Hamilton_2020_Graph_Representation_Learning.pdf#page=76",
+   "book": "Graph Representation Learning",
+   "pages": "76–82",
+   "file": "books/Hamilton_2020_Graph_Representation_Learning.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "grl-6"
+   ],
+   "why": "Loss functions, mini-batching, neighbourhood sampling and regularisation when training GNNs.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
+  },
+  {
+   "key": "geo-10",
+   "seq": 120.3,
+   "track": "GEO",
+   "pass": 2,
+   "title": "Ch. 13: Expected Gaussian manifolds",
+   "authors": "Hauberg",
+   "year": 2025,
+   "url": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf#page=109",
+   "book": "Differential geometry for generative modeling",
+   "pages": "109–122",
+   "file": "books/Hauberg_2025_Differential_geometry_for_generative_modeling.pdf",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "geo-9"
+   ],
+   "why": "Manifolds defined by Gaussian-process decoders: expected metrics, energies and lengths. A probabilistic treatment of uncertainty in learned geometry; deeper and optional on a first pass.",
+   "source": "you",
+   "addedAt": "2026-10-25T16:40:02"
   }
  ]
 }
