@@ -1,0 +1,5037 @@
+{
+ "tracks": {
+  "CTRL": "Guidance & fine-tuning of generative models",
+  "DIF": "Diffusion & score models",
+  "DISC": "Discrete diffusion & flows",
+  "FLOW": "Flow matching & interpolants",
+  "GRP": "Current work in Jes's group",
+  "ISO": "Isoforms & splicing",
+  "PML": "Probabilistic ML foundations",
+  "PROT": "Protein LMs & SE(3) generation",
+  "SC": "Single-cell ML",
+  "TRF": "Transformers & LLM fine-tuning"
+ },
+ "papers": [
+  {
+   "authors": "Kelemen et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "kelemen13",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 1,
+   "source": "supervisor",
+   "title": "Function of alternative splicing",
+   "track": "ISO",
+   "url": "https://doi.org/10.1016/j.gene.2012.07.083",
+   "why": "The group's standard entry point: what splicing does to protein function, localisation and stability.",
+   "year": 2013,
+   "zotero": "EJL57EYT"
+  },
+  {
+   "authors": "Razafindralambo et al.",
+   "background": [
+    "cfg"
+   ],
+   "byJes": true,
+   "date": "2026-06",
+   "inZotero": false,
+   "key": "jeffrey",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 2,
+   "source": "canon",
+   "title": "Towards More General Control of Diffusion Models Using Jeffrey Guidance",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2606.13240",
+   "why": "Jes (recent): guidance via Jeffrey's rule of conditioning.",
+   "year": 2026,
+   "zotero": ""
+  },
+  {
+   "authors": "Nakkiran et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "nakkiran24",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 3,
+   "source": "zotero",
+   "title": "Step-by-Step Diffusion: An Elementary Tutorial",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2406.08929",
+   "why": "Gentle, self-contained derivation of diffusion and flow matching. Best on-ramp before the original papers.",
+   "year": 2024,
+   "zotero": "43RUVM4N"
+  },
+  {
+   "authors": "Alammar",
+   "byJes": false,
+   "inZotero": true,
+   "key": "illustrated",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 4,
+   "source": "zotero",
+   "title": "The Illustrated Transformer (blog)",
+   "track": "TRF",
+   "url": "https://jalammar.github.io/illustrated-transformer/",
+   "why": "Visual walkthrough of attention before the paper.",
+   "year": 2018,
+   "zotero": "EE47BRDX"
+  },
+  {
+   "authors": "Nilsen & Graveley",
+   "byJes": false,
+   "inZotero": false,
+   "key": "nilsen10",
+   "pass": 1,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 5,
+   "source": "supervisor",
+   "title": "Expansion of the eukaryotic proteome by alternative splicing",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/nature08909",
+   "why": "The classic 'only 20k genes, the gap is splicing' paper.",
+   "year": 2010,
+   "zotero": ""
+  },
+  {
+   "authors": "Winther, Jeha, Dieleman, Mnih, Opper & Dittadi",
+   "background": [
+    "ddpm"
+   ],
+   "byJes": true,
+   "date": "2026-06",
+   "inZotero": false,
+   "key": "sdeintro",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 6,
+   "source": "canon",
+   "title": "Introduction to Stochastic Differential Equations for Generative Machine Learning: A Variational Perspective",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2606.31576",
+   "why": "Paul Jeha (group): a tutorial on SDEs for diffusion from a variational angle. Doubles as a refresher for the whole DIF track.",
+   "year": 2026,
+   "zotero": ""
+  },
+  {
+   "authors": "Satorras, Hoogeboom & Welling",
+   "byJes": false,
+   "inZotero": false,
+   "key": "egnn",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 7,
+   "source": "canon",
+   "title": "E(n) Equivariant Graph Neural Networks",
+   "track": "PROT",
+   "url": "https://arxiv.org/abs/2102.09844",
+   "why": "Simple equivariant message passing; background for equivariant generative models.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Pan et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "pan08",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 8,
+   "source": "supervisor",
+   "title": "Deep surveying of alternative splicing complexity in the human transcriptome by high-throughput sequencing",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/ng.259",
+   "why": "The source of the '95% of genes are alternatively spliced' figure.",
+   "year": 2008,
+   "zotero": ""
+  },
+  {
+   "authors": "Blei, Kucukelbir & McAuliffe",
+   "byJes": false,
+   "inZotero": false,
+   "key": "blei17",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 9,
+   "source": "canon",
+   "title": "Variational Inference: A Review for Statisticians",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/1601.00670",
+   "why": "The standard introduction to VI: ELBO, mean field, stochastic VI. Vocabulary for everything in this track.",
+   "year": 2017,
+   "zotero": ""
+  },
+  {
+   "authors": "Kingma & Welling",
+   "byJes": false,
+   "inZotero": false,
+   "key": "vae13",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 10,
+   "source": "canon",
+   "title": "Auto-Encoding Variational Bayes",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/1312.6114",
+   "why": "The ELBO and reparameterisation trick that every later likelihood-based generative model leans on.",
+   "year": 2013,
+   "zotero": ""
+  },
+  {
+   "authors": "Dam, Olsen & Vitting-Seerup",
+   "byJes": false,
+   "inZotero": false,
+   "key": "dam23",
+   "pass": 1,
+   "prereqs": [
+    "pan08"
+   ],
+   "seq": 11,
+   "source": "supervisor",
+   "title": "Expression and splicing mediate distinct biological signals",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Expression+and+splicing+mediate+distinct+biological+signals",
+   "why": "The group's preferred citation over Pan 2008: 48% of biological signal goes through isoforms.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Estad, Peis & Frellsen",
+   "background": [
+    "ldm"
+   ],
+   "byJes": true,
+   "date": "2026-05",
+   "inZotero": false,
+   "key": "latentdiffmiss",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 12,
+   "source": "canon",
+   "title": "Latent Diffusion for Missing Data",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2605.28427",
+   "why": "Jes (recent): combines the missing-data line with latent diffusion. Shows where his group is heading.",
+   "year": 2026,
+   "zotero": ""
+  },
+  {
+   "authors": "Chen, Rubanova, Bettencourt & Duvenaud",
+   "byJes": false,
+   "inZotero": false,
+   "key": "neuralode",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 13,
+   "source": "canon",
+   "title": "Neural Ordinary Differential Equations",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/1806.07366",
+   "why": "Continuous-time flows and the instantaneous change of variables. Flow matching trains exactly these models without simulation.",
+   "year": 2018,
+   "zotero": ""
+  },
+  {
+   "authors": "Vaswani et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "vaswani17",
+   "pass": 1,
+   "prereqs": [
+    "illustrated"
+   ],
+   "seq": 14,
+   "source": "zotero",
+   "title": "Attention Is All You Need",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/1706.03762",
+   "why": "The transformer.",
+   "year": 2017,
+   "zotero": "VRMVBGDP"
+  },
+  {
+   "authors": "Reyes & Huber",
+   "byJes": false,
+   "inZotero": false,
+   "key": "reyes18",
+   "pass": 1,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 15,
+   "source": "supervisor",
+   "title": "Alternative start and termination sites of transcription drive most transcript isoform differences across human tissues",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Alternative+start+and+termination+sites+of+transcription+drive+most+transcript+isoform+differences+across+human+tissues",
+   "why": "Most isoform differences are TSS/TES, not internal exons.",
+   "year": 2018,
+   "zotero": ""
+  },
+  {
+   "authors": "Liu, Gong & Liu",
+   "byJes": false,
+   "inZotero": true,
+   "key": "rectflow",
+   "pass": 1,
+   "prereqs": [
+    "neuralode"
+   ],
+   "seq": 16,
+   "source": "zotero",
+   "title": "Flow Straight and Fast: Rectified Flow",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2209.03003",
+   "why": "Independent derivation of flow matching with straight paths and reflow.",
+   "year": 2023,
+   "zotero": "D8FV95JJ"
+  },
+  {
+   "authors": "Peis, Olmos & Frellsen",
+   "background": [
+    "vae13"
+   ],
+   "byJes": true,
+   "date": "2026-05",
+   "inZotero": false,
+   "key": "oamiss",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 17,
+   "source": "canon",
+   "title": "Order-Agnostic Autoregressive Modelling with Missing Data",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2605.06355",
+   "why": "Ignacio Peis (group). Jes (recent): missing data with order-agnostic autoregressive models, close to masked diffusion.",
+   "year": 2026,
+   "zotero": ""
+  },
+  {
+   "authors": "Jumper et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "af2",
+   "pass": 1,
+   "prereqs": [
+    "vaswani17"
+   ],
+   "seq": 18,
+   "source": "canon",
+   "title": "Highly accurate protein structure prediction with AlphaFold",
+   "track": "PROT",
+   "url": "https://doi.org/10.1038/s41586-021-03819-2",
+   "why": "Evoformer, structure module and invariant point attention: the frame representation that SE(3) diffusion builds on.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Tress, Abascal & Valencia",
+   "byJes": false,
+   "inZotero": false,
+   "key": "tress17",
+   "pass": 1,
+   "prereqs": [
+    "nilsen10"
+   ],
+   "seq": 19,
+   "source": "supervisor",
+   "title": "Alternative Splicing May Not Be the Key to Proteome Complexity",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Alternative+Splicing+May+Not+Be+the+Key+to+Proteome+Complexity",
+   "why": "The skeptics' paper. Know it, and know why its filtering is very stringent.",
+   "year": 2017,
+   "zotero": ""
+  },
+  {
+   "authors": "Lopez et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "scvi",
+   "pass": 1,
+   "prereqs": [
+    "vae13"
+   ],
+   "seq": 20,
+   "source": "canon",
+   "title": "Deep generative modeling for single-cell transcriptomics (scVI)",
+   "track": "SC",
+   "url": "https://doi.org/10.1038/s41592-018-0229-2",
+   "why": "The count-likelihood VAE that most single-cell deep learning builds on.",
+   "year": 2018,
+   "zotero": ""
+  },
+  {
+   "authors": "Burda, Grosse & Salakhutdinov",
+   "byJes": false,
+   "inZotero": true,
+   "key": "iwae",
+   "pass": 1,
+   "prereqs": [
+    "vae13"
+   ],
+   "seq": 21,
+   "source": "zotero",
+   "title": "Importance Weighted Autoencoders",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/1509.00519",
+   "why": "Tighter bounds via importance sampling. Direct foundation for MIWAE and much of Jes's work.",
+   "year": 2016,
+   "zotero": ""
+  },
+  {
+   "authors": "Vincent",
+   "byJes": false,
+   "inZotero": false,
+   "key": "vincent11",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 22,
+   "source": "canon",
+   "title": "A Connection Between Score Matching and Denoising Autoencoders",
+   "track": "DIF",
+   "url": "https://doi.org/10.1162/NECO_a_00142",
+   "why": "Denoising score matching: why predicting noise is the same as learning the score.",
+   "year": 2011,
+   "zotero": ""
+  },
+  {
+   "authors": "Blencowe",
+   "byJes": false,
+   "inZotero": false,
+   "key": "blencowe17",
+   "pass": 1,
+   "prereqs": [
+    "tress17"
+   ],
+   "seq": 23,
+   "source": "supervisor",
+   "title": "The Relationship between Alternative Splicing and Proteomic Complexity",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=The+Relationship+between+Alternative+Splicing+and+Proteomic+Complexity",
+   "why": "The response published alongside Tress et al. Read them together.",
+   "year": 2017,
+   "zotero": ""
+  },
+  {
+   "authors": "Damsholt, Frellsen & Ditlevsen",
+   "background": [
+    "lipman23"
+   ],
+   "byJes": true,
+   "date": "2026-02",
+   "inZotero": false,
+   "key": "lazyinterp",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 24,
+   "source": "canon",
+   "title": "Fast Sampling for Flows and Diffusions with Lazy and Point Mass Stochastic Interpolants",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2602.03789",
+   "why": "Gabriel Damsholt (group). Jes (recent): interpolant design for fast sampling.",
+   "year": 2026,
+   "zotero": ""
+  },
+  {
+   "authors": "Song & Ermon",
+   "byJes": false,
+   "inZotero": false,
+   "key": "ncsn",
+   "pass": 1,
+   "prereqs": [
+    "vincent11"
+   ],
+   "seq": 25,
+   "source": "canon",
+   "title": "Generative Modeling by Estimating Gradients of the Data Distribution",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/1907.05600",
+   "why": "Score-based models with annealed Langevin sampling, the second root of modern diffusion.",
+   "year": 2019,
+   "zotero": ""
+  },
+  {
+   "authors": "Devlin et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "bert",
+   "pass": 1,
+   "prereqs": [
+    "vaswani17"
+   ],
+   "seq": 26,
+   "source": "canon",
+   "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/1810.04805",
+   "why": "Masked language modelling. Direct ancestor of ESM, scGPT and masked diffusion.",
+   "year": 2019,
+   "zotero": ""
+  },
+  {
+   "authors": "Yang et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "yang16",
+   "pass": 1,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 27,
+   "source": "supervisor",
+   "title": "Widespread Expansion of Protein Interaction Capabilities by Alternative Splicing",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Widespread+Expansion+of+Protein+Interaction+Capabilities+by+Alternative+Splicing",
+   "why": "Isoforms of the same gene have different interaction partners, at scale.",
+   "year": 2016,
+   "zotero": ""
+  },
+  {
+   "authors": "Baker, Denker & Frellsen",
+   "background": [
+    "cfg"
+   ],
+   "byJes": true,
+   "date": "2026-01",
+   "inZotero": true,
+   "key": "supguid",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 28,
+   "source": "zotero",
+   "title": "Supervised Guidance Training for Infinite-Dimensional Diffusion Models",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2601.20756",
+   "why": "Libby Baker (group). Jes (recent): guidance training in function space. In your Zotero.",
+   "year": 2026,
+   "zotero": ""
+  },
+  {
+   "authors": "Rives et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "esm1b",
+   "pass": 1,
+   "prereqs": [
+    "bert"
+   ],
+   "seq": 29,
+   "source": "canon",
+   "title": "Biological structure and function emerge from scaling unsupervised learning to 250 million protein sequences (ESM-1b)",
+   "track": "PROT",
+   "url": "https://doi.org/10.1073/pnas.2016239118",
+   "why": "Masked LM on proteins learns structure and function.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Trapnell et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "cufflinks",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 30,
+   "source": "zotero",
+   "title": "Transcript assembly and quantification by RNA-Seq reveals unannotated transcripts and isoform switching during cell differentiation (Cufflinks)",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/nbt.1621",
+   "why": "The first widely used isoform assembly and quantification method; introduces the likelihood model.",
+   "year": 2010,
+   "zotero": "PEVBG7E3"
+  },
+  {
+   "authors": "Theodoris et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "geneformer",
+   "pass": 1,
+   "prereqs": [
+    "bert"
+   ],
+   "seq": 31,
+   "source": "zotero",
+   "title": "Transfer learning enables predictions in network biology (Geneformer)",
+   "track": "SC",
+   "url": "https://doi.org/10.1038/s41586-023-06139-9",
+   "why": "Rank-value encoding foundation model.",
+   "year": 2023,
+   "zotero": "QWS9UB89"
+  },
+  {
+   "authors": "Ho, Jain & Abbeel",
+   "byJes": false,
+   "inZotero": true,
+   "key": "ddpm",
+   "pass": 1,
+   "prereqs": [
+    "nakkiran24"
+   ],
+   "seq": 32,
+   "source": "zotero",
+   "title": "Denoising Diffusion Probabilistic Models",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2006.11239",
+   "why": "The paper that made diffusion work on images. Noise-prediction loss and the variance schedule.",
+   "year": 2020,
+   "zotero": "H93T7ELP"
+  },
+  {
+   "authors": "Bray, Pimentel, Melsted & Pachter",
+   "byJes": false,
+   "inZotero": false,
+   "key": "kallisto",
+   "pass": 1,
+   "prereqs": [
+    "cufflinks"
+   ],
+   "seq": 33,
+   "source": "supervisor",
+   "title": "Near-optimal probabilistic RNA-seq quantification (kallisto)",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/nbt.3519",
+   "why": "Pseudoalignment: fast and accurate isoform quantification.",
+   "year": 2016,
+   "zotero": ""
+  },
+  {
+   "authors": "Frellsen et al.",
+   "background": [
+    "esm1b"
+   ],
+   "byJes": true,
+   "date": "2025-06",
+   "inZotero": false,
+   "key": "invfoldstab",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 34,
+   "source": "canon",
+   "title": "Zero-shot protein stability prediction by inverse folding models: a free energy interpretation",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2506.05596",
+   "why": "Jes (first author): why inverse-folding likelihoods predict stability, from a statistical-physics view.",
+   "year": 2025,
+   "zotero": ""
+  },
+  {
+   "authors": "Song, Meng & Ermon",
+   "byJes": false,
+   "inZotero": true,
+   "key": "ddim",
+   "pass": 1,
+   "prereqs": [
+    "ddpm"
+   ],
+   "seq": 35,
+   "source": "zotero",
+   "title": "Denoising Diffusion Implicit Models",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2010.02502",
+   "why": "Deterministic, fast sampling from a DDPM-trained model; the probability-flow idea in discrete time.",
+   "year": 2021,
+   "zotero": "REGJVL5K"
+  },
+  {
+   "authors": "Brown et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "gpt3",
+   "pass": 1,
+   "prereqs": [
+    "vaswani17"
+   ],
+   "seq": 36,
+   "source": "canon",
+   "title": "Language Models are Few-Shot Learners (GPT-3)",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2005.14165",
+   "why": "Scale and in-context learning in decoder-only models.",
+   "year": 2020,
+   "zotero": ""
+  },
+  {
+   "authors": "Patro et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "salmon",
+   "pass": 1,
+   "prereqs": [
+    "kallisto"
+   ],
+   "seq": 37,
+   "source": "supervisor",
+   "title": "Salmon provides fast and bias-aware quantification of transcript expression",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/nmeth.4197",
+   "why": "Selective alignment with bias correction; the other standard quantifier.",
+   "year": 2017,
+   "zotero": ""
+  },
+  {
+   "authors": "Peis, Koyuncu, Valera & Frellsen",
+   "background": [
+    "ldm"
+   ],
+   "byJes": true,
+   "date": "2025-04",
+   "inZotero": true,
+   "key": "hyperldm",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 38,
+   "source": "zotero",
+   "title": "Hyper-Transforming Latent Diffusion Models",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2504.16580",
+   "why": "Ignacio Peis (group). Jes: latent diffusion over neural-network weights via a hypernetwork transformer. Already in your Zotero.",
+   "year": 2025,
+   "zotero": ""
+  },
+  {
+   "authors": "Lin et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "esm2",
+   "pass": 1,
+   "prereqs": [
+    "esm1b",
+    "af2"
+   ],
+   "seq": 39,
+   "source": "canon",
+   "title": "Evolutionary-scale prediction of atomic-level protein structure with a language model (ESM-2/ESMFold)",
+   "track": "PROT",
+   "url": "https://doi.org/10.1126/science.ade2574",
+   "why": "Scaling protein LMs; single-sequence structure prediction.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Hoogeboom et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "argmax",
+   "pass": 1,
+   "prereqs": [
+    "ddpm"
+   ],
+   "seq": 40,
+   "source": "zotero",
+   "title": "Argmax Flows and Multinomial Diffusion",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2102.05379",
+   "why": "First diffusion on categorical data with a multinomial noise process.",
+   "year": 2021,
+   "zotero": "ER2ZCAZ8"
+  },
+  {
+   "authors": "Soneson, Love & Robinson",
+   "byJes": false,
+   "inZotero": false,
+   "key": "soneson15",
+   "pass": 1,
+   "prereqs": [
+    "salmon"
+   ],
+   "seq": 41,
+   "source": "supervisor",
+   "title": "Differential analyses for RNA-seq: transcript-level estimates improve gene-level inferences",
+   "track": "ISO",
+   "url": "https://doi.org/10.12688/f1000research.7563.2",
+   "why": "Transcript-level estimates improve gene-level inference (tximport).",
+   "year": 2015,
+   "zotero": ""
+  },
+  {
+   "authors": "Cui et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "scgpt",
+   "pass": 1,
+   "prereqs": [
+    "bert",
+    "gpt3"
+   ],
+   "seq": 42,
+   "source": "zotero",
+   "title": "scGPT: toward building a foundation model for single-cell multi-omics using generative AI",
+   "track": "SC",
+   "url": "https://doi.org/10.1038/s41592-024-02201-0",
+   "why": "The most-used single-cell foundation model.",
+   "year": 2024,
+   "zotero": "YEE93CUD"
+  },
+  {
+   "authors": "Song et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "scoresde",
+   "pass": 1,
+   "prereqs": [
+    "ncsn",
+    "ddpm"
+   ],
+   "seq": 43,
+   "source": "zotero",
+   "title": "Score-Based Generative Modeling through Stochastic Differential Equations",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2011.13456",
+   "why": "Unifies DDPM and NCSN as SDEs; reverse-time SDE and probability-flow ODE. Central reference.",
+   "year": 2021,
+   "zotero": "3S3XKY9I"
+  },
+  {
+   "authors": "Lipman et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "lipman23",
+   "pass": 1,
+   "prereqs": [
+    "neuralode",
+    "scoresde"
+   ],
+   "seq": 44,
+   "source": "zotero",
+   "title": "Flow Matching for Generative Modeling",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2210.02747",
+   "why": "Simulation-free training of continuous normalizing flows via conditional paths. Core paper.",
+   "year": 2023,
+   "zotero": "PT6JTCWN"
+  },
+  {
+   "authors": "Vitting-Seerup & Sandelin",
+   "byJes": false,
+   "inZotero": true,
+   "key": "switchlandscape",
+   "pass": 1,
+   "prereqs": [
+    "kelemen13",
+    "salmon"
+   ],
+   "seq": 45,
+   "source": "zotero",
+   "title": "The Landscape of Isoform Switches in Human Cancers",
+   "track": "ISO",
+   "url": "https://doi.org/10.1158/1541-7786.MCR-16-0459",
+   "why": "Isoform switches with predicted functional consequences across cancers. The group's own framing of isoform analysis.",
+   "year": 2017,
+   "zotero": "WIHAVTE3"
+  },
+  {
+   "authors": "Lee et al.",
+   "background": [
+    "mdlm"
+   ],
+   "byJes": true,
+   "date": "2025-02",
+   "inZotero": true,
+   "key": "smcguid",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 46,
+   "source": "zotero",
+   "title": "Debiasing Guidance for Discrete Diffusion with Sequential Monte Carlo",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2502.06079",
+   "why": "Paul Jeha (group) is a co-author. Jes is a co-author. SMC correction for biased discrete guidance.",
+   "year": 2025,
+   "zotero": "2WK6D5LJ"
+  },
+  {
+   "authors": "Ho & Salimans",
+   "byJes": false,
+   "inZotero": false,
+   "key": "cfg",
+   "pass": 1,
+   "prereqs": [
+    "ddpm"
+   ],
+   "seq": 47,
+   "source": "canon",
+   "title": "Classifier-Free Diffusion Guidance",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2207.12598",
+   "why": "The conditioning trick used in nearly every conditional diffusion and flow model today.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Houlsby et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "houlsby",
+   "pass": 1,
+   "prereqs": [
+    "bert"
+   ],
+   "seq": 48,
+   "source": "zotero",
+   "title": "Parameter-Efficient Transfer Learning for NLP (Adapters)",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/1902.00751",
+   "why": "Adapters: the first parameter-efficient fine-tuning method.",
+   "year": 2019,
+   "zotero": "XVZJCY7I"
+  },
+  {
+   "authors": "Han et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "isar2",
+   "pass": 1,
+   "prereqs": [
+    "switchlandscape"
+   ],
+   "seq": 49,
+   "source": "zotero",
+   "title": "IsoformSwitchAnalyzeR v2: Analysis of Functional Isoform Changes in Long-read and Single-cell Data",
+   "track": "ISO",
+   "url": "https://www.biorxiv.org/content/10.64898/2025.12.08.693027.abstract",
+   "why": "The group's analysis tool; know what it does under the hood.",
+   "year": 2025,
+   "zotero": "5BHZNJG2"
+  },
+  {
+   "authors": "Albergo, Boffi & Vanden-Eijnden",
+   "byJes": false,
+   "inZotero": true,
+   "key": "interpolants",
+   "pass": 1,
+   "prereqs": [
+    "lipman23",
+    "scoresde"
+   ],
+   "seq": 50,
+   "source": "zotero",
+   "title": "Stochastic Interpolants: A Unifying Framework for Flows and Diffusions",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2303.08797",
+   "why": "The general framework connecting flows, diffusions and bridges. Long; read sections 2-4 first.",
+   "year": 2023,
+   "zotero": "76E3R6C7"
+  },
+  {
+   "authors": "Baker, Schauer & Sommer",
+   "background": [
+    "scoresde"
+   ],
+   "byJes": true,
+   "date": "2024-07",
+   "inZotero": false,
+   "key": "bakerbridges",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 51,
+   "source": "canon",
+   "title": "Score matching for bridges without learning time-reversals",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2407.15455",
+   "why": "Libby Baker (group): conditioning diffusion processes on endpoints without learning a reverse process. Bridges are central to her work.",
+   "year": 2024,
+   "zotero": ""
+  },
+  {
+   "authors": "Austin et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "d3pm",
+   "pass": 1,
+   "prereqs": [
+    "argmax"
+   ],
+   "seq": 52,
+   "source": "zotero",
+   "title": "Structured Denoising Diffusion Models in Discrete State-Spaces (D3PM)",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2107.03006",
+   "why": "General transition matrices (uniform, absorbing/mask). Foundation of masked diffusion.",
+   "year": 2021,
+   "zotero": "QMGIHIDL"
+  },
+  {
+   "authors": "Li et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "li16",
+   "pass": 1,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 53,
+   "source": "supervisor",
+   "title": "RNA splicing is a primary link between genetic variation and disease",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=RNA+splicing+is+a+primary+link+between+genetic+variation+and+disease",
+   "why": "Splicing as a leading mechanism behind GWAS signal. The strategic case for the group's direction.",
+   "year": 2016,
+   "zotero": ""
+  },
+  {
+   "authors": "Kedzierska et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "zeroshot",
+   "pass": 1,
+   "prereqs": [
+    "scgpt",
+    "geneformer"
+   ],
+   "seq": 54,
+   "source": "zotero",
+   "title": "Zero-shot evaluation reveals limitations of single-cell foundation models",
+   "track": "SC",
+   "url": "https://doi.org/10.1186/s13059-025-03574-x",
+   "why": "Counterweight: foundation-model embeddings often lose to simple baselines.",
+   "year": 2025,
+   "zotero": "A9N56LD7"
+  },
+  {
+   "authors": "Uehara et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "uehara",
+   "pass": 1,
+   "prereqs": [
+    "scoresde"
+   ],
+   "seq": 55,
+   "source": "zotero",
+   "title": "Understanding Reinforcement Learning-Based Fine-Tuning of Diffusion Models: A Tutorial and Review",
+   "track": "CTRL",
+   "url": "https://arxiv.org/abs/2407.13734",
+   "why": "Map of the reward fine-tuning landscape for diffusion models.",
+   "year": 2024,
+   "zotero": "7CBJFTG4"
+  },
+  {
+   "authors": "Rombach et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "ldm",
+   "pass": 1,
+   "prereqs": [
+    "ddpm"
+   ],
+   "seq": 56,
+   "source": "zotero",
+   "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2112.10752",
+   "why": "Diffusion in an autoencoder's latent space (Stable Diffusion). Template for latent single-cell diffusion too.",
+   "year": 2022,
+   "zotero": "FTF5VFD6"
+  },
+  {
+   "authors": "Tong et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "otcfm",
+   "pass": 1,
+   "prereqs": [
+    "lipman23"
+   ],
+   "seq": 57,
+   "source": "zotero",
+   "title": "Improving and generalizing flow-based generative models with minibatch optimal transport",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2302.00482",
+   "why": "Conditional flow matching with OT couplings; used widely in single-cell trajectory work.",
+   "year": 2024,
+   "zotero": "AFHBHC5X"
+  },
+  {
+   "authors": "Qi et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "qi22",
+   "pass": 1,
+   "prereqs": [
+    "li16"
+   ],
+   "seq": 58,
+   "source": "supervisor",
+   "title": "Genetic control of RNA splicing and its distinct role in complex trait variation",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/s41588-022-01154-4",
+   "why": "sQTLs contribute to traits largely independently of eQTLs; generalised in the group's isoQTL paper.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Karras et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "edm",
+   "pass": 1,
+   "prereqs": [
+    "scoresde"
+   ],
+   "seq": 59,
+   "source": "zotero",
+   "title": "Elucidating the Design Space of Diffusion-Based Generative Models",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2206.00364",
+   "why": "Separates the design choices (noise schedule, preconditioning, sampler). The reference for practical diffusion.",
+   "year": 2022,
+   "zotero": "ITWP5UZ6"
+  },
+  {
+   "authors": "Hu et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "lora",
+   "pass": 1,
+   "prereqs": [
+    "houlsby"
+   ],
+   "seq": 60,
+   "source": "zotero",
+   "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2106.09685",
+   "why": "The default fine-tuning method for large models.",
+   "year": 2021,
+   "zotero": "V2DWIRQE"
+  },
+  {
+   "authors": "Jaganathan et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "spliceai",
+   "pass": 1,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 61,
+   "source": "canon",
+   "title": "Predicting Splicing from Primary Sequence with Deep Learning (SpliceAI)",
+   "track": "ISO",
+   "url": "https://doi.org/10.1016/j.cell.2018.12.015",
+   "why": "Deep CNN that predicts splice sites from sequence; standard variant-effect tool.",
+   "year": 2019,
+   "zotero": ""
+  },
+  {
+   "authors": "Lipman et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "fmguide",
+   "pass": 1,
+   "prereqs": [
+    "lipman23"
+   ],
+   "seq": 62,
+   "source": "zotero",
+   "title": "Flow Matching Guide and Code",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2412.06264",
+   "why": "Consolidated reference from Meta covering continuous, Riemannian and discrete flow matching.",
+   "year": 2024,
+   "zotero": "HCIW7XLW"
+  },
+  {
+   "authors": "Abramson et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "af3",
+   "pass": 1,
+   "prereqs": [
+    "af2",
+    "edm"
+   ],
+   "seq": 63,
+   "source": "zotero",
+   "title": "Accurate structure prediction of biomolecular interactions with AlphaFold 3",
+   "track": "PROT",
+   "url": "https://doi.org/10.1038/s41586-024-07487-w",
+   "why": "Replaces the structure module with a diffusion module over all atoms.",
+   "year": 2024,
+   "zotero": "IY8THJ3G"
+  },
+  {
+   "authors": "Campbell et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "ctdd",
+   "pass": 1,
+   "prereqs": [
+    "d3pm"
+   ],
+   "seq": 64,
+   "source": "zotero",
+   "title": "A Continuous Time Framework for Discrete Denoising Models",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2205.14987",
+   "why": "CTMC formulation of discrete diffusion; rate matrices and tau-leaping.",
+   "year": 2022,
+   "zotero": "PASJT48L"
+  },
+  {
+   "authors": "Avsec et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "alphagenome",
+   "pass": 1,
+   "prereqs": [
+    "spliceai",
+    "vaswani17"
+   ],
+   "seq": 65,
+   "source": "zotero",
+   "title": "Advancing regulatory variant effect prediction with AlphaGenome",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/s41586-025-10014-0",
+   "why": "Sequence-to-function model that predicts splicing among many tracks. Current state of the art.",
+   "year": 2026,
+   "zotero": "JIUETPUY"
+  },
+  {
+   "authors": "Ahlmann-Eltze, Huber & Anders",
+   "byJes": false,
+   "inZotero": false,
+   "key": "linbase",
+   "pass": 1,
+   "prereqs": [
+    "scgpt"
+   ],
+   "seq": 66,
+   "source": "canon",
+   "title": "Deep-learning-based gene perturbation effect prediction does not yet outperform simple linear baselines",
+   "track": "SC",
+   "url": "https://scholar.google.com/scholar?q=Deep-learning-based+gene+perturbation+effect+prediction+does+not+yet+outperform+simple+linear+baselines",
+   "why": "Sobering perturbation benchmark; essential context for any foundation-model claim.",
+   "year": 2025,
+   "zotero": ""
+  },
+  {
+   "authors": "Domingo-Enrich et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "adjoint",
+   "pass": 1,
+   "prereqs": [
+    "lipman23",
+    "uehara"
+   ],
+   "seq": 67,
+   "source": "zotero",
+   "title": "Adjoint Matching: Fine-tuning Flow and Diffusion Generative Models with Memoryless Stochastic Optimal Control",
+   "track": "CTRL",
+   "url": "https://arxiv.org/abs/2409.08861",
+   "why": "Principled reward fine-tuning via stochastic optimal control.",
+   "year": 2025,
+   "zotero": "6B7EGDNN"
+  },
+  {
+   "authors": "Peebles & Xie",
+   "byJes": false,
+   "inZotero": false,
+   "key": "dit",
+   "pass": 1,
+   "prereqs": [
+    "ldm",
+    "vaswani17"
+   ],
+   "seq": 68,
+   "source": "canon",
+   "title": "Scalable Diffusion Models with Transformers",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2212.09748",
+   "why": "Replaces the U-Net with a transformer backbone (DiT); now the default architecture.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Holderrieth et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "genmatch",
+   "pass": 1,
+   "prereqs": [
+    "lipman23",
+    "ctdd"
+   ],
+   "seq": 69,
+   "source": "zotero",
+   "title": "Generator Matching: Generative modeling with arbitrary Markov processes",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2410.20587",
+   "why": "Unifies diffusion, flow and jump processes via the Markov generator. Connects continuous and discrete.",
+   "year": 2025,
+   "zotero": "W4DHZGBF"
+  },
+  {
+   "authors": "Pardo-Palacios et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "lrgasp",
+   "pass": 1,
+   "prereqs": [
+    "salmon"
+   ],
+   "seq": 70,
+   "source": "zotero",
+   "title": "Systematic assessment of long-read RNA-seq methods for transcript identification and quantification (LRGASP)",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/s41592-024-02298-3",
+   "why": "Community benchmark of long-read isoform methods.",
+   "year": 2024,
+   "zotero": "MLP4DABQ"
+  },
+  {
+   "authors": "De Bortoli et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "rsgm",
+   "pass": 1,
+   "prereqs": [
+    "scoresde"
+   ],
+   "seq": 71,
+   "source": "zotero",
+   "title": "Riemannian Score-Based Generative Modelling",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2202.02763",
+   "why": "Diffusion on manifolds. Required background for SE(3) protein diffusion.",
+   "year": 2022,
+   "zotero": "Q9YAY8MT"
+  },
+  {
+   "authors": "Ouyang et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "instructgpt",
+   "pass": 1,
+   "prereqs": [
+    "gpt3"
+   ],
+   "seq": 72,
+   "source": "canon",
+   "title": "Training language models to follow instructions with human feedback (InstructGPT)",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2203.02155",
+   "why": "SFT + reward model + PPO; the RLHF recipe.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Al'Khafaji et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "masseq",
+   "pass": 1,
+   "prereqs": [
+    "lrgasp"
+   ],
+   "seq": 73,
+   "source": "supervisor",
+   "title": "High-throughput RNA isoform sequencing using programmed cDNA concatenation (MAS-seq)",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/s41587-023-01815-7",
+   "why": "Made long-read isoform quantification economically viable.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Chen & Lipman",
+   "byJes": false,
+   "inZotero": true,
+   "key": "rfm",
+   "pass": 1,
+   "prereqs": [
+    "lipman23",
+    "rsgm"
+   ],
+   "seq": 74,
+   "source": "zotero",
+   "title": "Flow Matching on General Geometries",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2302.03660",
+   "why": "Riemannian flow matching. Background for FoldFlow and FrameFlow.",
+   "year": 2024,
+   "zotero": "JEV2SMW9"
+  },
+  {
+   "authors": "Yim et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "framediff",
+   "pass": 1,
+   "prereqs": [
+    "rsgm",
+    "af2"
+   ],
+   "seq": 75,
+   "source": "canon",
+   "title": "SE(3) diffusion model with application to protein backbone generation (FrameDiff)",
+   "track": "PROT",
+   "url": "https://arxiv.org/abs/2302.02277",
+   "why": "Diffusion on SE(3)^N frames: the theory behind RFdiffusion-style models.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Lou, Meng & Ermon",
+   "byJes": false,
+   "inZotero": true,
+   "key": "sedd",
+   "pass": 1,
+   "prereqs": [
+    "ctdd"
+   ],
+   "seq": 76,
+   "source": "zotero",
+   "title": "Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution (SEDD)",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2310.16834",
+   "why": "Concrete score / ratio matching; first discrete diffusion LM competitive with GPT-2.",
+   "year": 2024,
+   "zotero": "2XFBHFW7"
+  },
+  {
+   "authors": "Song et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "song25struct",
+   "pass": 1,
+   "prereqs": [
+    "kelemen13",
+    "af2"
+   ],
+   "seq": 77,
+   "source": "zotero",
+   "title": "Predicting the structural impact of human alternative splicing",
+   "track": "ISO",
+   "url": "https://doi.org/10.1186/s13059-025-03744-x",
+   "why": "Structure prediction applied to isoforms. Where your protein and isoform interests meet.",
+   "year": 2025,
+   "zotero": "UY86B7BP"
+  },
+  {
+   "authors": "Nisonoff et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "discguid",
+   "pass": 1,
+   "prereqs": [
+    "ctdd",
+    "cfg"
+   ],
+   "seq": 78,
+   "source": "zotero",
+   "title": "Unlocking Guidance for Discrete State-Space Diffusion and Flow Models",
+   "track": "CTRL",
+   "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/597254dc45be8c166d3ccf0ba2d56325-Abstract-Conference.html",
+   "why": "Classifier and classifier-free guidance for CTMC-based models; protein applications.",
+   "year": 2025,
+   "zotero": "VSIZBA86"
+  },
+  {
+   "authors": "Bradley & Anczuków",
+   "byJes": false,
+   "inZotero": false,
+   "key": "bradley23",
+   "pass": 1,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 79,
+   "source": "supervisor",
+   "title": "RNA splicing dysregulation and the hallmarks of cancer",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/s41568-022-00541-7",
+   "why": "Best single overview of splicing in cancer.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Rafailov et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "dpo",
+   "pass": 1,
+   "prereqs": [
+    "instructgpt"
+   ],
+   "seq": 80,
+   "source": "canon",
+   "title": "Direct Preference Optimization",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2305.18290",
+   "why": "Preference fine-tuning without a separate reward model or RL loop.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Kjer-Hansen, Phan & Weatheritt",
+   "byJes": false,
+   "inZotero": false,
+   "key": "kjerhansen24",
+   "pass": 1,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 81,
+   "source": "supervisor",
+   "title": "Protein isoform-centric therapeutics: expanding targets and increasing specificity",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Protein+isoform-centric+therapeutics%3A+expanding+targets+and+increasing+specificity",
+   "why": "The clearest translational case for isoform-level work.",
+   "year": 2024,
+   "zotero": ""
+  },
+  {
+   "authors": "Watson et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "rfdiffusion",
+   "pass": 1,
+   "prereqs": [
+    "framediff"
+   ],
+   "seq": 82,
+   "source": "zotero",
+   "title": "De novo design of protein structure and function with RFdiffusion",
+   "track": "PROT",
+   "url": "https://doi.org/10.1038/s41586-023-06415-8",
+   "why": "Fine-tuned RoseTTAFold as an SE(3) denoiser; experimentally validated binders.",
+   "year": 2023,
+   "zotero": "PNVHL38Q"
+  },
+  {
+   "authors": "Sahoo et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "mdlm",
+   "pass": 1,
+   "prereqs": [
+    "d3pm"
+   ],
+   "seq": 83,
+   "source": "zotero",
+   "title": "Simple and Effective Masked Diffusion Language Models (MDLM)",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2406.07524",
+   "why": "Masked diffusion reduces to a weighted mix of MLM losses. Clean and widely used.",
+   "year": 2024,
+   "zotero": "QJWMIWNA"
+  },
+  {
+   "authors": "Bose et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "foldflow",
+   "pass": 1,
+   "prereqs": [
+    "rfm",
+    "framediff"
+   ],
+   "seq": 84,
+   "source": "zotero",
+   "title": "SE(3)-Stochastic Flow Matching for Protein Backbone Generation (FoldFlow)",
+   "track": "PROT",
+   "url": "https://arxiv.org/abs/2310.02391",
+   "why": "Deterministic and stochastic SE(3) flow matching with OT.",
+   "year": 2024,
+   "zotero": "WEGRC58R"
+  },
+  {
+   "authors": "Campbell et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "multiflow",
+   "pass": 1,
+   "prereqs": [
+    "ctdd",
+    "lipman23"
+   ],
+   "seq": 85,
+   "source": "zotero",
+   "title": "Generative Flows on Discrete State-Spaces (Multiflow)",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2402.04997",
+   "why": "Discrete flow models; joint sequence-structure protein generation.",
+   "year": 2024,
+   "zotero": "UV46NAS9"
+  },
+  {
+   "authors": "Hayes et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "esm3",
+   "pass": 1,
+   "prereqs": [
+    "esm2",
+    "mdlm"
+   ],
+   "seq": 86,
+   "source": "canon",
+   "title": "Simulating 500 million years of evolution with a language model (ESM3)",
+   "track": "PROT",
+   "url": "https://doi.org/10.1126/science.ads0018",
+   "why": "Multimodal masked generative model over sequence, structure and function tokens.",
+   "year": 2025,
+   "zotero": ""
+  },
+  {
+   "authors": "Gat et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "dfm",
+   "pass": 1,
+   "prereqs": [
+    "multiflow"
+   ],
+   "seq": 87,
+   "source": "zotero",
+   "title": "Discrete Flow Matching",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2407.15595",
+   "why": "Discrete flow matching with general probability paths, scaled to code generation.",
+   "year": 2024,
+   "zotero": "66FF5HU7"
+  },
+  {
+   "authors": "Ule & Blencowe",
+   "byJes": false,
+   "inZotero": false,
+   "key": "ule19",
+   "pass": 2,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 88,
+   "source": "supervisor",
+   "title": "Alternative Splicing Regulatory Networks: Functions, Mechanisms, and Evolution",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Alternative+Splicing+Regulatory+Networks%3A+Functions%2C+Mechanisms%2C+and+Evolution",
+   "why": "Review of how splicing is regulated.",
+   "year": 2019,
+   "zotero": ""
+  },
+  {
+   "authors": "Grünefeld, Frellsen & Hardmeier",
+   "byJes": true,
+   "date": "2026-03",
+   "inZotero": false,
+   "key": "isotropicuq",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 89,
+   "source": "canon",
+   "title": "An Isotropic Approach to Efficient Uncertainty Quantification with Gradient Norms",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2603.29466",
+   "why": "Nils Grünefeld (group): cheap uncertainty estimates from gradient norms.",
+   "year": 2026,
+   "zotero": ""
+  },
+  {
+   "authors": "Rezende & Mohamed",
+   "byJes": false,
+   "inZotero": true,
+   "key": "rezende15",
+   "pass": 2,
+   "prereqs": [
+    "vae13"
+   ],
+   "seq": 90,
+   "source": "zotero",
+   "title": "Variational Inference with Normalizing Flows",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/1505.05770",
+   "why": "Introduces normalizing flows and the change-of-variables view of generative modelling.",
+   "year": 2015,
+   "zotero": "57SFYUJH"
+  },
+  {
+   "authors": "Bahdanau, Cho & Bengio",
+   "byJes": false,
+   "inZotero": false,
+   "key": "bahdanau",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 91,
+   "source": "canon",
+   "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/1409.0473",
+   "why": "Where attention came from.",
+   "year": 2015,
+   "zotero": ""
+  },
+  {
+   "authors": "Marasco & Kornblihtt",
+   "byJes": false,
+   "inZotero": false,
+   "key": "marasco23",
+   "pass": 2,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 92,
+   "source": "supervisor",
+   "title": "The physiology of alternative splicing",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=The+physiology+of+alternative+splicing",
+   "why": "Splicing as a physiological response system; the framing used for isoform switches.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Albergo & Vanden-Eijnden",
+   "byJes": false,
+   "inZotero": true,
+   "key": "albergo22",
+   "pass": 2,
+   "prereqs": [
+    "neuralode"
+   ],
+   "seq": 93,
+   "source": "zotero",
+   "title": "Building Normalizing Flows with Stochastic Interpolants",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2209.15571",
+   "why": "The first interpolant paper; deterministic case.",
+   "year": 2023,
+   "zotero": "GQ3FJR3D"
+  },
+  {
+   "authors": "He et al.",
+   "background": [
+    "ddpm"
+   ],
+   "byJes": false,
+   "date": "2025-09",
+   "inZotero": true,
+   "key": "crepe",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 94,
+   "source": "zotero",
+   "title": "CREPE: Controlling Diffusion with Replica Exchange",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2509.23265",
+   "why": "Paul Jeha (group) is a co-author. Replica exchange as an inference-time control method.",
+   "year": 2025,
+   "zotero": "XF5UMFJV"
+  },
+  {
+   "authors": "Meier et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "esm1v",
+   "pass": 2,
+   "prereqs": [
+    "esm1b"
+   ],
+   "seq": 95,
+   "source": "canon",
+   "title": "Language models enable zero-shot prediction of the effects of mutations on protein function (ESM-1v)",
+   "track": "PROT",
+   "url": "https://doi.org/10.1101/2021.07.09.450648",
+   "why": "Zero-shot variant effects from LM likelihoods. Relevant for isoform/variant scoring.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Shi et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "md4",
+   "pass": 2,
+   "prereqs": [
+    "mdlm"
+   ],
+   "seq": 96,
+   "source": "zotero",
+   "title": "Simplified and Generalized Masked Diffusion for Discrete Data (MD4)",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2406.04329",
+   "why": "Companion to MDLM with a continuous-time ELBO and state-dependent schedules.",
+   "year": 2024,
+   "zotero": "KNBKEBJ8"
+  },
+  {
+   "authors": "Weatheritt, Sterne-Weiler & Blencowe",
+   "byJes": false,
+   "inZotero": false,
+   "key": "weatheritt16",
+   "pass": 2,
+   "prereqs": [
+    "tress17"
+   ],
+   "seq": 97,
+   "source": "supervisor",
+   "title": "The ribosome-engaged landscape of alternative splicing",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=The+ribosome-engaged+landscape+of+alternative+splicing",
+   "why": "Most expressed splice events have ribosome-profiling support.",
+   "year": 2016,
+   "zotero": ""
+  },
+  {
+   "authors": "Svensson",
+   "byJes": false,
+   "inZotero": false,
+   "key": "notzi",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 98,
+   "source": "canon",
+   "title": "Droplet scRNA-seq is not zero-inflated",
+   "track": "SC",
+   "url": "https://doi.org/10.1038/s41587-019-0379-5",
+   "why": "Why a plain negative binomial is usually enough.",
+   "year": 2020,
+   "zotero": ""
+  },
+  {
+   "authors": "Kingma & Welling",
+   "byJes": false,
+   "inZotero": false,
+   "key": "kingmaintro",
+   "pass": 2,
+   "prereqs": [
+    "vae13"
+   ],
+   "seq": 99,
+   "source": "canon",
+   "title": "An Introduction to Variational Autoencoders",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/1906.02691",
+   "why": "Book-length tutorial on VAEs, amortised inference and flows-based posteriors.",
+   "year": 2019,
+   "zotero": ""
+  },
+  {
+   "authors": "Dieleman",
+   "byJes": false,
+   "inZotero": true,
+   "key": "dieleman_guid",
+   "pass": 2,
+   "prereqs": [
+    "cfg"
+   ],
+   "seq": 100,
+   "source": "zotero",
+   "title": "Guidance: a cheat code for diffusion models (blog)",
+   "track": "CTRL",
+   "url": "https://sander.ai/2022/05/26/guidance.html",
+   "why": "Intuition for why guidance works and what it does to the distribution.",
+   "year": 2022,
+   "zotero": "WA5UJZEP"
+  },
+  {
+   "authors": "Dinh, Sohl-Dickstein & Bengio",
+   "byJes": false,
+   "inZotero": true,
+   "key": "realnvp",
+   "pass": 2,
+   "prereqs": [
+    "rezende15"
+   ],
+   "seq": 101,
+   "source": "zotero",
+   "title": "Density estimation using Real NVP",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/1605.08803",
+   "why": "Coupling layers: the practical recipe that made exact-likelihood flows work.",
+   "year": 2017,
+   "zotero": "5MF9VBAF"
+  },
+  {
+   "authors": "Ma et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "sit",
+   "pass": 2,
+   "prereqs": [
+    "interpolants",
+    "dit"
+   ],
+   "seq": 102,
+   "source": "zotero",
+   "title": "SiT: Exploring Flow and Diffusion-based Generative Models with Scalable Interpolant Transformers",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2401.08740",
+   "why": "Ablates interpolant design choices at scale on top of DiT.",
+   "year": 2024,
+   "zotero": "WRFL446X"
+  },
+  {
+   "authors": "Lambourne et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "lambourne25",
+   "pass": 2,
+   "prereqs": [
+    "yang16"
+   ],
+   "seq": 103,
+   "source": "supervisor",
+   "title": "Widespread variation in molecular interactions and regulatory properties among transcription factor isoforms",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Widespread+variation+in+molecular+interactions+and+regulatory+properties+among+transcription+factor+isoforms",
+   "why": "TF isoform choice can rewire downstream regulons.",
+   "year": 2025,
+   "zotero": ""
+  },
+  {
+   "authors": "Cornet et al.",
+   "background": [
+    "scoresde"
+   ],
+   "byJes": true,
+   "date": "2025-07",
+   "inZotero": false,
+   "key": "kineticlangevin",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 104,
+   "source": "canon",
+   "title": "Kinetic Langevin Diffusion for Crystalline Materials Generation",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2507.03602",
+   "why": "Federico Bergamin (group). Jes: diffusion with velocity variables on periodic manifolds.",
+   "year": 2025,
+   "zotero": ""
+  },
+  {
+   "authors": "Sohl-Dickstein et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "sohl15",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 105,
+   "source": "zotero",
+   "title": "Deep Unsupervised Learning using Nonequilibrium Thermodynamics",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/1503.03585",
+   "why": "The original diffusion probabilistic model. Read for the historical framing.",
+   "year": 2015,
+   "zotero": "SAQ3VXH5"
+  },
+  {
+   "authors": "Kaplan et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "kaplan",
+   "pass": 2,
+   "prereqs": [
+    "gpt3"
+   ],
+   "seq": 106,
+   "source": "canon",
+   "title": "Scaling Laws for Neural Language Models",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2001.08361",
+   "why": "Power-law scaling of loss with compute, data and parameters.",
+   "year": 2020,
+   "zotero": ""
+  },
+  {
+   "authors": "Gvozdenov, Barcutean & Struhl",
+   "byJes": false,
+   "inZotero": false,
+   "key": "gvozdenov23",
+   "pass": 2,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 107,
+   "source": "supervisor",
+   "title": "Functional analysis of a random-sequence chromosome reveals a high level and the molecular nature of transcriptional noise in yeast cells",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Functional+analysis+of+a+random-sequence+chromosome+reveals+a+high+level+and+the+molecular+nature+of+transcriptional+noise+in+yeast+cells",
+   "why": "Some isoforms may be noise. Keep this in mind for every analysis.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Esser et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "sd3",
+   "pass": 2,
+   "prereqs": [
+    "rectflow",
+    "dit"
+   ],
+   "seq": 108,
+   "source": "canon",
+   "title": "Scaling Rectified Flow Transformers for High-Resolution Image Synthesis",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2403.03206",
+   "why": "Stable Diffusion 3: rectified flow at scale, timestep sampling choices that matter.",
+   "year": 2024,
+   "zotero": ""
+  },
+  {
+   "authors": "Senetaire, Jeha, Mattei & Frellsen",
+   "byJes": true,
+   "date": "2025-03",
+   "inZotero": false,
+   "key": "selfnormebm",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 109,
+   "source": "canon",
+   "title": "Learning Energy-Based Models by Self-normalising the Likelihood",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2503.07021",
+   "why": "Paul Jeha (group). Jes: makes EBM likelihood training tractable by learning the normaliser.",
+   "year": 2025,
+   "zotero": ""
+  },
+  {
+   "authors": "Madani et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "progen",
+   "pass": 2,
+   "prereqs": [
+    "gpt3"
+   ],
+   "seq": 110,
+   "source": "canon",
+   "title": "Large language models generate functional protein sequences across diverse families (ProGen)",
+   "track": "PROT",
+   "url": "https://doi.org/10.1038/s41587-022-01618-2",
+   "why": "Autoregressive protein generation validated in the lab.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Shaul et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "kinetic",
+   "pass": 2,
+   "prereqs": [
+    "dfm"
+   ],
+   "seq": 111,
+   "source": "zotero",
+   "title": "Flow Matching with General Discrete Paths: A Kinetic-Optimal Perspective",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2412.03487",
+   "why": "How to choose discrete paths and velocities; beyond masking.",
+   "year": 2025,
+   "zotero": "GBVVX3BD"
+  },
+  {
+   "authors": "Barbosa-Morais et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "barbosa12",
+   "pass": 2,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 112,
+   "source": "supervisor",
+   "title": "The Evolutionary Landscape of Alternative Splicing in Vertebrate Species",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=The+Evolutionary+Landscape+of+Alternative+Splicing+in+Vertebrate+Species",
+   "why": "Splicing diverges faster than expression across species.",
+   "year": 2012,
+   "zotero": ""
+  },
+  {
+   "authors": "Townes et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "townes",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 113,
+   "source": "zotero",
+   "title": "Feature selection and dimension reduction for single-cell RNA-Seq based on a multinomial model",
+   "track": "SC",
+   "url": "https://doi.org/10.1186/s13059-019-1861-6",
+   "why": "Multinomial view of UMI counts; deviance-based features.",
+   "year": 2019,
+   "zotero": "L6ISS8AC"
+  },
+  {
+   "authors": "Rezende, Mohamed & Wierstra",
+   "byJes": false,
+   "inZotero": false,
+   "key": "dlgm",
+   "pass": 2,
+   "prereqs": [
+    "blei17"
+   ],
+   "seq": 114,
+   "source": "canon",
+   "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/1401.4082",
+   "why": "The concurrent derivation of the VAE; clearer on the stochastic backprop view.",
+   "year": 2014,
+   "zotero": ""
+  },
+  {
+   "authors": "Chung et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "dps",
+   "pass": 2,
+   "prereqs": [
+    "scoresde"
+   ],
+   "seq": 115,
+   "source": "zotero",
+   "title": "Diffusion Posterior Sampling for General Noisy Inverse Problems",
+   "track": "CTRL",
+   "url": "https://arxiv.org/abs/2209.14687",
+   "why": "Training-free conditioning via approximate posterior scores.",
+   "year": 2023,
+   "zotero": "W6TS5WA5"
+  },
+  {
+   "authors": "Nichol & Dhariwal",
+   "byJes": false,
+   "inZotero": false,
+   "key": "iddpm",
+   "pass": 2,
+   "prereqs": [
+    "ddpm"
+   ],
+   "seq": 116,
+   "source": "canon",
+   "title": "Improved Denoising Diffusion Probabilistic Models",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2102.09672",
+   "why": "Learned variances and cosine schedule; practical training details.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Klein, Krämer & Noé",
+   "byJes": false,
+   "inZotero": true,
+   "key": "eqfm",
+   "pass": 2,
+   "prereqs": [
+    "lipman23",
+    "egnn"
+   ],
+   "seq": 117,
+   "source": "zotero",
+   "title": "Equivariant flow matching",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2306.15030",
+   "why": "Equivariant vector fields plus OT alignment for molecular systems.",
+   "year": 2023,
+   "zotero": "UEQYPH89"
+  },
+  {
+   "authors": "Xia et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "xia24",
+   "pass": 2,
+   "prereqs": [
+    "barbosa12"
+   ],
+   "seq": 118,
+   "source": "supervisor",
+   "title": "On the genetic basis of tail-loss evolution in humans and apes",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=On+the+genetic+basis+of+tail-loss+evolution+in+humans+and+apes",
+   "why": "One exon-skipping event drives a major morphological difference. The group's favourite example.",
+   "year": 2024,
+   "zotero": ""
+  },
+  {
+   "authors": "Shysheya, Diaconu, Bergamin et al.",
+   "background": [
+    "ddpm"
+   ],
+   "byJes": true,
+   "date": "2024-10",
+   "inZotero": false,
+   "key": "condpde",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 119,
+   "source": "canon",
+   "title": "On conditional diffusion models for PDE simulations",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2410.16415",
+   "why": "Federico Bergamin (group): conditional diffusion for forecasting and data assimilation in PDEs.",
+   "year": 2024,
+   "zotero": ""
+  },
+  {
+   "authors": "Kingma, Salimans, Poole & Ho",
+   "byJes": false,
+   "inZotero": true,
+   "key": "vdm",
+   "pass": 2,
+   "prereqs": [
+    "ddpm",
+    "vae13"
+   ],
+   "seq": 120,
+   "source": "zotero",
+   "title": "Variational Diffusion Models",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2107.00630",
+   "why": "Diffusion as a VAE with continuous time and SNR parameterisation; clean likelihood view.",
+   "year": 2021,
+   "zotero": "KNJHU5YE"
+  },
+  {
+   "authors": "Hoffmann et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "chinchilla",
+   "pass": 2,
+   "prereqs": [
+    "kaplan"
+   ],
+   "seq": 121,
+   "source": "canon",
+   "title": "Training Compute-Optimal Large Language Models (Chinchilla)",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2203.15556",
+   "why": "Corrects the compute-optimal data/parameter ratio.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Nowicka & Robinson",
+   "byJes": false,
+   "inZotero": true,
+   "key": "drimseq",
+   "pass": 2,
+   "prereqs": [
+    "soneson15"
+   ],
+   "seq": 122,
+   "source": "zotero",
+   "title": "DRIMSeq: a Dirichlet-multinomial framework for multivariate count outcomes in genomics",
+   "track": "ISO",
+   "url": "https://doi.org/10.12688/f1000research.8900.2",
+   "why": "Dirichlet-multinomial model for differential isoform usage.",
+   "year": 2016,
+   "zotero": "ER55PHEP"
+  },
+  {
+   "authors": "De Bortoli et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "dsb",
+   "pass": 2,
+   "prereqs": [
+    "scoresde"
+   ],
+   "seq": 123,
+   "source": "canon",
+   "title": "Diffusion Schrödinger Bridge with Applications to Score-Based Generative Modeling",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2106.01357",
+   "why": "Bridging two arbitrary distributions; the Schrödinger bridge view of generative modelling.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Jeha et al.",
+   "background": [
+    "ddpm"
+   ],
+   "byJes": true,
+   "date": "2024-08",
+   "inZotero": false,
+   "key": "cvdiffgrad",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 124,
+   "source": "canon",
+   "title": "Variance reduction of diffusion model's gradients with Taylor approximation-based control variate",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2408.12270",
+   "why": "Paul Jeha (group). Jes: lower-variance training gradients for diffusion.",
+   "year": 2024,
+   "zotero": ""
+  },
+  {
+   "authors": "Trippe et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "smcdiff",
+   "pass": 2,
+   "prereqs": [
+    "ddpm",
+    "egnn"
+   ],
+   "seq": 125,
+   "source": "zotero",
+   "title": "Diffusion probabilistic modeling of protein backbones in 3D for the motif-scaffolding problem",
+   "track": "PROT",
+   "url": "https://arxiv.org/abs/2206.04119",
+   "why": "Early protein backbone diffusion and SMC motif scaffolding.",
+   "year": 2023,
+   "zotero": "ZSSSCRF2"
+  },
+  {
+   "authors": "Stark et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "dirichletfm",
+   "pass": 2,
+   "prereqs": [
+    "lipman23",
+    "argmax"
+   ],
+   "seq": 126,
+   "source": "zotero",
+   "title": "Dirichlet Flow Matching with Applications to DNA Sequence Design",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2402.05841",
+   "why": "Flow matching on the simplex; relevant for compositional data like isoform fractions.",
+   "year": 2024,
+   "zotero": "P8W45DM9"
+  },
+  {
+   "authors": "GTEx Consortium",
+   "byJes": false,
+   "inZotero": false,
+   "key": "gtex20",
+   "pass": 2,
+   "prereqs": [
+    "li16"
+   ],
+   "seq": 127,
+   "source": "supervisor",
+   "title": "The GTEx Consortium atlas of genetic regulatory effects across human tissues",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=The+GTEx+Consortium+atlas+of+genetic+regulatory+effects+across+human+tissues",
+   "why": "Reference resource for tissue-specific eQTLs and sQTLs.",
+   "year": 2020,
+   "zotero": ""
+  },
+  {
+   "authors": "Ahlmann-Eltze & Huber",
+   "byJes": false,
+   "inZotero": true,
+   "key": "transforms",
+   "pass": 2,
+   "prereqs": [
+    "notzi"
+   ],
+   "seq": 128,
+   "source": "zotero",
+   "title": "Comparison of transformations for single-cell RNA-seq data",
+   "track": "SC",
+   "url": "https://doi.org/10.1038/s41592-023-01814-1",
+   "why": "Benchmark showing log(x+1) is hard to beat.",
+   "year": 2023,
+   "zotero": "UN7WZKIB"
+  },
+  {
+   "authors": "Rubin",
+   "byJes": false,
+   "inZotero": false,
+   "key": "rubin76",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 129,
+   "source": "canon",
+   "title": "Inference and missing data",
+   "track": "PML",
+   "url": "https://doi.org/10.1093/biomet/63.3.581",
+   "why": "Defines MCAR / MAR / MNAR. You need these terms for MIWAE and not-MIWAE.",
+   "year": 1976,
+   "zotero": ""
+  },
+  {
+   "authors": "Wu et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "tds",
+   "pass": 2,
+   "prereqs": [
+    "dps"
+   ],
+   "seq": 130,
+   "source": "canon",
+   "title": "Practical and Asymptotically Exact Conditional Sampling in Diffusion Models (TDS)",
+   "track": "CTRL",
+   "url": "https://arxiv.org/abs/2306.17775",
+   "why": "SMC-based conditional sampling; applied to motif scaffolding.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Dhariwal & Nichol",
+   "byJes": false,
+   "inZotero": true,
+   "key": "adm",
+   "pass": 2,
+   "prereqs": [
+    "iddpm"
+   ],
+   "seq": 131,
+   "source": "zotero",
+   "title": "Diffusion Models Beat GANs on Image Synthesis",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2105.05233",
+   "why": "Architecture improvements and classifier guidance.",
+   "year": 2021,
+   "zotero": "5F3QCPP6"
+  },
+  {
+   "authors": "Tang",
+   "byJes": false,
+   "inZotero": true,
+   "key": "sbfound",
+   "pass": 2,
+   "prereqs": [
+    "dsb",
+    "interpolants"
+   ],
+   "seq": 132,
+   "source": "zotero",
+   "title": "Foundations of Schrödinger Bridges for Generative Modeling",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2603.18992",
+   "why": "Recent tutorial-style consolidation of the Schrödinger bridge literature.",
+   "year": 2026,
+   "zotero": "63F8SFNB"
+  },
+  {
+   "authors": "Wen et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "wen24",
+   "pass": 2,
+   "prereqs": [
+    "qi22"
+   ],
+   "seq": 133,
+   "source": "supervisor",
+   "title": "Cross-ancestry atlas of gene, isoform, and splicing regulation in the developing human brain",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Cross-ancestry+atlas+of+gene%2C+isoform%2C+and+splicing+regulation+in+the+developing+human+brain",
+   "why": "The template for how the group wants its atlas work to look.",
+   "year": 2024,
+   "zotero": ""
+  },
+  {
+   "authors": "Baker, Yang, Severinsen, Hipsley & Sommer",
+   "background": [
+    "bakerbridges"
+   ],
+   "byJes": true,
+   "date": "2024-02",
+   "inZotero": false,
+   "key": "bakercond",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 134,
+   "source": "canon",
+   "title": "Conditioning non-linear and infinite-dimensional diffusion processes",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2402.01434",
+   "why": "Libby Baker (group): Doob h-transforms for non-linear and function-space diffusions.",
+   "year": 2024,
+   "zotero": ""
+  },
+  {
+   "authors": "Song, Dhariwal, Chen & Sutskever",
+   "byJes": false,
+   "inZotero": false,
+   "key": "consistency",
+   "pass": 2,
+   "prereqs": [
+    "scoresde"
+   ],
+   "seq": 135,
+   "source": "canon",
+   "title": "Consistency Models",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2303.01469",
+   "why": "One-step generation by mapping any point on the ODE trajectory to its origin. Precursor of flow maps.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Dosovitskiy et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "vit",
+   "pass": 2,
+   "prereqs": [
+    "vaswani17"
+   ],
+   "seq": 136,
+   "source": "zotero",
+   "title": "An Image is Worth 16x16 Words (ViT)",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2010.11929",
+   "why": "Transformers on patches; needed for DiT.",
+   "year": 2021,
+   "zotero": "VPLYC84Y"
+  },
+  {
+   "authors": "Bhattacharya et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "isotwas",
+   "pass": 2,
+   "prereqs": [
+    "qi22"
+   ],
+   "seq": 137,
+   "source": "zotero",
+   "title": "Isoform-level transcriptome-wide association uncovers genetic risk mechanisms for neuropsychiatric disorders",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/s41588-023-01560-2",
+   "why": "isoTWAS: isoform-level TWAS.",
+   "year": 2023,
+   "zotero": "FNMFHUIG"
+  },
+  {
+   "authors": "Boffi et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "flowmaps",
+   "pass": 2,
+   "prereqs": [
+    "interpolants",
+    "consistency"
+   ],
+   "seq": 138,
+   "source": "zotero",
+   "title": "How to build a consistency model: Learning flow maps via self-distillation",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2505.18825",
+   "why": "Flow maps: learning the integral of the ODE for few-step sampling.",
+   "year": 2025,
+   "zotero": "Q3MQ44H8"
+  },
+  {
+   "authors": "Bergamin, Moreno-Muñoz, Hauberg & Arvanitidis",
+   "background": [
+    "latentoddity"
+   ],
+   "byJes": true,
+   "date": "2023-06",
+   "inZotero": false,
+   "key": "riemlaplace",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 139,
+   "source": "canon",
+   "title": "Riemannian Laplace approximations for Bayesian neural networks",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2306.07158",
+   "why": "Federico Bergamin (group): Laplace approximations that follow the loss-landscape geometry.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Yim et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "frameflow",
+   "pass": 2,
+   "prereqs": [
+    "framediff",
+    "rfm"
+   ],
+   "seq": 140,
+   "source": "canon",
+   "title": "Fast protein backbone generation with SE(3) flow matching (FrameFlow)",
+   "track": "PROT",
+   "url": "https://arxiv.org/abs/2310.05297",
+   "why": "FrameDiff recast as Riemannian flow matching; faster and simpler.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Nie et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "llada",
+   "pass": 2,
+   "prereqs": [
+    "mdlm",
+    "gpt3"
+   ],
+   "seq": 141,
+   "source": "canon",
+   "title": "Large Language Diffusion Models (LLaDA)",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2502.09992",
+   "why": "Masked diffusion LM trained at 8B scale; competitive with autoregressive LLMs.",
+   "year": 2025,
+   "zotero": ""
+  },
+  {
+   "authors": "Soemedi et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "soemedi17",
+   "pass": 2,
+   "prereqs": [
+    "spliceai"
+   ],
+   "seq": 142,
+   "source": "supervisor",
+   "title": "Pathogenic variants that alter protein code often disrupt splicing",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Pathogenic+variants+that+alter+protein+code+often+disrupt+splicing",
+   "why": "Many 'coding' pathogenic variants act through splicing.",
+   "year": 2017,
+   "zotero": ""
+  },
+  {
+   "authors": "Luecken et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "luecken",
+   "pass": 2,
+   "prereqs": [
+    "scvi"
+   ],
+   "seq": 143,
+   "source": "zotero",
+   "title": "Benchmarking atlas-level data integration in single-cell genomics",
+   "track": "SC",
+   "url": "https://doi.org/10.1038/s41592-021-01336-8",
+   "why": "The integration benchmark everyone cites.",
+   "year": 2022,
+   "zotero": "UHENDAL7"
+  },
+  {
+   "authors": "Mattei & Frellsen",
+   "byJes": true,
+   "inZotero": false,
+   "key": "mattei18",
+   "pass": 2,
+   "prereqs": [
+    "iwae"
+   ],
+   "seq": 144,
+   "source": "canon",
+   "title": "Leveraging the Exact Likelihood of Deep Latent Variable Models",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/1802.04826",
+   "why": "Jes: the likelihood of many continuous DLVMs is unbounded; how to fix it, and exact-likelihood imputation.",
+   "year": 2018,
+   "zotero": ""
+  },
+  {
+   "authors": "Black et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "ddpo",
+   "pass": 2,
+   "prereqs": [
+    "ddpm"
+   ],
+   "seq": 145,
+   "source": "canon",
+   "title": "Training Diffusion Models with Reinforcement Learning (DDPO)",
+   "track": "CTRL",
+   "url": "https://arxiv.org/abs/2305.13301",
+   "why": "Denoising as an MDP; policy-gradient fine-tuning.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Cummings et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "cummings20",
+   "pass": 2,
+   "prereqs": [
+    "soemedi17"
+   ],
+   "seq": 146,
+   "source": "supervisor",
+   "title": "Transcript expression-aware annotation improves rare variant interpretation",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Transcript+expression-aware+annotation+improves+rare+variant+interpretation",
+   "why": "Weighting variants by transcript expression improves interpretation.",
+   "year": 2020,
+   "zotero": ""
+  },
+  {
+   "authors": "Su et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "rope",
+   "pass": 2,
+   "prereqs": [
+    "vaswani17"
+   ],
+   "seq": 147,
+   "source": "canon",
+   "title": "RoFormer: Enhanced Transformer with Rotary Position Embedding",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2104.09864",
+   "why": "Rotary position embeddings, standard in modern LLMs and protein LMs.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Wagner et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "absplice",
+   "pass": 2,
+   "prereqs": [
+    "spliceai",
+    "gtex20"
+   ],
+   "seq": 148,
+   "source": "zotero",
+   "title": "Aberrant splicing prediction across human tissues (AbSplice)",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/s41588-023-01373-3",
+   "why": "Tissue-specific aberrant splicing prediction.",
+   "year": 2023,
+   "zotero": "4A7ZMNKH"
+  },
+  {
+   "authors": "Ingraham et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "chroma",
+   "pass": 2,
+   "prereqs": [
+    "framediff"
+   ],
+   "seq": 149,
+   "source": "canon",
+   "title": "Illuminating protein space with a programmable generative model (Chroma)",
+   "track": "PROT",
+   "url": "https://doi.org/10.1038/s41586-023-06728-8",
+   "why": "Diffusion with correlated noise and programmable conditioning.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Wu et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "gensplice",
+   "pass": 2,
+   "prereqs": [
+    "spliceai",
+    "ddpm"
+   ],
+   "seq": 150,
+   "source": "zotero",
+   "title": "Generative modeling for RNA splicing prediction and design",
+   "track": "ISO",
+   "url": "https://doi.org/10.7554/eLife.106043.2",
+   "why": "Generative models applied to splicing; where your ML interests meet the group's.",
+   "year": 2025,
+   "zotero": "PP24EC2I"
+  },
+  {
+   "authors": "Palma et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "cfgen",
+   "pass": 2,
+   "prereqs": [
+    "lipman23",
+    "scvi"
+   ],
+   "seq": 151,
+   "source": "zotero",
+   "title": "Multi-Modal and Multi-Attribute Generation of Single Cells with CFGen",
+   "track": "SC",
+   "url": "https://openreview.net/forum?id=3MnMGLctKb",
+   "why": "Flow matching in a latent space with count decoders and compositional guidance.",
+   "year": 2025,
+   "zotero": "I8QARKUZ"
+  },
+  {
+   "authors": "Mattei & Frellsen",
+   "byJes": true,
+   "inZotero": false,
+   "key": "miwae",
+   "pass": 2,
+   "prereqs": [
+    "iwae",
+    "rubin76"
+   ],
+   "seq": 152,
+   "source": "canon",
+   "title": "MIWAE: Deep Generative Modelling and Imputation of Incomplete Data Sets",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/1812.02633",
+   "why": "Jes: train a VAE on data with missing values using an importance-weighted bound. His best-known paper.",
+   "year": 2019,
+   "zotero": ""
+  },
+  {
+   "authors": "Denker et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "deft",
+   "pass": 2,
+   "prereqs": [
+    "dps"
+   ],
+   "seq": 153,
+   "source": "zotero",
+   "title": "DEFT: Efficient Fine-Tuning of Diffusion Models by Learning the Generalised h-transform",
+   "track": "CTRL",
+   "url": "https://arxiv.org/abs/2406.01781",
+   "why": "Doob h-transform view of conditioning/fine-tuning.",
+   "year": 2024,
+   "zotero": "CWA9VRE4"
+  },
+  {
+   "authors": "Zhou et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "helix",
+   "pass": 2,
+   "prereqs": [
+    "alphagenome"
+   ],
+   "seq": 154,
+   "source": "zotero",
+   "title": "HELIX: a scalable model for predicting context-dependent regulation of RNA splicing and isoform expression",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/s43588-026-00988-w",
+   "why": "Context-dependent isoform expression prediction.",
+   "year": 2026,
+   "zotero": "8T8ENEZZ"
+  },
+  {
+   "authors": "Dettmers et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "qlora",
+   "pass": 2,
+   "prereqs": [
+    "lora"
+   ],
+   "seq": 155,
+   "source": "canon",
+   "title": "QLoRA: Efficient Finetuning of Quantized LLMs",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2305.14314",
+   "why": "LoRA on 4-bit quantised models; fine-tuning on one GPU.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Tabula Sapiens Consortium",
+   "byJes": false,
+   "inZotero": false,
+   "key": "tabulasapiens",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 156,
+   "source": "supervisor",
+   "title": "The Tabula Sapiens: A multiple-organ, single-cell transcriptomic atlas of humans",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=The+Tabula+Sapiens%3A+A+multiple-organ%2C+single-cell+transcriptomic+atlas+of+humans",
+   "why": "The cross-organ single-cell reference; shows how much isoform information short reads miss.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Alamdari et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "evodiff",
+   "pass": 2,
+   "prereqs": [
+    "d3pm",
+    "esm1b"
+   ],
+   "seq": 157,
+   "source": "canon",
+   "title": "Protein generation with evolutionary diffusion: sequence is all you need (EvoDiff)",
+   "track": "PROT",
+   "url": "https://doi.org/10.1101/2023.09.11.556673",
+   "why": "Discrete diffusion directly on protein sequences.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Huang & Sanguinetti",
+   "byJes": false,
+   "inZotero": true,
+   "key": "brie",
+   "pass": 2,
+   "prereqs": [
+    "salmon"
+   ],
+   "seq": 158,
+   "source": "zotero",
+   "title": "BRIE: transcriptome-wide splicing quantification in single cells",
+   "track": "ISO",
+   "url": "https://doi.org/10.1186/s13059-017-1248-5",
+   "why": "Bayesian splicing quantification in sparse single-cell data.",
+   "year": 2017,
+   "zotero": "2WVFB7JE"
+  },
+  {
+   "authors": "Klein et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "cellflow",
+   "pass": 2,
+   "prereqs": [
+    "otcfm"
+   ],
+   "seq": 159,
+   "source": "zotero",
+   "title": "CellFlow enables generative single-cell phenotype modeling with flow matching",
+   "track": "SC",
+   "url": "https://doi.org/10.1101/2025.04.11.648220",
+   "why": "Flow matching for perturbation response prediction.",
+   "year": 2025,
+   "zotero": "KKDKQFDI"
+  },
+  {
+   "authors": "Ipsen, Mattei & Frellsen",
+   "byJes": true,
+   "inZotero": false,
+   "key": "notmiwae",
+   "pass": 2,
+   "prereqs": [
+    "miwae"
+   ],
+   "seq": 160,
+   "source": "canon",
+   "title": "not-MIWAE: Deep Generative Modelling with Missing not at Random Data",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/2006.12871",
+   "why": "Jes: extends MIWAE to MNAR data by modelling the missingness mechanism.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Reese & Mortazavi",
+   "byJes": false,
+   "inZotero": false,
+   "key": "encode4lr",
+   "pass": 2,
+   "prereqs": [
+    "lrgasp"
+   ],
+   "seq": 161,
+   "source": "supervisor",
+   "title": "The ENCODE4 long-read RNA-seq collection reveals distinct classes of transcript structure diversity",
+   "track": "ISO",
+   "url": "https://doi.org/10.1101/2023.05.15.540865",
+   "why": "Large long-read resource and a taxonomy of transcript-structure diversity.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Radford et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "clip",
+   "pass": 2,
+   "prereqs": [
+    "vit"
+   ],
+   "seq": 162,
+   "source": "zotero",
+   "title": "Learning Transferable Visual Models From Natural Language Supervision (CLIP)",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2103.00020",
+   "why": "Contrastive multimodal pretraining; template for cross-modal biology models.",
+   "year": 2021,
+   "zotero": "5NRRP6PM"
+  },
+  {
+   "authors": "Foord et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "foord23",
+   "pass": 2,
+   "prereqs": [
+    "lrgasp"
+   ],
+   "seq": 163,
+   "source": "supervisor",
+   "title": "The variables on RNA molecules: concert or cacophony? Answers in long-read sequencing",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=The+variables+on+RNA+molecules%3A+concert+or+cacophony%3F+Answers+in+long-read+sequencing",
+   "why": "Treat the RNA molecule as coupled features, not independent events.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Hamelryck et al. (incl. Frellsen)",
+   "byJes": true,
+   "inZotero": false,
+   "key": "pmf",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 164,
+   "source": "canon",
+   "title": "Potentials of Mean Force for Protein Structure Prediction Vindicated, Formalized and Generalized",
+   "track": "PROT",
+   "url": "https://arxiv.org/abs/1008.4006",
+   "why": "Jes's protein-modelling roots: a probabilistic justification of knowledge-based potentials (reference ratio method).",
+   "year": 2010,
+   "zotero": ""
+  },
+  {
+   "authors": "Tian et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "tian21",
+   "pass": 2,
+   "prereqs": [
+    "lrgasp"
+   ],
+   "seq": 165,
+   "source": "zotero",
+   "title": "Comprehensive characterization of single-cell full-length isoforms in human and mouse with long-read sequencing",
+   "track": "ISO",
+   "url": "https://doi.org/10.1186/s13059-021-02525-6",
+   "why": "Single-cell long-read isoform characterisation.",
+   "year": 2021,
+   "zotero": "IYMGZ4VJ"
+  },
+  {
+   "authors": "Palla et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "scldm",
+   "pass": 2,
+   "prereqs": [
+    "ldm",
+    "dit",
+    "scvi"
+   ],
+   "seq": 166,
+   "source": "zotero",
+   "title": "Scalable Single-Cell Gene Expression Generation with Latent Diffusion Models",
+   "track": "SC",
+   "url": "https://arxiv.org/abs/2511.02986",
+   "why": "Latent diffusion transformers for single-cell data.",
+   "year": 2025,
+   "zotero": "M9R7GZWS"
+  },
+  {
+   "authors": "Ipsen, Mattei & Frellsen",
+   "byJes": true,
+   "inZotero": false,
+   "key": "supmiwae",
+   "pass": 2,
+   "prereqs": [
+    "notmiwae"
+   ],
+   "seq": 167,
+   "source": "canon",
+   "title": "How to deal with missing data in supervised deep learning?",
+   "track": "PML",
+   "url": "https://scholar.google.com/scholar?q=How+to+deal+with+missing+data+in+supervised+deep+learning%3F",
+   "why": "Jes: missing inputs in supervised learning, via a joint deep latent variable model.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Fansler et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "fansler24",
+   "pass": 2,
+   "prereqs": [
+    "reyes18"
+   ],
+   "seq": 168,
+   "source": "zotero",
+   "title": "Quantifying 3'UTR length from scRNA-seq data reveals changes independent of gene expression",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/s41467-024-48254-9",
+   "why": "Isoform signal recoverable from 3' single-cell data.",
+   "year": 2024,
+   "zotero": "4WVLXGQG"
+  },
+  {
+   "authors": "Ake et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "scalpel",
+   "pass": 2,
+   "prereqs": [
+    "fansler24"
+   ],
+   "seq": 169,
+   "source": "zotero",
+   "title": "Quantification of transcript isoforms at the single-cell level using SCALPEL",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/s41467-025-61118-0",
+   "why": "Isoform quantification from standard 3' scRNA-seq.",
+   "year": 2025,
+   "zotero": "P8DNVAB9"
+  },
+  {
+   "authors": "Arts, Frellsen & Boomsma",
+   "byJes": true,
+   "inZotero": false,
+   "key": "icdensity",
+   "pass": 2,
+   "prereqs": [
+    "vae13",
+    "af2"
+   ],
+   "seq": 170,
+   "source": "canon",
+   "title": "Internal-Coordinate Density Modelling of Protein Structure: Covariance Matters",
+   "track": "PROT",
+   "url": "https://arxiv.org/abs/2302.13711",
+   "why": "Jes: VAE density over internal coordinates with structured covariance.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Andrews et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "andrews26",
+   "pass": 2,
+   "prereqs": [
+    "scalpel"
+   ],
+   "seq": 171,
+   "source": "supervisor",
+   "title": "Isoform-level resolution in single-cell CRISPR screens reveals hidden functional consequences of gene perturbation",
+   "track": "ISO",
+   "url": "https://doi.org/10.64898/2026.07.09.737410",
+   "why": "Perturbation effects visible only at isoform level.",
+   "year": 2026,
+   "zotero": ""
+  },
+  {
+   "authors": "Bhattacharya et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "scdiscdiff",
+   "pass": 2,
+   "prereqs": [
+    "mdlm",
+    "scvi"
+   ],
+   "seq": 172,
+   "source": "zotero",
+   "title": "Discrete Diffusion for Single-Cell Gene Expression Modeling",
+   "track": "SC",
+   "url": "https://doi.org/10.64898/2026.02.19.705033",
+   "why": "Discrete diffusion directly on counts. Close to your isoform-count problems.",
+   "year": 2026,
+   "zotero": "DTZYFDQ8"
+  },
+  {
+   "authors": "Sønderby, Raiko, Maaløe, Sønderby & Winther",
+   "byJes": false,
+   "inZotero": false,
+   "key": "ladder",
+   "pass": 2,
+   "prereqs": [
+    "vae13"
+   ],
+   "seq": 173,
+   "source": "canon",
+   "title": "Ladder Variational Autoencoders",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/1602.02282",
+   "why": "DTU classic (Winther group): hierarchical VAEs that actually train.",
+   "year": 2016,
+   "zotero": ""
+  },
+  {
+   "authors": "Miller et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "miller22",
+   "pass": 2,
+   "prereqs": [
+    "lrgasp"
+   ],
+   "seq": 174,
+   "source": "supervisor",
+   "title": "Enhanced protein isoform characterization through long-read proteogenomics",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Enhanced+protein+isoform+characterization+through+long-read+proteogenomics",
+   "why": "Using long-read transcripts as a proteomics search space.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Kahles et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "kahles18",
+   "pass": 2,
+   "prereqs": [
+    "bradley23"
+   ],
+   "seq": 175,
+   "source": "zotero",
+   "title": "Comprehensive Analysis of Alternative Splicing Across Tumors from 8,705 Patients",
+   "track": "ISO",
+   "url": "https://doi.org/10.1016/j.ccell.2018.07.001",
+   "why": "Pan-cancer splicing reference dataset.",
+   "year": 2018,
+   "zotero": "KC2JQ643"
+  },
+  {
+   "authors": "Stanley & Abdel-Wahab",
+   "byJes": false,
+   "inZotero": false,
+   "key": "stanley22",
+   "pass": 2,
+   "prereqs": [
+    "bradley23"
+   ],
+   "seq": 176,
+   "source": "supervisor",
+   "title": "Dysregulation and therapeutic targeting of RNA splicing in cancer",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Dysregulation+and+therapeutic+targeting+of+RNA+splicing+in+cancer",
+   "why": "Splicing-factor mutations as therapeutic dependencies.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Adduri et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "state",
+   "pass": 2,
+   "prereqs": [
+    "scgpt"
+   ],
+   "seq": 177,
+   "source": "zotero",
+   "title": "Predicting cellular responses to perturbation across diverse contexts with State",
+   "track": "SC",
+   "url": "https://doi.org/10.1101/2025.06.26.661135",
+   "why": "Arc Institute's large perturbation model.",
+   "year": 2025,
+   "zotero": "LYYY8HSW"
+  },
+  {
+   "authors": "Havtorn, Frellsen, Hauberg & Maaløe",
+   "byJes": true,
+   "inZotero": false,
+   "key": "hvaeood",
+   "pass": 2,
+   "prereqs": [
+    "ladder"
+   ],
+   "seq": 178,
+   "source": "canon",
+   "title": "Hierarchical VAEs Know What They Don't Know",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/2102.08248",
+   "why": "Jes: likelihood-ratio OOD detection with hierarchical VAEs.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Ji, Mishra & Davuluri",
+   "byJes": false,
+   "inZotero": false,
+   "key": "ji20",
+   "pass": 2,
+   "prereqs": [
+    "kjerhansen24"
+   ],
+   "seq": 179,
+   "source": "supervisor",
+   "title": "In silico analysis of alternative splicing on drug-target gene interactions",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=In+silico+analysis+of+alternative+splicing+on+drug-target+gene+interactions",
+   "why": "Many drug targets have isoforms lacking the binding domain.",
+   "year": 2020,
+   "zotero": ""
+  },
+  {
+   "authors": "Safikhani et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "safikhani17",
+   "pass": 2,
+   "prereqs": [
+    "kjerhansen24"
+   ],
+   "seq": 180,
+   "source": "supervisor",
+   "title": "Gene isoforms as expression-based biomarkers predictive of drug response in vitro",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Gene+isoforms+as+expression-based+biomarkers+predictive+of+drug+response+in+vitro",
+   "why": "Isoform features predict drug response better than gene features.",
+   "year": 2017,
+   "zotero": ""
+  },
+  {
+   "authors": "Arvanitidis, Hansen & Hauberg",
+   "byJes": false,
+   "inZotero": false,
+   "key": "latentoddity",
+   "pass": 2,
+   "prereqs": [
+    "vae13"
+   ],
+   "seq": 181,
+   "source": "canon",
+   "title": "Latent Space Oddity: on the Curvature of Deep Generative Models",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/1710.11379",
+   "why": "DTU (Hauberg): Riemannian geometry of VAE latent spaces. Ties to your information-geometry interest.",
+   "year": 2018,
+   "zotero": ""
+  },
+  {
+   "authors": "Detlefsen, Hauberg & Boomsma",
+   "byJes": false,
+   "inZotero": false,
+   "key": "detlefsen",
+   "pass": 2,
+   "prereqs": [
+    "esm1b",
+    "latentoddity"
+   ],
+   "seq": 182,
+   "source": "canon",
+   "title": "What is a meaningful representation of protein sequences?",
+   "track": "PROT",
+   "url": "https://arxiv.org/abs/2012.02679",
+   "why": "DTU: how to judge protein representations; geometry of embeddings.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Song & Kingma",
+   "byJes": false,
+   "inZotero": true,
+   "key": "ebmhowto",
+   "pass": 2,
+   "prereqs": [
+    "ncsn"
+   ],
+   "seq": 183,
+   "source": "zotero",
+   "title": "How to Train Your Energy-Based Models",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/2101.03288",
+   "why": "Tutorial on EBM training methods; background for Jes's EBM papers.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Neal",
+   "byJes": false,
+   "inZotero": false,
+   "key": "hmc",
+   "pass": 2,
+   "prereqs": [],
+   "seq": 184,
+   "source": "canon",
+   "title": "MCMC using Hamiltonian Dynamics",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/1206.1901",
+   "why": "The HMC reference. Background for Bayesian inference and Langevin-type samplers.",
+   "year": 2011,
+   "zotero": ""
+  },
+  {
+   "authors": "Wilson & Izmailov",
+   "byJes": false,
+   "inZotero": true,
+   "key": "bdl",
+   "pass": 2,
+   "prereqs": [
+    "blei17"
+   ],
+   "seq": 185,
+   "source": "zotero",
+   "title": "Bayesian Deep Learning and a Probabilistic Perspective of Generalization",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/2002.08791",
+   "why": "Case for marginalisation in deep learning. In your Zotero.",
+   "year": 2020,
+   "zotero": ""
+  },
+  {
+   "authors": "Baralle & Giudice",
+   "byJes": false,
+   "inZotero": false,
+   "key": "baralle17",
+   "pass": 3,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 186,
+   "source": "supervisor",
+   "title": "Alternative splicing as a regulator of development and tissue identity",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Alternative+splicing+as+a+regulator+of+development+and+tissue+identity",
+   "why": "Another good review.",
+   "year": 2017,
+   "zotero": ""
+  },
+  {
+   "authors": "Grünefeld et al. (incl. Frellsen)",
+   "background": [
+    "isotropicuq"
+   ],
+   "byJes": true,
+   "date": "2026-05",
+   "inZotero": false,
+   "key": "tracingunc",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 187,
+   "source": "canon",
+   "title": "Tracing Uncertainty in Language Model \"Reasoning\"",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2605.07776",
+   "why": "Nils Grünefeld (group): how uncertainty evolves through LLM reasoning chains.",
+   "year": 2026,
+   "zotero": ""
+  },
+  {
+   "authors": "Kingma & Gao",
+   "byJes": false,
+   "inZotero": true,
+   "key": "kingmagao",
+   "pass": 3,
+   "prereqs": [
+    "vdm"
+   ],
+   "seq": 188,
+   "source": "zotero",
+   "title": "Understanding Diffusion Objectives as the ELBO with Simple Data Augmentation",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2303.00848",
+   "why": "Shows the common weighted losses are ELBOs under augmentation. Clarifies what you actually optimise.",
+   "year": 2023,
+   "zotero": "QYMPP2MT"
+  },
+  {
+   "authors": "Xiong et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "prelayernorm",
+   "pass": 3,
+   "prereqs": [
+    "vaswani17"
+   ],
+   "seq": 189,
+   "source": "canon",
+   "title": "On Layer Normalization in the Transformer Architecture",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2002.04745",
+   "why": "Why pre-LN trains more stably than post-LN.",
+   "year": 2020,
+   "zotero": ""
+  },
+  {
+   "authors": "Wright, Smith & Jiggins",
+   "byJes": false,
+   "inZotero": false,
+   "key": "wright22",
+   "pass": 3,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 190,
+   "source": "supervisor",
+   "title": "Alternative splicing as a source of phenotypic diversity",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Alternative+splicing+as+a+source+of+phenotypic+diversity",
+   "why": "The evolutionary argument for isoform-level analysis.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Kapuśniak et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "metricfm",
+   "pass": 3,
+   "prereqs": [
+    "otcfm"
+   ],
+   "seq": 191,
+   "source": "zotero",
+   "title": "Metric Flow Matching for Smooth Interpolations on the Data Manifold",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2405.14780",
+   "why": "Data-manifold-aware interpolants, motivated by single-cell trajectories.",
+   "year": 2024,
+   "zotero": "YBR54SP5"
+  },
+  {
+   "authors": "Jeha et al. (incl. Frellsen)",
+   "background": [
+    "gpt3"
+   ],
+   "byJes": true,
+   "date": "2026-05",
+   "inZotero": false,
+   "key": "mixdonttune",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 192,
+   "source": "canon",
+   "title": "Mix, Don't Tune: Bilingual Pre-Training Outperforms Hyperparameter Search in Data-Constrained Settings",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2605.13225",
+   "why": "Paul Jeha (group): pre-training data mixing versus hyperparameter search.",
+   "year": 2026,
+   "zotero": ""
+  },
+  {
+   "authors": "Elnaggar et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "prottrans",
+   "pass": 3,
+   "prereqs": [
+    "bert"
+   ],
+   "seq": 193,
+   "source": "canon",
+   "title": "ProtTrans: Towards Cracking the Language of Life's Code Through Self-Supervised Learning",
+   "track": "PROT",
+   "url": "https://arxiv.org/abs/2007.06225",
+   "why": "Broad comparison of transformer families on protein sequence.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Dieleman et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "cdcd",
+   "pass": 3,
+   "prereqs": [
+    "ddpm"
+   ],
+   "seq": 194,
+   "source": "zotero",
+   "title": "Continuous diffusion for categorical data",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2211.15089",
+   "why": "Alternative route: diffuse embeddings continuously, score interpolation.",
+   "year": 2022,
+   "zotero": "I9DKN4BC"
+  },
+  {
+   "authors": "Ellis et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "ellis12",
+   "pass": 3,
+   "prereqs": [
+    "yang16"
+   ],
+   "seq": 195,
+   "source": "supervisor",
+   "title": "Tissue-Specific Alternative Splicing Remodels Protein-Protein Interaction Networks",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Tissue-Specific+Alternative+Splicing+Remodels+Protein-Protein+Interaction+Networks",
+   "why": "Earlier, tissue-focused version of the Yang et al. result.",
+   "year": 2012,
+   "zotero": ""
+  },
+  {
+   "authors": "Bendidi et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "onepca",
+   "pass": 3,
+   "prereqs": [
+    "zeroshot"
+   ],
+   "seq": 196,
+   "source": "zotero",
+   "title": "Benchmarking Transcriptomics Foundation Models for Perturbation Analysis: one PCA still rules them all",
+   "track": "SC",
+   "url": "https://arxiv.org/abs/2410.13956",
+   "why": "Similar message from a different angle.",
+   "year": 2024,
+   "zotero": "TP54UDVN"
+  },
+  {
+   "authors": "Mattei & Frellsen",
+   "byJes": true,
+   "inZotero": false,
+   "key": "uphill",
+   "pass": 3,
+   "prereqs": [
+    "iwae"
+   ],
+   "seq": 197,
+   "source": "canon",
+   "title": "Uphill Roads to Variational Tightness: Monotonicity and Monte Carlo Objectives",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/2201.10989",
+   "why": "Jes: when do Monte Carlo objectives get tighter with more samples.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Dandapanthula et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "tilting",
+   "pass": 3,
+   "prereqs": [
+    "adjoint"
+   ],
+   "seq": 198,
+   "source": "zotero",
+   "title": "Are we really tilting? The mechanics of reward guidance in flow and diffusion models",
+   "track": "CTRL",
+   "url": "https://arxiv.org/abs/2606.02884",
+   "why": "Critical look at what reward guidance actually samples from.",
+   "year": 2026,
+   "zotero": "TZ6IMG2Y"
+  },
+  {
+   "authors": "Kadkhodaie et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "kadkhodaie",
+   "pass": 3,
+   "prereqs": [
+    "ddpm"
+   ],
+   "seq": 199,
+   "source": "zotero",
+   "title": "Generalization in diffusion models arises from geometry-adaptive harmonic representations",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2310.02557",
+   "why": "Why diffusion models generalise instead of memorising.",
+   "year": 2024,
+   "zotero": "TUTG62IU"
+  },
+  {
+   "authors": "Atanackovic et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "metafm",
+   "pass": 3,
+   "prereqs": [
+    "otcfm"
+   ],
+   "seq": 200,
+   "source": "zotero",
+   "title": "Meta Flow Matching: Integrating Vector Fields on the Wasserstein Manifold",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2408.14608",
+   "why": "Flows conditioned on whole populations; applied to patient-specific perturbation response.",
+   "year": 2025,
+   "zotero": "72I6A2DS"
+  },
+  {
+   "authors": "Han et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "han17",
+   "pass": 3,
+   "prereqs": [
+    "ule19"
+   ],
+   "seq": 201,
+   "source": "supervisor",
+   "title": "Multilayered Control of Alternative Splicing Regulatory Networks by Transcription Factors",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Multilayered+Control+of+Alternative+Splicing+Regulatory+Networks+by+Transcription+Factors",
+   "why": "Many transcription factors also modify splicing.",
+   "year": 2017,
+   "zotero": ""
+  },
+  {
+   "authors": "Rowbottom, Baker et al.",
+   "background": [
+    "ddpm"
+   ],
+   "byJes": true,
+   "date": "2026-05",
+   "inZotero": false,
+   "key": "grifdir",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 202,
+   "source": "canon",
+   "title": "GRIFDIR: Graph Resolution-Invariant Diffusion Models over Irregular Domains",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2605.03497",
+   "why": "Libby Baker (group): resolution-invariant diffusion on graphs and irregular domains.",
+   "year": 2026,
+   "zotero": ""
+  },
+  {
+   "authors": "Huang et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "riemdiff",
+   "pass": 3,
+   "prereqs": [
+    "rsgm"
+   ],
+   "seq": 203,
+   "source": "zotero",
+   "title": "Riemannian Diffusion Models",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2208.07949",
+   "why": "Variational view of diffusion on manifolds; companion to the score-based version.",
+   "year": 2022,
+   "zotero": "828F3QDC"
+  },
+  {
+   "authors": "Dao et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "flashattn",
+   "pass": 3,
+   "prereqs": [
+    "vaswani17"
+   ],
+   "seq": 204,
+   "source": "canon",
+   "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2205.14135",
+   "why": "Why attention is memory-bound and how to fix it.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Brooks et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "brooks22",
+   "pass": 3,
+   "prereqs": [
+    "reyes18"
+   ],
+   "seq": 205,
+   "source": "supervisor",
+   "title": "Transcriptional neighborhoods regulate transcript isoform lengths and expression levels",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Transcriptional+neighborhoods+regulate+transcript+isoform+lengths+and+expression+levels",
+   "why": "Genomic context shapes isoform length and abundance.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Albergo et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "multimarg",
+   "pass": 3,
+   "prereqs": [
+    "interpolants"
+   ],
+   "seq": 206,
+   "source": "zotero",
+   "title": "Multimarginal generative modeling with stochastic interpolants",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2310.03695",
+   "why": "Interpolants between more than two distributions.",
+   "year": 2023,
+   "zotero": "SQ7J4ECY"
+  },
+  {
+   "authors": "Ortega-Ochoa, Vegge & Frellsen",
+   "byJes": true,
+   "date": "2024-11",
+   "inZotero": false,
+   "key": "molminer",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 207,
+   "source": "canon",
+   "title": "MolMiner: Toward Controllable, 3D-Aware, Fragment-Based Molecular Design",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2411.06608",
+   "why": "Jes: 3D fragment-based molecule generation.",
+   "year": 2024,
+   "zotero": ""
+  },
+  {
+   "authors": "Didi et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "motifscaff",
+   "pass": 3,
+   "prereqs": [
+    "framediff",
+    "dps"
+   ],
+   "seq": 208,
+   "source": "zotero",
+   "title": "A framework for conditional diffusion modelling with applications in motif scaffolding",
+   "track": "PROT",
+   "url": "https://arxiv.org/abs/2312.09236",
+   "why": "Systematic comparison of conditioning strategies for scaffolding.",
+   "year": 2024,
+   "zotero": "DX8RZQPM"
+  },
+  {
+   "authors": "Davis et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "fisherfm",
+   "pass": 3,
+   "prereqs": [
+    "dirichletfm",
+    "rfm"
+   ],
+   "seq": 209,
+   "source": "zotero",
+   "title": "Fisher Flow Matching for Generative Modeling over Discrete Data",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2405.14664",
+   "why": "Simplex as a sphere via Fisher-Rao geometry.",
+   "year": 2024,
+   "zotero": "AJSYWF2W"
+  },
+  {
+   "authors": "Tiberi & Robinson",
+   "byJes": false,
+   "inZotero": true,
+   "key": "bandits",
+   "pass": 3,
+   "prereqs": [
+    "drimseq"
+   ],
+   "seq": 210,
+   "source": "zotero",
+   "title": "BANDITS: Bayesian differential splicing accounting for sample-to-sample variability and mapping uncertainty",
+   "track": "ISO",
+   "url": "https://doi.org/10.1186/s13059-020-01967-8",
+   "why": "Bayesian DTU with mapping uncertainty.",
+   "year": 2020,
+   "zotero": "B3A6X2LX"
+  },
+  {
+   "authors": "Soatto et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "countsdiff",
+   "pass": 3,
+   "prereqs": [
+    "scdiscdiff"
+   ],
+   "seq": 211,
+   "source": "zotero",
+   "title": "CountsDiff: A Diffusion Model on the Natural Numbers",
+   "track": "SC",
+   "url": "https://arxiv.org/abs/2604.03779",
+   "why": "Diffusion on natural numbers for count-based data.",
+   "year": 2026,
+   "zotero": "YQB7XYDL"
+  },
+  {
+   "authors": "Vahdat & Kautz",
+   "byJes": false,
+   "inZotero": false,
+   "key": "nvae",
+   "pass": 3,
+   "prereqs": [
+    "ladder"
+   ],
+   "seq": 212,
+   "source": "canon",
+   "title": "NVAE: A Deep Hierarchical Variational Autoencoder",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/2007.03898",
+   "why": "Hierarchical VAEs at scale.",
+   "year": 2020,
+   "zotero": ""
+  },
+  {
+   "authors": "Holderrieth et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "glass",
+   "pass": 3,
+   "prereqs": [
+    "adjoint",
+    "genmatch"
+   ],
+   "seq": 213,
+   "source": "zotero",
+   "title": "GLASS Flows: Transition Sampling for Alignment of Flow and Diffusion Models",
+   "track": "CTRL",
+   "url": "https://arxiv.org/abs/2509.25170",
+   "why": "Recent alignment method from the generator-matching group.",
+   "year": 2026,
+   "zotero": "JJAIBBA3"
+  },
+  {
+   "authors": "Zheng et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "rae",
+   "pass": 3,
+   "prereqs": [
+    "dit",
+    "ldm"
+   ],
+   "seq": 214,
+   "source": "zotero",
+   "title": "Diffusion Transformers with Representation Autoencoders",
+   "track": "DIF",
+   "url": "https://arxiv.org/abs/2510.11690",
+   "why": "Recent rethink of the latent space used for latent diffusion.",
+   "year": 2025,
+   "zotero": "5JAKPJ7A"
+  },
+  {
+   "authors": "Chen et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "follmer",
+   "pass": 3,
+   "prereqs": [
+    "interpolants"
+   ],
+   "seq": 215,
+   "source": "zotero",
+   "title": "Probabilistic Forecasting with Stochastic Interpolants and Föllmer Processes",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2403.13724",
+   "why": "Interpolants for forecasting; a good example of choosing the base distribution.",
+   "year": 2024,
+   "zotero": "V889PADT"
+  },
+  {
+   "authors": "Kobayashi et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "kobayashi22",
+   "pass": 3,
+   "prereqs": [
+    "soemedi17"
+   ],
+   "seq": 216,
+   "source": "supervisor",
+   "title": "Silent mutations reveal therapeutic vulnerability in RAS Q61 cancers",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Silent+mutations+reveal+therapeutic+vulnerability+in+RAS+Q61+cancers",
+   "why": "Synonymous mutations with targetable effects via splicing.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "James, Pollok, Peis, Baker, Frellsen & Bjørk",
+   "byJes": true,
+   "date": "2024-05",
+   "inZotero": false,
+   "key": "srcfield",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 217,
+   "source": "canon",
+   "title": "Scalable physical source-to-field inference with hypernetworks",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2405.05981",
+   "why": "Peis, Baker and Jes together: hypernetworks for physical inverse problems.",
+   "year": 2024,
+   "zotero": ""
+  },
+  {
+   "authors": "Hinton, Vinyals & Dean",
+   "byJes": false,
+   "inZotero": true,
+   "key": "distill",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 218,
+   "source": "zotero",
+   "title": "Distilling the Knowledge in a Neural Network",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/1503.02531",
+   "why": "Knowledge distillation.",
+   "year": 2015,
+   "zotero": "4YMI5QFQ"
+  },
+  {
+   "authors": "Sullivan et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "splicevardb",
+   "pass": 3,
+   "prereqs": [
+    "soemedi17"
+   ],
+   "seq": 219,
+   "source": "supervisor",
+   "title": "SpliceVarDB: A comprehensive database of experimentally validated human splicing variants",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=SpliceVarDB%3A+A+comprehensive+database+of+experimentally+validated+human+splicing+variants",
+   "why": "Experimentally validated splice-altering variants; useful benchmark data.",
+   "year": 2024,
+   "zotero": ""
+  },
+  {
+   "authors": "Bartosh et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "nfdm",
+   "pass": 3,
+   "prereqs": [
+    "vdm",
+    "lipman23"
+   ],
+   "seq": 220,
+   "source": "zotero",
+   "title": "Neural Flow Diffusion Models: Learnable Forward Process",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2404.12940",
+   "why": "Learn the forward process instead of fixing it.",
+   "year": 2025,
+   "zotero": "2VTLLZ7L"
+  },
+  {
+   "authors": "Michael et al.",
+   "byJes": true,
+   "date": "2024-04",
+   "inZotero": false,
+   "key": "discbo",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 221,
+   "source": "canon",
+   "title": "A Continuous Relaxation for Discrete Bayesian Optimization",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2404.17452",
+   "why": "Jes/Hauberg/Boomsma: BO over sequences, protein design application.",
+   "year": 2024,
+   "zotero": ""
+  },
+  {
+   "authors": "Pacesa et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "bindcraft",
+   "pass": 3,
+   "prereqs": [
+    "af2"
+   ],
+   "seq": 222,
+   "source": "zotero",
+   "title": "One-shot design of functional protein binders with BindCraft",
+   "track": "PROT",
+   "url": "https://doi.org/10.1038/s41586-025-09429-6",
+   "why": "Hallucination-based binder design via AF2 backpropagation.",
+   "year": 2025,
+   "zotero": "ULJAMD6G"
+  },
+  {
+   "authors": "Cheng et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "statmanif",
+   "pass": 3,
+   "prereqs": [
+    "fisherfm"
+   ],
+   "seq": 223,
+   "source": "zotero",
+   "title": "Categorical Flow Matching on Statistical Manifolds",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2405.16441",
+   "why": "Information-geometric flow matching for categorical distributions.",
+   "year": 2024,
+   "zotero": "H9QW67IQ"
+  },
+  {
+   "authors": "Quarantani et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "opensplice",
+   "pass": 3,
+   "prereqs": [
+    "spliceai"
+   ],
+   "seq": 224,
+   "source": "supervisor",
+   "title": "OpenSplice: the impact of half a million mutations on the alternative splicing of 600 human exons",
+   "track": "ISO",
+   "url": "https://doi.org/10.64898/2026.05.22.727141",
+   "why": "Massively parallel measurement of mutation effects on splicing.",
+   "year": 2026,
+   "zotero": ""
+  },
+  {
+   "authors": "Fishman et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "countbridges",
+   "pass": 3,
+   "prereqs": [
+    "scdiscdiff",
+    "dsb"
+   ],
+   "seq": 225,
+   "source": "zotero",
+   "title": "Count Bridges enable Modeling and Deconvolving Transcriptomic Data",
+   "track": "SC",
+   "url": "https://arxiv.org/abs/2603.04730",
+   "why": "Bridges for count data; deconvolution application.",
+   "year": 2026,
+   "zotero": "L8M6Y7D7"
+  },
+  {
+   "authors": "Maaløe, Fraccaro, Liévin & Winther",
+   "byJes": false,
+   "inZotero": false,
+   "key": "biva",
+   "pass": 3,
+   "prereqs": [
+    "ladder"
+   ],
+   "seq": 226,
+   "source": "canon",
+   "title": "BIVA: A Very Deep Hierarchy of Latent Variables for Generative Modeling",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/1902.02102",
+   "why": "DTU: very deep latent hierarchies; precursor to the OOD work below.",
+   "year": 2019,
+   "zotero": ""
+  },
+  {
+   "authors": "Holderrieth et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "diamond",
+   "pass": 3,
+   "prereqs": [
+    "glass",
+    "flowmaps"
+   ],
+   "seq": 227,
+   "source": "zotero",
+   "title": "Diamond Maps: Efficient Reward Alignment via Stochastic Flow Maps",
+   "track": "CTRL",
+   "url": "https://arxiv.org/abs/2602.05993",
+   "why": "Reward alignment with stochastic flow maps.",
+   "year": 2026,
+   "zotero": "MNSC4Q2W"
+  },
+  {
+   "authors": "Li et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "fmbio",
+   "pass": 3,
+   "prereqs": [
+    "lipman23"
+   ],
+   "seq": 228,
+   "source": "zotero",
+   "title": "Flow Matching Meets Biology and Life Science: A Survey",
+   "track": "FLOW",
+   "url": "https://arxiv.org/abs/2507.17731",
+   "why": "Survey of flow-matching applications in biology; useful map of the field.",
+   "year": 2025,
+   "zotero": "5HSEJ2SH"
+  },
+  {
+   "authors": "You et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "splicetransformer",
+   "pass": 3,
+   "prereqs": [
+    "spliceai",
+    "vaswani17"
+   ],
+   "seq": 229,
+   "source": "zotero",
+   "title": "SpliceTransformer predicts tissue-specific splicing linked to human diseases",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/s41467-024-53088-6",
+   "why": "Transformer for tissue-specific splicing prediction.",
+   "year": 2024,
+   "zotero": "F869FWFN"
+  },
+  {
+   "authors": "Uppal, Stensbo-Smidt, Boomsma & Frellsen",
+   "byJes": true,
+   "date": "2023-10",
+   "inZotero": false,
+   "key": "implicitvi",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 230,
+   "source": "canon",
+   "title": "Implicit Variational Inference for High-Dimensional Posteriors",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2310.06643",
+   "why": "Anshuk Uppal (group). Jes: implicit distributions as VI posteriors for Bayesian neural nets.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Joshi",
+   "byJes": false,
+   "inZotero": true,
+   "key": "tgnn",
+   "pass": 3,
+   "prereqs": [
+    "vaswani17"
+   ],
+   "seq": 231,
+   "source": "zotero",
+   "title": "Transformers are Graph Neural Networks",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2506.22084",
+   "why": "Attention as message passing on a complete graph; bridges to EGNNs.",
+   "year": 2025,
+   "zotero": "BP4ARJJ5"
+  },
+  {
+   "authors": "Picelli et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "smartseq2",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 232,
+   "source": "zotero",
+   "title": "Full-length RNA-seq from single cells using Smart-seq2",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/nprot.2014.006",
+   "why": "The full-length protocol behind most short-read single-cell isoform work.",
+   "year": 2014,
+   "zotero": "GXN7TK7J"
+  },
+  {
+   "authors": "Koyuncu, Sanchez-Martin, Peis, Olmos & Valera",
+   "background": [
+    "vae13"
+   ],
+   "byJes": true,
+   "date": "2023-02",
+   "inZotero": false,
+   "key": "hypergen",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 233,
+   "source": "canon",
+   "title": "Variational Mixture of HyperGenerators for Learning Distributions Over Functions",
+   "track": "GRP",
+   "url": "https://arxiv.org/abs/2302.06223",
+   "why": "Ignacio Peis (group): the precursor to hyper-transforming LDMs.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Xiong et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "proteinguide",
+   "pass": 3,
+   "prereqs": [
+    "discguid"
+   ],
+   "seq": 234,
+   "source": "zotero",
+   "title": "Property guidance for protein sequence generative models with ProteinGuide",
+   "track": "PROT",
+   "url": "https://doi.org/10.1038/s41587-026-03207-z",
+   "why": "Guidance applied to protein sequence models.",
+   "year": 2026,
+   "zotero": "N8TC8NE6"
+  },
+  {
+   "authors": "Roos et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "catflowmaps",
+   "pass": 3,
+   "prereqs": [
+    "flowmaps",
+    "dfm"
+   ],
+   "seq": 235,
+   "source": "zotero",
+   "title": "Categorical Flow Maps",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2602.12233",
+   "why": "Few-step sampling for categorical flows.",
+   "year": 2026,
+   "zotero": "28ITK4G7"
+  },
+  {
+   "authors": "Benegas et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "benegas22",
+   "pass": 3,
+   "prereqs": [
+    "brie"
+   ],
+   "seq": 236,
+   "source": "zotero",
+   "title": "Robust and annotation-free analysis of alternative splicing across diverse cell types in mice",
+   "track": "ISO",
+   "url": "https://doi.org/10.7554/eLife.73520",
+   "why": "Annotation-free single-cell splicing analysis.",
+   "year": 2022,
+   "zotero": "CUAUDUIY"
+  },
+  {
+   "authors": "Shenfeld et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "binomflows",
+   "pass": 3,
+   "prereqs": [
+    "dfm"
+   ],
+   "seq": 237,
+   "source": "zotero",
+   "title": "Binomial flows: Denoising and flow matching for discrete ordinal data",
+   "track": "SC",
+   "url": "https://arxiv.org/abs/2605.00360",
+   "why": "Flow matching for ordinal/count data.",
+   "year": 2026,
+   "zotero": "EZQPFVXV"
+  },
+  {
+   "authors": "Bergamin et al.",
+   "byJes": true,
+   "inZotero": false,
+   "key": "oodtests",
+   "pass": 3,
+   "prereqs": [
+    "hvaeood"
+   ],
+   "seq": 238,
+   "source": "canon",
+   "title": "Model-agnostic out-of-distribution detection using combined statistical tests",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/2203.01097",
+   "why": "Jes: OOD detection by combining classical tests on model statistics.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Daras et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "darassurvey",
+   "pass": 3,
+   "prereqs": [
+    "dps"
+   ],
+   "seq": 239,
+   "source": "zotero",
+   "title": "A Survey on Diffusion Models for Inverse Problems",
+   "track": "CTRL",
+   "url": "https://arxiv.org/abs/2410.00083",
+   "why": "Survey to consult when you need a conditioning method.",
+   "year": 2024,
+   "zotero": "6TX89YVV"
+  },
+  {
+   "authors": "Belchikov et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "belchikov24",
+   "pass": 3,
+   "prereqs": [
+    "tian21"
+   ],
+   "seq": 240,
+   "source": "zotero",
+   "title": "Understanding isoform expression by pairing long-read sequencing with single-cell and spatial transcriptomics",
+   "track": "ISO",
+   "url": "https://doi.org/10.1101/gr.279640.124",
+   "why": "Review of long-read single-cell and spatial isoform methods.",
+   "year": 2024,
+   "zotero": "SM36H9HZ"
+  },
+  {
+   "authors": "DeepSeek-AI",
+   "byJes": false,
+   "inZotero": true,
+   "key": "deepseekv2",
+   "pass": 3,
+   "prereqs": [
+    "chinchilla"
+   ],
+   "seq": 241,
+   "source": "zotero",
+   "title": "DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model",
+   "track": "TRF",
+   "url": "https://arxiv.org/abs/2405.04434",
+   "why": "Mixture-of-experts and multi-head latent attention in a frontier open model.",
+   "year": 2024,
+   "zotero": "BCIGP7HM"
+  },
+  {
+   "authors": "Schertzer et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "cas13d",
+   "pass": 3,
+   "prereqs": [
+    "switchlandscape"
+   ],
+   "seq": 242,
+   "source": "supervisor",
+   "title": "Cas13d-mediated isoform-specific RNA knockdown with a unified computational and experimental toolbox",
+   "track": "ISO",
+   "url": "https://doi.org/10.1101/2023.09.12.557474",
+   "why": "How you would functionally test a discovered isoform switch.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Park et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "fgfr",
+   "pass": 3,
+   "prereqs": [
+    "rfdiffusion"
+   ],
+   "seq": 243,
+   "source": "zotero",
+   "title": "Isoform-specific inhibition of FGFR signaling achieved by a de-novo-designed mini-protein",
+   "track": "PROT",
+   "url": "https://doi.org/10.1016/j.celrep.2022.111545",
+   "why": "Protein design meets isoforms: an isoform-selective binder.",
+   "year": 2022,
+   "zotero": "W7YAYUFH"
+  },
+  {
+   "authors": "Potaptchik et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "discflowmaps",
+   "pass": 3,
+   "prereqs": [
+    "flowmaps",
+    "dfm"
+   ],
+   "seq": 244,
+   "source": "zotero",
+   "title": "Discrete Flow Maps",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2604.09784",
+   "why": "Flow maps for discrete state spaces.",
+   "year": 2026,
+   "zotero": "CE9QKZNK"
+  },
+  {
+   "authors": "Huffman et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "huffman23",
+   "pass": 3,
+   "prereqs": [
+    "miller22"
+   ],
+   "seq": 245,
+   "source": "supervisor",
+   "title": "Prioritized mass spectrometry increases the depth, sensitivity and data completeness of single-cell proteomics",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Prioritized+mass+spectrometry+increases+the+depth%2C+sensitivity+and+data+completeness+of+single-cell+proteomics",
+   "why": "How close single-cell proteomics is to resolving proteoforms.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Chari & Pachter",
+   "byJes": false,
+   "inZotero": true,
+   "key": "specious",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 246,
+   "source": "zotero",
+   "title": "The specious art of single-cell genomics",
+   "track": "SC",
+   "url": "https://doi.org/10.1371/journal.pcbi.1011288",
+   "why": "Critique of UMAP/t-SNE interpretation.",
+   "year": 2023,
+   "zotero": "J9FQ38NS"
+  },
+  {
+   "authors": "Syrota et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "syrota",
+   "pass": 3,
+   "prereqs": [
+    "latentoddity"
+   ],
+   "seq": 247,
+   "source": "zotero",
+   "title": "Identifying Metric Structures of Deep Latent Variable Models",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/2502.13757",
+   "why": "DTU (Hauberg): identifiability of latent geometry. In your Zotero.",
+   "year": 2025,
+   "zotero": ""
+  },
+  {
+   "authors": "Schwerk & Schulze-Osthoff",
+   "byJes": false,
+   "inZotero": false,
+   "key": "schwerk05",
+   "pass": 3,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 248,
+   "source": "supervisor",
+   "title": "Regulation of Apoptosis by Alternative Pre-mRNA Splicing",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Regulation+of+Apoptosis+by+Alternative+Pre-mRNA+Splicing",
+   "why": "Pathway where isoform ratio, not expression, sets cell fate.",
+   "year": 2005,
+   "zotero": ""
+  },
+  {
+   "authors": "Reinhardt et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "reinhardt22",
+   "pass": 3,
+   "prereqs": [
+    "schwerk05"
+   ],
+   "seq": 249,
+   "source": "supervisor",
+   "title": "Alterations in the p53 isoform ratio govern breast cancer cell fate in response to DNA damage",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Alterations+in+the+p53+isoform+ratio+govern+breast+cancer+cell+fate+in+response+to+DNA+damage",
+   "why": "Isoform ratio as the causal variable.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Frellsen et al.",
+   "byJes": true,
+   "inZotero": false,
+   "key": "barnacle",
+   "pass": 3,
+   "prereqs": [
+    "pmf"
+   ],
+   "seq": 250,
+   "source": "canon",
+   "title": "A probabilistic model of RNA conformational space",
+   "track": "PROT",
+   "url": "https://scholar.google.com/scholar?q=A+probabilistic+model+of+RNA+conformational+space",
+   "why": "Jes's PhD-era work: a dynamic Bayesian network over RNA backbone angles (BARNACLE).",
+   "year": 2009,
+   "zotero": ""
+  },
+  {
+   "authors": "Lee et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "fmlm",
+   "pass": 3,
+   "prereqs": [
+    "catflowmaps"
+   ],
+   "seq": 251,
+   "source": "zotero",
+   "title": "Flow Map Language Models: One-step Language Modeling via Continuous Denoising",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2602.16813",
+   "why": "One-step language generation with flow maps.",
+   "year": 2026,
+   "zotero": "V3JI2T5J"
+  },
+  {
+   "authors": "González-Rodríguez, Klionsky & Joseph",
+   "byJes": false,
+   "inZotero": false,
+   "key": "autophagy22",
+   "pass": 3,
+   "prereqs": [
+    "schwerk05"
+   ],
+   "seq": 252,
+   "source": "supervisor",
+   "title": "Autophagy regulation by RNA alternative splicing and implications in human diseases",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Autophagy+regulation+by+RNA+alternative+splicing+and+implications+in+human+diseases",
+   "why": "Second pathway-level case study.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Boyeau et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "mrvi",
+   "pass": 3,
+   "prereqs": [
+    "scvi"
+   ],
+   "seq": 253,
+   "source": "zotero",
+   "title": "Deep generative modeling of sample-level heterogeneity in single-cell genomics (MrVI)",
+   "track": "SC",
+   "url": "https://doi.org/10.1038/s41592-025-02808-x",
+   "why": "Multi-sample hierarchical VAE for cohort studies.",
+   "year": 2025,
+   "zotero": "9VFDPSJL"
+  },
+  {
+   "authors": "Geng, Wang, Gao, Frellsen & Hauberg",
+   "byJes": true,
+   "inZotero": false,
+   "key": "ebmbounds",
+   "pass": 3,
+   "prereqs": [
+    "ebmhowto"
+   ],
+   "seq": 254,
+   "source": "canon",
+   "title": "Bounds all around: training energy-based models with bidirectional bounds",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/2111.00929",
+   "why": "Jes: stable EBM training via upper and lower bounds.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Zeng et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "cd46",
+   "pass": 3,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 255,
+   "source": "supervisor",
+   "title": "CD46 splice variant enhances translation of specific mRNAs linked to an aggressive tumor cell phenotype in bladder cancer",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=CD46+splice+variant+enhances+translation+of+specific+mRNAs+linked+to+an+aggressive+tumor+cell+phenotype+in+bladder+cancer",
+   "why": "A splice variant acting on translation of other transcripts.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Golec et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "cd59",
+   "pass": 3,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 256,
+   "source": "supervisor",
+   "title": "Alternative splicing encodes functional intracellular CD59 isoforms that mediate insulin secretion",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Alternative+splicing+encodes+functional+intracellular+CD59+isoforms+that+mediate+insulin+secretion",
+   "why": "Isoform with a different subcellular role and disease link.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Winkler et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "ehrenfest",
+   "pass": 3,
+   "prereqs": [
+    "ctdd",
+    "scoresde"
+   ],
+   "seq": 257,
+   "source": "zotero",
+   "title": "Bridging discrete and continuous state spaces: the Ehrenfest process",
+   "track": "DISC",
+   "url": "https://proceedings.mlr.press/v235/winkler24a.html",
+   "why": "Links discrete-state diffusion to the continuous limit; relevant for count data.",
+   "year": 2024,
+   "zotero": "CDUYUJIJ"
+  },
+  {
+   "authors": "Larionova et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "larionova22",
+   "pass": 3,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 258,
+   "source": "supervisor",
+   "title": "Alternative RNA splicing modulates ribosomal composition and determines the spatial phenotype of glioblastoma cells",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Alternative+RNA+splicing+modulates+ribosomal+composition+and+determines+the+spatial+phenotype+of+glioblastoma+cells",
+   "why": "Splicing changes ribosome composition itself.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Senetaire, Garreau, Frellsen & Mattei",
+   "byJes": true,
+   "inZotero": false,
+   "key": "explstat",
+   "pass": 3,
+   "prereqs": [
+    "miwae"
+   ],
+   "seq": 259,
+   "source": "canon",
+   "title": "Explainability as statistical inference",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/2212.03131",
+   "why": "Jes: feature selection explanations framed as a latent-variable model.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Du et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "du21",
+   "pass": 3,
+   "prereqs": [
+    "bradley23"
+   ],
+   "seq": 260,
+   "source": "supervisor",
+   "title": "Splicing factors: Insights into their regulatory network in alternative splicing in cancer",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Splicing+factors%3A+Insights+into+their+regulatory+network+in+alternative+splicing+in+cancer",
+   "why": "From isoform switches to the splicing factors that cause them.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "North et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "north22",
+   "pass": 3,
+   "prereqs": [
+    "stanley22"
+   ],
+   "seq": 261,
+   "source": "supervisor",
+   "title": "Synthetic introns enable splicing factor mutation-dependent targeting of cancer cells",
+   "track": "ISO",
+   "url": "https://doi.org/10.1038/s41587-022-01224-2",
+   "why": "Splicing-factor mutation as a delivery switch.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Tang et al.",
+   "byJes": false,
+   "inZotero": true,
+   "key": "gumbelfm",
+   "pass": 3,
+   "prereqs": [
+    "dirichletfm"
+   ],
+   "seq": 262,
+   "source": "zotero",
+   "title": "Gumbel-Softmax Flow Matching with Straight-Through Guidance",
+   "track": "DISC",
+   "url": "https://arxiv.org/abs/2503.17361",
+   "why": "Simplex flow matching with guidance for biological sequences.",
+   "year": 2025,
+   "zotero": "49DS5CJN"
+  },
+  {
+   "authors": "Pan et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "iris",
+   "pass": 3,
+   "prereqs": [
+    "bradley23"
+   ],
+   "seq": 263,
+   "source": "supervisor",
+   "title": "IRIS: Big data-informed discovery of cancer immunotherapy targets arising from pre-mRNA alternative splicing",
+   "track": "ISO",
+   "url": "https://doi.org/10.1101/843268",
+   "why": "Splicing-derived immunotherapy targets; filtering normal-tissue isoforms.",
+   "year": 2019,
+   "zotero": ""
+  },
+  {
+   "authors": "Cranmer, Brehmer & Louppe",
+   "byJes": false,
+   "inZotero": false,
+   "key": "sbi",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 264,
+   "source": "canon",
+   "title": "The frontier of simulation-based inference",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/1911.01429",
+   "why": "Overview of likelihood-free inference; context for Jes's ABC papers.",
+   "year": 2020,
+   "zotero": ""
+  },
+  {
+   "authors": "Tretter et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "tretter22",
+   "pass": 3,
+   "prereqs": [
+    "iris"
+   ],
+   "seq": 265,
+   "source": "supervisor",
+   "title": "Proteogenomic analysis reveals RNA as an important source for tumor-agnostic neoantigen identification",
+   "track": "ISO",
+   "url": "https://doi.org/10.1101/2022.09.17.508207",
+   "why": "Isoform variation yields presented neoantigens.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Schneider-Poetsch, Chhipi-Shrestha & Yoshida",
+   "byJes": false,
+   "inZotero": false,
+   "key": "splicemod21",
+   "pass": 3,
+   "prereqs": [
+    "kjerhansen24"
+   ],
+   "seq": 266,
+   "source": "supervisor",
+   "title": "Splicing modulators: on the way from nature to clinic",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Splicing+modulators%3A+on+the+way+from+nature+to+clinic",
+   "why": "What is druggable in splicing today.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Wijaya et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "wijaya22",
+   "pass": 3,
+   "prereqs": [
+    "kjerhansen24"
+   ],
+   "seq": 267,
+   "source": "supervisor",
+   "title": "High Concentration or Combined Treatment of Antisense Oligonucleotides for Spinal Muscular Atrophy Perturbed SMN2 Splicing",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=High+Concentration+or+Combined+Treatment+of+Antisense+Oligonucleotides+for+Spinal+Muscular+Atrophy+Perturbed+SMN2+Splicing",
+   "why": "Dosing can push splicing the wrong way.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Wiqvist, Mattei, Picchini & Frellsen",
+   "byJes": true,
+   "inZotero": false,
+   "key": "pen",
+   "pass": 3,
+   "prereqs": [
+    "sbi"
+   ],
+   "seq": 268,
+   "source": "canon",
+   "title": "Partially Exchangeable Networks and Architectures for Learning Summary Statistics in ABC",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/1901.10230",
+   "why": "Jes: learned summary statistics for ABC.",
+   "year": 2019,
+   "zotero": ""
+  },
+  {
+   "authors": "Zhang et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "zhang23blood",
+   "pass": 3,
+   "prereqs": [
+    "kjerhansen24"
+   ],
+   "seq": 269,
+   "source": "supervisor",
+   "title": "Blood RNA alternative splicing events as diagnostic biomarkers for infectious disease",
+   "track": "ISO",
+   "url": "https://doi.org/10.1016/j.crmeth.2023.100395",
+   "why": "Splicing events beat gene expression as classifiers.",
+   "year": 2023,
+   "zotero": ""
+  },
+  {
+   "authors": "Bachmann et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "bachmann21",
+   "pass": 3,
+   "prereqs": [
+    "kelemen13"
+   ],
+   "seq": 270,
+   "source": "supervisor",
+   "title": "Differential Effects of the Six Human TAU Isoforms",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Differential+Effects+of+the+Six+Human+TAU+Isoforms",
+   "why": "All six isoforms of one gene compared side by side.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Lacovich et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "lacovich17",
+   "pass": 3,
+   "prereqs": [
+    "bachmann21"
+   ],
+   "seq": 271,
+   "source": "supervisor",
+   "title": "Tau Isoforms Imbalance Impairs the Axonal Transport of the Amyloid Precursor Protein in Human Neurons",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=Tau+Isoforms+Imbalance+Impairs+the+Axonal+Transport+of+the+Amyloid+Precursor+Protein+in+Human+Neurons",
+   "why": "The isoform balance itself is the pathogenic variable.",
+   "year": 2017,
+   "zotero": ""
+  },
+  {
+   "authors": "Wiqvist, Frellsen & Picchini",
+   "byJes": true,
+   "inZotero": false,
+   "key": "snpla",
+   "pass": 3,
+   "prereqs": [
+    "pen",
+    "rezende15"
+   ],
+   "seq": 272,
+   "source": "canon",
+   "title": "Sequential Neural Posterior and Likelihood Approximation",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/2102.06522",
+   "why": "Jes: normalizing-flow based SBI.",
+   "year": 2021,
+   "zotero": ""
+  },
+  {
+   "authors": "Glatz et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "glatz06",
+   "pass": 3,
+   "prereqs": [
+    "bachmann21"
+   ],
+   "seq": 273,
+   "source": "supervisor",
+   "title": "The alternative splicing of tau exon 10 and its regulatory proteins CLK2 and TRA2-BETA1 changes in sporadic Alzheimer's disease",
+   "track": "ISO",
+   "url": "https://scholar.google.com/scholar?q=The+alternative+splicing+of+tau+exon+10+and+its+regulatory+proteins+CLK2+and+TRA2-BETA1+changes+in+sporadic+Alzheimer%27s+disease",
+   "why": "Full chain from regulator to isoform to phenotype.",
+   "year": 2006,
+   "zotero": ""
+  },
+  {
+   "authors": "Bartels et al.",
+   "byJes": true,
+   "inZotero": false,
+   "key": "adacholesky",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 274,
+   "source": "canon",
+   "title": "Adaptive Cholesky Gaussian Processes",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/2202.10769",
+   "why": "Jes/Hauberg: cheaper exact GP inference by stopping Cholesky early.",
+   "year": 2022,
+   "zotero": ""
+  },
+  {
+   "authors": "Navarro, Frellsen & Turner",
+   "byJes": true,
+   "inZotero": false,
+   "key": "mgvm",
+   "pass": 3,
+   "prereqs": [],
+   "seq": 275,
+   "source": "canon",
+   "title": "The Multivariate Generalised von Mises distribution: Inference and applications",
+   "track": "PML",
+   "url": "https://arxiv.org/abs/1602.05003",
+   "why": "Jes: distributions on the torus, e.g. protein dihedral angles.",
+   "year": 2017,
+   "zotero": ""
+  },
+  {
+   "authors": "Stirn, Rajagopal, Knowles & Huynh",
+   "byJes": false,
+   "inZotero": false,
+   "key": "d-2026-10-24-1",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 2.5,
+   "source": "discover",
+   "title": "VampPrior Unleashed",
+   "track": "PML",
+   "triaged": false,
+   "url": "https://arxiv.org/abs/2610.27322",
+   "why": "Revisits the VampPrior, which approximates the optimal VAE prior (the aggregate posterior) with a mixture of encoder outputs at learned pseudo-inputs. It fixes two weaknesses: prior and posterior share one amortised covariance, and the mixture weights are fixed and uniform.",
+   "year": 2026,
+   "zotero": ""
+  },
+  {
+   "authors": "Chavan et al.",
+   "byJes": false,
+   "inZotero": false,
+   "key": "d-2026-10-24-2",
+   "pass": 1,
+   "prereqs": [],
+   "seq": 2.5,
+   "source": "discover",
+   "title": "Large Flow Language Models (Lafa)",
+   "track": "DISC",
+   "triaged": false,
+   "url": "https://arxiv.org/abs/2610.28559",
+   "why": "A continuous flow language model scaled to 8B parameters by adapting a pretrained autoregressive model: causal attention over the prefix and bidirectional, asynchronous flow within each block. Trained on fewer than 30B tokens.",
+   "year": 2026,
+   "zotero": ""
+  }
+ ]
+}

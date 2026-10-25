@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Mikkel's Reading Path</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f5f8b'/%3E%3Cpath d='M9 8h10a4 4 0 0 1 4 4v12H13a4 4 0 0 1-4-4z' fill='%23fff'/%3E%3C/svg%3E">
+</head>
+<body>
+
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Weekday reading · one paper a day</span>
+    <h1>Mikkel's Reading Path</h1>
+    <p>An ordered path through current work in Jes Frellsen's group, probabilistic ML, isoforms, generative modelling, transformers, proteins and single-cell ML. Core papers across all fields come first, then recommended, then deep dives. Each paper's prerequisites come before it.</p>
+  </header>
+
+  <p class="modebar" id="mode" hidden></p>
+  <nav class="tabs" aria-label="Sections"><a href="#today-s">Today</a><a href="#log" class="needs-write">Log a read</a><a href="#discover">Discover</a><a href="#path">The path</a><a href="#library">Library</a></nav>
+
+  <section id="today-s" aria-labelledby="h-today" style="display:grid;gap:12px">
+    <h2 id="h-today">Today</h2>
+    <div class="today" id="today"><p class="empty">Loading today's paper…</p></div>
+  </section>
+
+  <section class="needs-write" id="log" aria-labelledby="h-log" style="display:grid;gap:12px">
+    <h2 id="h-log">Log a paper you read</h2>
+    <p class="empty" style="max-width:65ch">Read something outside the plan? Paste an arXiv link, DOI or title. If it's already on your path it's marked read and the plan moves past it. If it's new, it goes into your library as an independent read, and the next morning update uses it to tune your interests, your Discover picks and the papers queued on your path.</p>
+    <form class="add" id="logForm" autocomplete="off">
+      <div class="actions" style="flex-wrap:nowrap"><input id="lQuery" required placeholder="arXiv link or ID, DOI, or title" style="flex:1;min-width:0"><button class="btn" type="button" id="lLookup">Look up</button></div>
+      <p class="status" id="lMatch"></p>
+      <input id="lTitle" placeholder="Title">
+      <input id="lAuthors" placeholder="Authors (e.g. Smith et al.)">
+      <div class="actions" style="flex-wrap:nowrap"><input id="lYear" placeholder="Year" inputmode="numeric" style="width:6em"><input id="lDate" type="date" aria-label="Date read" style="flex:1"></div>
+      <select id="lTrack" aria-label="Field"></select>
+      <textarea id="lNote" rows="3" placeholder="Your takeaway (optional)"></textarea>
+      <div class="actions"><span class="stars" id="lStars" aria-label="Rating"></span><button class="btn primary" type="submit">Log as read</button><span class="status" id="lStatus"></span></div>
+    </form>
+  </section>
+
+  <section id="discover" aria-labelledby="h-disc" style="display:grid;gap:12px">
+    <h2 id="h-disc">Discover</h2>
+    <p class="empty" style="max-width:65ch">Three papers each weekday morning to browse, not study: a summary, takeaways, the key figure and what it could mean for your isoform models. Add one to your reading list with one click. Your reactions shape what shows up next.</p>
+    <p class="interests" id="interests"></p>
+    <div class="cards" id="disc"><p class="empty">The first picks arrive Monday morning.</p></div>
+    <details id="discOlder" hidden><summary>Earlier discoveries</summary><div class="cards" id="discOld" style="margin-top:12px"></div></details>
+  </section>
+
+  <section aria-labelledby="h-prog" style="display:grid;gap:14px">
+    <h2 id="h-prog">Progress</h2>
+    <p class="summary" id="summary"></p>
+    <div class="progress" id="progress"></div>
+  </section>
+
+  <section aria-labelledby="h-hist" style="display:grid;gap:10px">
+    <h2 id="h-hist">Recent days</h2>
+    <div class="hist" id="hist"><p class="empty">No days yet. The first pick appears here once it is scheduled.</p></div>
+  </section>
+
+  <section id="path" aria-labelledby="h-path" style="display:grid;gap:12px">
+    <h2 id="h-path">The path</h2>
+    <p class="empty" style="max-width:65ch">First time here? Filter to <em>Core</em> and mark anything you've already read as <strong>Known</strong>. The daily pick skips those and moves on to what builds on them.</p>
+    <div class="filters">
+      <select id="fTrack" aria-label="Field"><option value="">All fields</option></select>
+      <select id="fPass" aria-label="Depth"><option value="">All depths</option><option value="1">Core</option><option value="2">Recommended</option><option value="3">Deep dive</option></select>
+      <select id="fState" aria-label="Status"><option value="">Any status</option><option value="jes">Jes and current group</option><option value="open">Not read</option><option value="done">Read or known</option><option value="later">Later</option></select>
+      <input id="fText" type="search" placeholder="Search titles and authors" aria-label="Search">
+    </div>
+    <div class="list" id="list"></div>
+    <button class="btn more" id="more" hidden>Show more</button>
+    <details class="needs-write">
+      <summary>Add a paper to the path (to read later)</summary>
+      <p class="empty" style="max-width:65ch;margin:8px 0 0">Paste what you have. The next morning update checks it, sets its field and prerequisites, and slots in any background papers it builds on that you haven't read.</p>
+      <form class="add" id="addForm">
+        <input id="aTitle" required placeholder="Title">
+        <input id="aAuthors" placeholder="Authors, year (e.g. Smith et al., 2026)">
+        <input id="aUrl" type="url" placeholder="Link (arXiv, DOI, bioRxiv)">
+        <select id="aTrack" aria-label="Field"></select>
+        <select id="aWhen" aria-label="When"><option value="next">Read it next</option><option value="end">Add at the end of its depth</option></select>
+        <textarea id="aWhy" rows="2" placeholder="Why it matters (optional)"></textarea>
+        <div class="actions"><button class="btn primary" type="submit">Add paper</button><span class="status" id="aStatus"></span></div>
+      </form>
+    </details>
+  </section>
+
+  <section id="library" aria-labelledby="h-lib" style="display:grid;gap:12px">
+    <h2 id="h-lib">Library</h2>
+    <p class="empty" style="max-width:65ch">Everything you've read, known, rated or noted, plus discoveries you liked. Export it for your terminal or reference manager. For clean citations, copy the identifiers and paste them into Zotero's <em>Add Item by Identifier</em> (the magic-wand button); it fetches full metadata for DOIs and arXiv IDs.</p>
+    <div class="filters">
+      <select id="lState" aria-label="Show"><option value="engaged">Read, known, rated or noted</option><option value="read">Read</option><option value="independent">Independent reads</option><option value="noted">With notes</option><option value="all">Whole path</option></select>
+      <input id="lText" type="search" placeholder="Search library" aria-label="Search library">
+    </div>
+    <div class="exports">
+      <button class="btn" data-exp="bib">BibTeX</button><button class="btn" data-exp="csv">CSV</button><button class="btn" data-exp="json">JSON</button><button class="btn" data-exp="md">Notes (Markdown)</button><button class="btn" id="copyIds">Copy IDs for Zotero</button>
+      <span class="status" id="expStatus"></span>
+    </div>
+    <textarea id="idsBox" readonly hidden rows="5" style="font-family:var(--f-mono);font-size:.8rem;width:100%;padding:8px;border-radius:7px;border:1px solid var(--line);background:var(--bg);color:var(--fg)"></textarea>
+    <div class="tablewrap"><table class="lib"><thead><tr><th>Paper</th><th>Field</th><th>Status</th><th>When</th><th>★</th><th>Note</th></tr></thead><tbody id="libBody"></tbody></table></div>
+  </section>
+</div>
+
+
+<script src="assets/app.js"></script>
+</body>
+</html>

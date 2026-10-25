@@ -1,0 +1,188 @@
+#!/usr/bin/env python3
+"""rp - Reading Path from the terminal. Works on the JSON files in ./data next to this script.
+
+Reading
+  rp today                       today's paper: summary, takeaways, relevance, how to read it
+  rp next [-n N]                 what's unlocked next on the path
+  rp ls [-s STATE] [-t TRACK] [--group] [-n N]
+                                 STATE: read known later skipped open done independent any
+  rp search TERM...              titles, authors, notes, why
+  rp show KEY                    full record (KEY can be the key, an arXiv id or a DOI)
+  rp open KEY                    open in your browser
+  rp notes [-t TRACK]            your notes as Markdown
+  rp disc [--liked|--added]      Discover items
+  rp stats                       progress per field
+
+Writing (same effect as the website)
+  rp read KEY [-n NOTE] [-r 1-5]   mark read     (also: known, later, skip)
+  rp note KEY "text"               set your note
+  rp log QUERY [-n NOTE] [-r N] [--title T --authors A --year Y]
+                                 log a paper you read; QUERY = arXiv id/link, DOI or title.
+                                 On the path -> marked read. Otherwise -> independent read.
+
+Citing and sharing
+  rp bib [KEY...] [-s STATE]     BibTeX (default: read or known)
+  rp ids [-s STATE]              DOIs / arXiv IDs for Zotero's "Add Item by Identifier"
+  rp serve                       start the website on http://localhost:8765
+  rp publish                     git commit + push (for GitHub Pages)
+"""
+import argparse, datetime as dt, json, os, re, subprocess, sys, textwrap, webbrowser
+
+ROOT = os.path.dirname(os.path.realpath(__file__))
+sys.path.insert(0, ROOT)
+import server as srv  # noqa: E402  (shares data access, lookup and logging with the website)
+
+DONE = {"read", "known", "skipped"}
+
+
+def data():
+    p = srv.load("papers"); s = srv.load("status")
+    for x in p["papers"]:
+        x["_s"] = s.get(x["key"], {}); x["_state"] = x["_s"].get("state") or "open"; x["_id"] = srv.ident(x.get("url"))
+    p["papers"].sort(key=lambda x: (x["seq"] is None, x["seq"] or 0))
+    return p, s
+
+
+def match_state(p, st):
+    if not st or st == "any": return True
+    if st == "done": return p["_state"] in DONE
+    if st == "independent": return p.get("source") == "independent"
+    return p["_state"] == st
+
+
+def find(P, key):
+    k = key.lower().replace("arxiv:", "").strip()
+    for p in P:
+        if k == p["key"].lower() or (p["_id"] and k == p["_id"].replace("arxiv:", "")):
+            return p
+    sys.exit("rp: no paper '%s' (try rp search)" % key)
+
+
+def line(p):
+    mark = {"read": "✓", "known": "·", "later": "→", "skipped": "×"}.get(p["_state"], " ")
+    r = p["_s"].get("rating"); seq = "—" if p["seq"] is None else ("%g" % p["seq"])
+    return f"{mark} {seq:>6} {p.get('track') or '?':<4} {p['title'][:76]:<76}  {p.get('authors','')[:24]} {p.get('year','')}" + (f"  ★{r}" if r else "") + f"  [{p['key']}]"
+
+
+def upcoming(P, days, n):
+    assigned = {d["paper"] for d in days} | {k for d in days for k in d.get("replaced", [])}
+    out = []
+    ok = lambda k: any(q["key"] == k and q["_state"] in DONE for q in P) or k in assigned or any(o["key"] == k for o in out)
+    for p in P:
+        if len(out) >= n: break
+        if p["seq"] is None or p["_state"] in DONE or p["key"] in assigned or p["_state"] == "later": continue
+        if all(ok(k) for k in p.get("prereqs", [])): out.append(p)
+    return out
+
+
+def set_status(key, **patch):
+    s = srv.load("status"); cur = s.get(key, {})
+    cur.update({k: v for k, v in patch.items() if v not in (None, "")}); cur["at"] = srv.now()
+    s[key] = cur; srv.save("status", s); srv.setup_git(True); srv.commit("rp: %s %s" % (key, patch.get("state") or "note"))
+
+
+def bib(p):
+    a = re.sub(r"[^a-z]", "", (p.get("authors") or "anon").split()[0].lower()) or "anon"
+    w = next((x for x in re.sub(r"[^a-z0-9 ]", "", p["title"].lower()).split() if len(x) > 3), "paper")
+    i = p["_id"]; s = p["_s"]; note = (s.get("note") or "").replace("{", "").replace("}", "")
+    extra = (f"  eprint = {{{i[6:]}}},\n  archivePrefix = {{arXiv}},\n" if i.startswith("arxiv:") else f"  doi = {{{i}}},\n" if i else "")
+    return (f"@misc{{{a}{p.get('year','')}{w},\n  title = {{{{{p['title']}}}}},\n  author = {{{p.get('authors','')}}},\n"
+            f"  year = {{{p.get('year','')}}},\n  url = {{{p['url']}}},\n{extra}" + (f"  annote = {{{note}}},\n" if note else "") +
+            f"  keywords = {{reading-path, {p.get('track','')}, {p['_state']}}}\n}}")
+
+
+def wrap(h, t):
+    if t: print(h.upper()); print(textwrap.fill(t, 88)); print()
+
+
+def main():
+    ap = argparse.ArgumentParser(prog="rp", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = ap.add_subparsers(dest="cmd")
+    sub.add_parser("today")
+    x = sub.add_parser("next"); x.add_argument("-n", type=int, default=5)
+    x = sub.add_parser("ls"); x.add_argument("-s", "--state"); x.add_argument("-t", "--track"); x.add_argument("--group", action="store_true"); x.add_argument("-n", type=int, default=0)
+    x = sub.add_parser("search"); x.add_argument("term", nargs="+")
+    for c in ("show", "open"): sub.add_parser(c).add_argument("key")
+    x = sub.add_parser("notes"); x.add_argument("-t", "--track")
+    x = sub.add_parser("disc"); x.add_argument("--liked", action="store_true"); x.add_argument("--added", action="store_true")
+    sub.add_parser("stats")
+    for c in ("read", "known", "later", "skip"):
+        x = sub.add_parser(c); x.add_argument("key"); x.add_argument("-n", "--note"); x.add_argument("-r", "--rating", type=int)
+    x = sub.add_parser("note"); x.add_argument("key"); x.add_argument("text")
+    x = sub.add_parser("log"); x.add_argument("query"); x.add_argument("-n", "--note"); x.add_argument("-r", "--rating", type=int)
+    x.add_argument("--title"); x.add_argument("--authors"); x.add_argument("--year"); x.add_argument("--track"); x.add_argument("--date")
+    x = sub.add_parser("bib"); x.add_argument("keys", nargs="*"); x.add_argument("-s", "--state", default="done")
+    x = sub.add_parser("ids"); x.add_argument("-s", "--state", default="done")
+    x = sub.add_parser("serve"); x.add_argument("--port", default="8765")
+    x = sub.add_parser("publish"); x.add_argument("-m", "--message", default="Update reading path")
+    a = ap.parse_args()
+    if not a.cmd: ap.print_help(); return
+
+    p, s = data(); P = p["papers"]; by = {q["key"]: q for q in P}; days = srv.load("days")
+
+    if a.cmd == "today":
+        if not days: print("No day scheduled yet. Next up:"); [print(line(q)) for q in upcoming(P, days, 1)]; return
+        d = days[0]; q = by.get(d["paper"])
+        print(f"{d['id']}  {q['title']}\n{q.get('authors','')} ({q.get('year','')}) · {p['tracks'].get(q.get('track'), q.get('track'))} · {q['_state']}\n{q['url']}\n")
+        wrap("Summary", d.get("summary"))
+        if d.get("takeaways"):
+            print("KEY TAKEAWAYS"); [print(textwrap.fill(t, 88, initial_indent="  - ", subsequent_indent="    ")) for t in d["takeaways"]]; print()
+        wrap("Key figure", d.get("keyFigure")); wrap("For your work", d.get("relevance")); wrap("How to read it", d.get("brief"))
+        if not d.get("summary"): wrap("Why it is on the path", q.get("why"))
+    elif a.cmd == "next":
+        for q in upcoming(P, days, a.n): print(line(q))
+    elif a.cmd == "ls":
+        rows = [q for q in P if match_state(q, a.state) and (not a.track or q.get("track") == a.track.upper()) and (not a.group or q.get("byJes"))]
+        for q in rows[: a.n or None]: print(line(q))
+    elif a.cmd == "search":
+        t = " ".join(a.term).lower()
+        for q in P:
+            if t in " ".join([q["title"], q.get("authors", ""), q.get("why", ""), q["_s"].get("note", "")]).lower(): print(line(q))
+    elif a.cmd == "show":
+        q = find(P, a.key); print(json.dumps({**{k: v for k, v in q.items() if not k.startswith("_")}, "status": q["_s"]}, indent=1, ensure_ascii=False))
+    elif a.cmd == "open":
+        webbrowser.open(find(P, a.key)["url"])
+    elif a.cmd == "notes":
+        for q in sorted(P, key=lambda q: q["_s"].get("at", ""), reverse=True):
+            n = q["_s"].get("note")
+            if n and (not a.track or q.get("track") == a.track.upper()):
+                r = q["_s"].get("rating")
+                print(f"## {q['title']}\n{q.get('authors','')} ({q.get('year','')}) · {q.get('track','')} · {q['_state']}" + (f" · {r}/5" if r else "") + f"\n{q['url']}\n\n{n}\n")
+    elif a.cmd == "disc":
+        r = srv.load("reactions")
+        for d in srv.load("discover"):
+            rx = r.get(d["id"], {}).get("reaction", "")
+            if (a.liked and rx != "like") or (a.added and rx != "added"): continue
+            print(f"{d.get('date','')}  {rx or '-':<6} {d['title'][:80]}\n            {d['url']}")
+    elif a.cmd == "stats":
+        for t, name in p["tracks"].items():
+            ps = [q for q in P if q.get("track") == t and q["seq"] is not None]; dn = sum(q["_state"] in DONE for q in ps)
+            print(f"{name:<45} {dn:>3}/{len(ps):<3} " + "█" * round(20 * dn / max(1, len(ps))))
+        print(f"\nIndependent reads: {sum(q.get('source') == 'independent' for q in P)}")
+    elif a.cmd in ("read", "known", "later", "skip"):
+        q = find(P, a.key); st = "skipped" if a.cmd == "skip" else a.cmd
+        set_status(q["key"], state=st, note=a.note, rating=a.rating, readOn=dt.date.today().isoformat() if st == "read" else None)
+        print(f"{st}: {q['title']}")
+    elif a.cmd == "note":
+        q = find(P, a.key); set_status(q["key"], note=a.text); print("Saved.")
+    elif a.cmd == "log":
+        srv.setup_git(True)
+        r = srv.log_read({"query": a.query, "title": a.title or "", "authors": a.authors or "", "year": a.year or "", "track": a.track or "",
+                          "note": a.note or "", "rating": a.rating, "date": a.date or dt.date.today().isoformat()})
+        if r.get("error"): sys.exit("rp: " + r["error"] + " (add --title)")
+        print(("Marked read on your path: " if r["matched"] else "Logged independent read: ") + srv.load("papers")["papers"][[x["key"] for x in srv.load("papers")["papers"]].index(r["key"])]["title"])
+    elif a.cmd == "bib":
+        rows = [find(P, k) for k in a.keys] if a.keys else [q for q in P if match_state(q, a.state)]
+        print("\n\n".join(bib(q) for q in rows))
+    elif a.cmd == "ids":
+        for q in P:
+            if match_state(q, a.state) and q["_id"]: print(q["_id"].replace("arxiv:", "arXiv:"))
+    elif a.cmd == "serve":
+        os.execvp(sys.executable, [sys.executable, os.path.join(ROOT, "server.py"), "--port", a.port])
+    elif a.cmd == "publish":
+        run = lambda *c: subprocess.run(["git", *c], cwd=ROOT)
+        run("add", "-A"); run("commit", "-m", a.message); run("push")
+
+
+if __name__ == "__main__":
+    main()

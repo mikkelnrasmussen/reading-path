@@ -1,0 +1,76 @@
+[
+ {
+  "authors": "Wu & Dan",
+  "date": "2026-10-24",
+  "figUrl": "https://arxiv.org/html/2610.25021v1",
+  "id": "2026-10-24-3",
+  "keyFigure": "",
+  "relevance": "Same design question as your source-conditioned models: what to put at t = 0. A gene-level prediction (as in scIso) could serve as the source, with the flow learning only the isoform-level residual.",
+  "summary": "For combinatorial perturbations, most of the response is the sum of single-perturbation effects. SynGeneFlow anchors the flow's source distribution at that additive prior and learns only the residual flow to the true perturbed state.",
+  "tags": [
+   "flow matching",
+   "perturbation prediction",
+   "informative source distribution"
+  ],
+  "takeaways": [
+   "Choosing an informative source distribution focuses model capacity on the hard, non-additive part of the signal.",
+   "Gene-gene interactions enter as a static mask plus a perturbation-dependent bias in the network.",
+   "MMD regularisation on both the endpoint and the residual distributions keeps population-level structure."
+  ],
+  "title": "Synergy-Aware Residual Flow Matching for Single-Cell Perturbation Prediction (SynGeneFlow)",
+  "track": "SC",
+  "url": "https://arxiv.org/abs/2610.25021",
+  "venue": "arXiv (cs.LG)",
+  "year": 2026
+ },
+ {
+  "authors": "Chavan et al.",
+  "date": "2026-10-24",
+  "figUrl": "https://arxiv.org/html/2610.28559v1",
+  "id": "2026-10-24-2",
+  "keyFigure": "",
+  "relevance": "The current argument for continuous flows over discrete diffusion on discrete data. Useful context for your choice between a CTMC on the lattice simplex and continuous simplex flows, and it connects to the flow-map papers already on your path.",
+  "summary": "A continuous flow language model scaled to 8B parameters by adapting a pretrained autoregressive model: causal attention over the prefix and bidirectional, asynchronous flow within each block. Trained on fewer than 30B tokens.",
+  "tags": [
+   "flow language models",
+   "flow maps",
+   "block diffusion",
+   "scaling"
+  ],
+  "takeaways": [
+   "Matches or beats the autoregressive base on instruction following, reasoning and coding, and can be distilled into flow maps for one- or few-step generation.",
+   "Flow training acts like multi-token prediction and can even improve the AR capabilities it starts from.",
+   "A self-speculative decoding scheme (flow drafts, AR verification in one model) gives about 2.5x AR throughput and beats discrete diffusion at comparable quality."
+  ],
+  "title": "Large Flow Language Models (Lafa)",
+  "track": "DISC",
+  "url": "https://arxiv.org/abs/2610.28559",
+  "venue": "arXiv (cs.CL)",
+  "year": 2026
+ },
+ {
+  "authors": "Stirn, Rajagopal, Knowles & Huynh",
+  "date": "2026-10-24",
+  "figUrl": "https://arxiv.org/html/2610.27322v1",
+  "id": "2026-10-24-1",
+  "keyFigure": "",
+  "relevance": "A cheap upgrade to try in your hierarchical NB + multinomial VAE baseline: swap the standard normal prior for this one and compare ELBOs and cell-type clustering. David Knowles also works on splicing (LeafCutter), so his group may follow up on isoform-level models.",
+  "summary": "Revisits the VampPrior, which approximates the optimal VAE prior (the aggregate posterior) with a mixture of encoder outputs at learned pseudo-inputs. It fixes two weaknesses: prior and posterior share one amortised covariance, and the mixture weights are fixed and uniform.",
+  "tags": [
+   "deep latent variable models",
+   "priors",
+   "scVI",
+   "clustering"
+  ],
+  "takeaways": [
+   "Decoupling the prior and posterior covariances removes a conflict between wanting high-entropy priors and low-entropy posteriors, and raises model evidence.",
+   "Replacing the uniform mixture with a Dirichlet process gives non-parametric clustering in latent space.",
+   "Dropping the new prior into scVI improves integration and clustering across six single-cell atlases. Only the prior changes, so it works with any continuous-latent DLVM."
+  ],
+  "title": "VampPrior Unleashed",
+  "track": "PML",
+  "url": "https://arxiv.org/abs/2610.27322",
+  "venue": "arXiv (stat.ML)",
+  "year": 2026
+ }
+]
