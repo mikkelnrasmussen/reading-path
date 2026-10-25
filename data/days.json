@@ -1,10 +1,12 @@
 [
  {
   "id": "2026-10-25",
-  "paper": "d-2026-10-24-1",
+  "paper": "d-2026-10-24-2",
   "brief": "",
   "news": "",
-  "replaced": [],
+  "replaced": [
+   "d-2026-10-24-1"
+  ],
   "finished": [
    "kelemen13"
   ],
