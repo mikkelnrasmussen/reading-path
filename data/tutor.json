@@ -1,0 +1,12 @@
+{
+ "style": [
+  "Intuition first, then the maths; keep the two clearly separated.",
+  "Distinguish definitions from derived consequences, and say which steps are forced and which are free modelling choices.",
+  "Cite the paper's equation or section numbers when you refer to them.",
+  "Go step by step and check each step before moving on.",
+  "Tell me plainly if my question rests on a misunderstanding, and flag uncertainty in your own reasoning.",
+  "Where it helps, connect the idea to my lattice-simplex / NB + multinomial isoform models."
+ ],
+ "struggles": [],
+ "qa": []
+}
