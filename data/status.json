@@ -5,8 +5,9 @@
   "readOn": "2026-10-25"
  },
  "scvi": {
-  "state": "known",
-  "at": "2026-10-25T10:47:56+00:00"
+  "state": "read",
+  "at": "2026-10-25T11:14:17+00:00",
+  "readOn": "2026-10-25"
  },
  "spliceai": {
   "state": "known",
