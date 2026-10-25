@@ -1,21 +1,14 @@
 [
  {
   "id": "2026-10-25",
-  "paper": "kelemen13",
-  "brief": "Starting point for the whole path. Read it as a catalogue: skim the mechanisms (domain changes, localisation signals, NMD, UTR effects) and note two or three examples you'd want to look for in your own isoform data. Tomorrow's papers on proteome expansion and the Tress/Blencowe debate lean on this vocabulary.",
+  "paper": "d-2026-10-24-1",
+  "brief": "",
   "news": "",
   "replaced": [],
-  "finished": [],
-  "extras": [],
-  "summary": "A long review that catalogues what alternative splicing does to the proteins it produces. It goes mechanism by mechanism: changes to binding domains and interaction partners, enzymatic activity, subcellular localisation, stability and post-translational modification. It also covers isoforms that are never translated because a premature stop codon sends them to nonsense-mediated decay.",
-  "takeaways": [
-   "Splicing rarely switches a protein fully on or off. More often it adds or removes a short module (a binding motif, a localisation signal, a modification site) that changes how the protein is regulated.",
-   "Many alternative exons are short and encode disordered regions, so their effect is easy to miss if you only look at folded domains.",
-   "A large share of isoform changes act on the RNA rather than the protein, through decay or changed untranslated regions, so a shift in isoform proportions does not always mean a new protein."
+  "finished": [
+   "kelemen13"
   ],
-  "keyFigure": "",
-  "figUrl": "",
-  "relevance": "This is the biological reason to model isoform proportions within a gene separately from gene totals, as your NB + multinomial factorisation does. The mechanisms it lists are roughly the consequences IsoformSwitchAnalyzeR annotates (domain loss, signal peptides, disordered regions, NMD sensitivity), so they are the natural way to interpret any isoform shift your generative model or scIso predicts."
+  "extras": []
  },
  {
   "brief": "Starting point for the whole path. Read it as a catalogue: skim the mechanisms (domain changes, localisation signals, NMD, UTR effects) and note two or three examples you'd want to look for in your own isoform data. Tomorrow's papers on proteome expansion and the Tress/Blencowe debate lean on this vocabulary.",
