@@ -21,7 +21,10 @@
  },
  "kelemen13": {
   "state": "read",
-  "at": "2026-10-25T18:10:35+00:00",
-  "readOn": "2026-10-25"
+  "at": "2026-10-25T18:30:43+00:00",
+  "readOn": "2026-10-25",
+  "notes": {
+   "text": "miRNA are involved in regulation of alternative splicing - other RNAs might also regulate and it is not just proteins. MALAT1 is involved in regulation of SR proteins and thereby alternative splicing. RNA secondary structure might also influence alternative splicing regulation by e.g. hiding splice sites. Intronic sites also influence the regulation - introns are important for which exons are included/excluded. Histone modifications/chromatin structure is also involved in deciding which exons are included/excluded."
+  }
  }
 }
