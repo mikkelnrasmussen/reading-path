@@ -1,7 +1,7 @@
 {
  "weeklyGoal": 5,
  "recall": false,
- "structuredNotes": false,
+ "structuredNotes": true,
  "milestonesSeen": [
   "read1",
   "read5"
