@@ -1,5 +1,16 @@
 [
  {
+  "id": "2026-10-25",
+  "paper": "d-2026-10-24-1",
+  "brief": "",
+  "news": "",
+  "replaced": [],
+  "finished": [
+   "kelemen13"
+  ],
+  "extras": []
+ },
+ {
   "brief": "Starting point for the whole path. Read it as a catalogue: skim the mechanisms (domain changes, localisation signals, NMD, UTR effects) and note two or three examples you'd want to look for in your own isoform data. Tomorrow's papers on proteome expansion and the Tress/Blencowe debate lean on this vocabulary.",
   "figUrl": "",
   "id": "2026-10-24",
