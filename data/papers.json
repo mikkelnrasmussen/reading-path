@@ -6218,6 +6218,24 @@
    "why": "The original VampPrior: a mixture of variational posteriors at learned pseudo-inputs as the VAE prior — the foundation VampPrior Unleashed builds on.",
    "source": "gap",
    "triaged": true
+  },
+  {
+   "key": "d-2026-10-26-3",
+   "seq": 0.61,
+   "track": "GEO",
+   "pass": 1,
+   "title": "Compatible Likelihoods for Flow Matching on Manifolds",
+   "authors": "Ng, Batzolis & Girolami",
+   "year": 2026,
+   "url": "https://arxiv.org/abs/2610.31981",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [],
+   "why": "On the flat 1D torus, the authors construct a case where a recent likelihood-based extension of Riemannian flow matching is optimised by a velocity field that pushes samples away from the data. They define 'compatibility' — the objective's population minimiser recovers the true marginal velocity — give a general condition for it, and propose an exponential-family objective over endpoints that is compatible and only puts mass on feasible velocities. It improves NLL on two of four sphere geospatial benchmarks and on high-dimensional tori.",
+   "source": "discover",
+   "triaged": false,
+   "addedAt": "2026-10-26T08:37:47+00:00"
   }
  ]
 }
