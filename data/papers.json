@@ -5038,33 +5038,56 @@
    "inZotero": false,
    "key": "d-2026-10-24-1",
    "pass": 1,
-   "prereqs": [],
-   "seq": 2.5,
+   "prereqs": [
+    "vae13",
+    "vampprior"
+   ],
+   "seq": 10.6,
    "source": "discover",
    "title": "VampPrior Unleashed",
    "track": "PML",
-   "triaged": false,
+   "triaged": true,
    "url": "https://arxiv.org/abs/2610.27322",
-   "why": "Revisits the VampPrior, which approximates the optimal VAE prior (the aggregate posterior) with a mixture of encoder outputs at learned pseudo-inputs. It fixes two weaknesses: prior and posterior share one amortised covariance, and the mixture weights are fixed and uniform.",
+   "why": "Upgrades the VampPrior (decoupled prior/posterior covariances, Dirichlet-process weights) and plugs it into scVI — directly relevant to your hierarchical single-cell latent models.",
    "year": 2026,
-   "zotero": ""
+   "zotero": "",
+   "date": "2026-10",
+   "tags": [
+    "VAE prior",
+    "VampPrior",
+    "Dirichlet process",
+    "scVI",
+    "model evidence"
+   ]
   },
   {
    "authors": "Chavan et al.",
    "byJes": false,
    "inZotero": false,
    "key": "d-2026-10-24-2",
-   "pass": 1,
+   "pass": 2,
    "prereqs": [],
-   "seq": 2.5,
+   "seq": 12.5,
    "source": "discover",
    "title": "Large Flow Language Models (Lafa)",
-   "track": "DISC",
-   "triaged": false,
+   "track": "FLOW",
+   "triaged": true,
    "url": "https://arxiv.org/abs/2610.28559",
-   "why": "A continuous flow language model scaled to 8B parameters by adapting a pretrained autoregressive model: causal attention over the prefix and bidirectional, asynchronous flow within each block. Trained on fewer than 30B tokens.",
+   "why": "Shows continuous blockwise flows can be scaled to 8B-parameter language models by adapting AR models — a reference point for continuous vs discrete generation of sequences.",
    "year": 2026,
-   "zotero": ""
+   "zotero": "",
+   "background": [
+    "lipman23",
+    "flowmaps"
+   ],
+   "date": "2026-10",
+   "tags": [
+    "flow matching",
+    "language models",
+    "blockwise flow",
+    "flow maps",
+    "speculative decoding"
+   ]
   },
   {
    "key": "geo-1",
@@ -6176,6 +6199,25 @@
    "year": 2023,
    "url": "https://doi.org/10.15252/msb.202211517",
    "why": "Compositional perturbation autoencoder: disentangles basal state, perturbation, dose and covariates, so combinations can be predicted."
+  },
+  {
+   "key": "vampprior",
+   "seq": 10.5,
+   "track": "PML",
+   "pass": 1,
+   "title": "VAE with a VampPrior",
+   "authors": "Tomczak & Welling",
+   "year": 2018,
+   "url": "https://arxiv.org/abs/1705.07120",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "vae13"
+   ],
+   "why": "The original VampPrior: a mixture of variational posteriors at learned pseudo-inputs as the VAE prior — the foundation VampPrior Unleashed builds on.",
+   "source": "gap",
+   "triaged": true
   }
  ]
 }

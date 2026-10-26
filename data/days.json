@@ -1,5 +1,52 @@
 [
  {
+  "id": "2026-10-26",
+  "paper": "jeffrey",
+  "summary": "Standard guidance steers a diffusion model towards a single condition; Jeffrey guidance instead moves a whole marginal p(y) of some feature y = u(x) to a prescribed target p*(y) while keeping p(x|y) fixed, which by Jeffrey's rule gives p*(x) = ρ(u(x)) p(x) with ρ = p*/p. The density ratio ρ is estimated with a classifier separating target from model samples, and its gradient (evaluated at the Tweedie estimate x̂₀) is added to the score late in sampling. Matching Inception-embedding distributions cuts FID substantially on CIFAR-10 and FFHQ, and on CelebA-HQ it rebalances or decorrelates attributes.",
+  "takeaways": [
+   "Jeffrey's rule is the minimal update of a joint that imposes a new marginal (an information projection); ordinary conditioning is the special case where p*(y) is a point mass.",
+   "With a deterministic feature map the target is an exponential-style tilt p(x)·ρ(u(x)), so the guidance term is ∇ log ρ(u(x̂₀)) — classifier guidance generalised from one class to a whole distribution.",
+   "In practice it relies on approximations: x̂₀ via Tweedie, a classifier-based ratio, a strength λ (λ = 1 is the exact Jeffrey update) and a late-time window δ; decorrelation needed λ > 1."
+  ],
+  "keyFigure": "Fig. 1: overview — where classifier guidance targets a single class, Jeffrey guidance updates p(y) towards a target p*(y) via a correction term added at each diffusion step.",
+  "figUrl": "https://arxiv.org/html/2606.13240",
+  "relevance": "Jes and Pierre-Alexandre Mattei's guidance line (with Razafindralambo, Sun, Precioso): it gives a principled way to make a pretrained model match a target marginal. For you that could mean nudging a trained isoform generator so a summary statistic — e.g. the distribution of an isoform's usage fraction or of gene totals in a new cell population — matches observed data, without retraining.",
+  "brief": "Focus on Sec. 2.1 (Jeffrey's rule, Eqs. 2–5) and Sec. 3.1 (the guidance term, Eqs. 12–15); the experiments can be skimmed for the λ/δ trade-off. It connects directly to the flow-matching guidance survey (fmguide) you read yesterday — place it in that taxonomy as a marginal-matching tilt. Question to keep in mind: on a discrete state space like your lattice simplex, the tilt ρ(u(x)) has no gradient — would you apply it as a rate reweighting of the CTMC generator instead (the paper's Eq. 12 hints at the non-differentiable case)?",
+  "news": "No new papers from Jes or the group this week on arXiv. Worth a glance: 'Binary Discrete Diffusion' (von Rütte, Schölkopf, Hofmann et al.), a CTMC corruption kernel over candidate sets — it's in today's Discover.",
+  "extras": [
+   {
+    "paper": "udl-5",
+    "summary": "Chapter 5 reframes a network as predicting the parameters of a distribution over outputs, and derives every loss from one recipe: choose Pr(y|θ), let the network output θ = f[x,ϕ], minimise the negative log-likelihood. Least squares, binary and softmax cross-entropy, heteroscedastic regression and multi-output losses all fall out of it, and cross-entropy is shown to equal NLL via the KL to the empirical distribution.",
+    "takeaways": [
+     "The four-step recipe (Sec. 5.2): pick a distribution on the output domain, predict its parameters, minimise NLL, and at inference return the full distribution or its mode.",
+     "Least squares = Gaussian likelihood with predicted mean; binary cross-entropy = Bernoulli with a sigmoid; multiclass cross-entropy = categorical with a softmax. Predicting σ² too (with a positivity map) gives heteroscedastic regression.",
+     "Cross-entropy and NLL are the same objective (Sec. 5.7): minimising KL from the empirical distribution of Dirac deltas leaves exactly the summed log-likelihood."
+    ],
+    "pitfalls": [
+     "'Why log?' — log turns a product of per-sample likelihoods into a sum and doesn't move the argmax; it's also numerically stable.",
+     "Thinking the network outputs y rather than θ — draw the pipeline x → f → θ → Pr(y|θ); the prediction ŷ is just the mode of that distribution.",
+     "Positivity/constraints on parameters (σ², probabilities) — the network outputs unconstrained numbers, so a link function (square/softplus, sigmoid, softmax) maps them into the valid domain."
+    ],
+    "links": "This is the same likelihood-first view as your NB + multinomial model: gene totals get an NB likelihood and isoform splits a multinomial, i.e. exactly 'choose Pr(y|θ) for the output domain' — a nice concrete example to show students who work with counts."
+   },
+   {
+    "paper": "udl-6",
+    "summary": "Chapter 6 covers fitting: gradient descent, local minima and saddle points, SGD with batches and epochs, momentum (incl. Nesterov) and Adam. Adam normalises each coordinate by a running estimate of the squared gradient and adds momentum and bias correction, which makes progress even when the loss is much steeper in one direction than another.",
+    "takeaways": [
+     "SGD uses a fresh random batch each step: cheaper per step, adds noise that helps escape saddle points and poor minima, and is usually run with a decaying learning-rate schedule.",
+     "Momentum averages past gradients, smoothing the trajectory and speeding progress along shallow valleys.",
+     "Adam (Eqs. 6.15–6.17) = momentum on the gradient and on its square, plus bias correction 1/(1−βᵗ); it moves roughly a fixed step per coordinate, so it is less sensitive to the initial learning rate and balances updates across layers."
+    ],
+    "pitfalls": [
+     "Epoch vs iteration vs batch — one iteration = one batch gradient step; one epoch = one pass over all data (Sec. 6.2.1).",
+     "Why Adam needs bias correction — m and v start at zero, so early averages are shrunk towards zero; dividing by 1−βᵗ undoes that and its effect fades as t grows.",
+     "'Adam always wins' — it's less sensitive to learning rate but still has hyperparameters (α, β, γ, batch size); Sec. 6.5 frames these as things to search over, and students should still tune α."
+    ],
+    "links": "Every model in your work (flow/generator matching, VAEs) is trained this way; the noisy-gradient view also connects to the stochastic objectives in diffusion training, where each step samples data, time and noise — a good example of why SGD's noise is fine."
+   }
+  ]
+ },
+ {
   "id": "2026-10-25",
   "paper": "nakkiran24",
   "brief": "",

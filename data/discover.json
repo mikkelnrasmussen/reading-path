@@ -1,5 +1,83 @@
 [
  {
+  "id": "2026-10-26-1",
+  "date": "2026-10-26",
+  "title": "Binary Discrete Diffusion: Candidate-Set Diffusion for Logic and Planning Tasks",
+  "authors": "Casado Noguerales, von Rütte, Schölkopf, Hofmann & Raoufi",
+  "year": 2026,
+  "venue": "arXiv (cs.LG)",
+  "url": "https://arxiv.org/abs/2610.28543",
+  "figUrl": "https://arxiv.org/html/2610.28543",
+  "track": "DISC",
+  "tags": [
+   "discrete diffusion",
+   "CTMC",
+   "corruption kernel",
+   "masked diffusion",
+   "reasoning"
+  ],
+  "summary": "Masked and uniform discrete diffusion destroy a token's identity in one jump, so noisy states can't express 'one of these few options'. Binary Discrete Diffusion is a continuous-time process whose state is a set of candidate tokens per position (a binary membership vector), changed by adding and removing candidates. It beats tuned masked and uniform baselines on Sudoku-Extreme, Boxoban and graph colouring, and stays competitive on language modelling.",
+  "takeaways": [
+   "The choice of corruption kernel changes what the reverse model learns, not just its efficiency.",
+   "Candidate sets let information be lost and recovered gradually, representing partial uncertainty in the state itself.",
+   "Gains are largest on the hardest constraint-satisfaction instances."
+  ],
+  "keyFigure": "",
+  "relevance": "A worked example of designing the forward CTMC kernel rather than defaulting to masking — directly relevant to your choice of noising process on the lattice simplex, where intermediate states could likewise encode partially resolved isoform assignments."
+ },
+ {
+  "id": "2026-10-26-2",
+  "date": "2026-10-26",
+  "title": "Internal Guidance as a Sampling Method for Tilted Diffusion Models",
+  "authors": "McDonald & Bartlett",
+  "year": 2026,
+  "venue": "arXiv (stat.ML)",
+  "url": "https://arxiv.org/abs/2610.29086",
+  "figUrl": "https://arxiv.org/html/2610.29086",
+  "track": "CTRL",
+  "tags": [
+   "guidance",
+   "exponential tilting",
+   "discrete diffusion",
+   "reward",
+   "denoiser"
+  ],
+  "summary": "Reward guidance samples an exponential tilt of the base density, usually via an extra drift term or reweighted transitions ('external guidance'). For discrete data on {−1,1}^d the authors show the denoiser of any linearly tilted density is exactly the base denoiser evaluated at a shifted, rescaled input, so guidance can change where the denoiser is evaluated instead. Training with random diagonal rescalings lets a single network handle these out-of-distribution inputs, sampling reward tilts, class labels and infilling without fine-tuning.",
+  "takeaways": [
+   "Tilting can be implemented by moving the denoiser's input rather than adding a guidance term.",
+   "The exact result holds for linear tilts of discrete distributions embedded in the hypercube.",
+   "Training-time data augmentation (random rescalings) is what makes the shifted evaluations reliable."
+  ],
+  "keyFigure": "",
+  "relevance": "Pairs naturally with today's Jeffrey guidance paper (also a tilt p(x)ρ(u(x))): together they give two routes — external vs internal — to steer a pretrained discrete generator like yours towards a target."
+ },
+ {
+  "id": "2026-10-26-3",
+  "date": "2026-10-26",
+  "title": "Compatible Likelihoods for Flow Matching on Manifolds",
+  "authors": "Ng, Batzolis & Girolami",
+  "year": 2026,
+  "venue": "arXiv (stat.ML)",
+  "url": "https://arxiv.org/abs/2610.31981",
+  "figUrl": "https://arxiv.org/html/2610.31981",
+  "track": "GEO",
+  "tags": [
+   "Riemannian flow matching",
+   "manifolds",
+   "exponential family",
+   "likelihood objectives",
+   "torus"
+  ],
+  "summary": "On the flat 1D torus, the authors construct a case where a recent likelihood-based extension of Riemannian flow matching is optimised by a velocity field that pushes samples away from the data. They define 'compatibility' — the objective's population minimiser recovers the true marginal velocity — give a general condition for it, and propose an exponential-family objective over endpoints that is compatible and only puts mass on feasible velocities. It improves NLL on two of four sphere geospatial benchmarks and on high-dimensional tori.",
+  "takeaways": [
+   "A flow matching loss can be globally optimal yet point the wrong way if it isn't compatible.",
+   "On compact manifolds, some objectives put density on infeasible velocities.",
+   "The fix amounts to a reweighting of the FM loss that treats speed and direction errors differently on constant-curvature manifolds."
+  ],
+  "keyFigure": "",
+  "relevance": "A spark from geometry: the simplex in your work also has boundaries and feasibility constraints, and the 'is my loss's minimiser actually the marginal field?' check is a useful sanity test for any non-Euclidean flow matching variant you design."
+ },
+ {
   "authors": "Wu & Dan",
   "date": "2026-10-24",
   "figUrl": "https://arxiv.org/html/2610.25021v1",
