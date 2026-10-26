@@ -6254,6 +6254,24 @@
    "source": "discover",
    "triaged": false,
    "addedAt": "2026-10-26T08:37:48+00:00"
+  },
+  {
+   "key": "d-2026-10-26-1",
+   "seq": 0.61,
+   "track": "DISC",
+   "pass": 1,
+   "title": "Binary Discrete Diffusion: Candidate-Set Diffusion for Logic and Planning Tasks",
+   "authors": "Casado Noguerales, von Rütte, Schölkopf, Hofmann & Raoufi",
+   "year": 2026,
+   "url": "https://arxiv.org/abs/2610.28543",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [],
+   "why": "Masked and uniform discrete diffusion destroy a token's identity in one jump, so noisy states can't express 'one of these few options'. Binary Discrete Diffusion is a continuous-time process whose state is a set of candidate tokens per position (a binary membership vector), changed by adding and removing candidates. It beats tuned masked and uniform baselines on Sudoku-Extreme, Boxoban and graph colouring, and stays competitive on language modelling.",
+   "source": "discover",
+   "triaged": false,
+   "addedAt": "2026-10-26T08:38:10+00:00"
   }
  ]
 }
