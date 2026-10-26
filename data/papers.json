@@ -6236,6 +6236,24 @@
    "source": "discover",
    "triaged": false,
    "addedAt": "2026-10-26T08:37:47+00:00"
+  },
+  {
+   "key": "d-2026-10-26-2",
+   "seq": 0.61,
+   "track": "CTRL",
+   "pass": 1,
+   "title": "Internal Guidance as a Sampling Method for Tilted Diffusion Models",
+   "authors": "McDonald & Bartlett",
+   "year": 2026,
+   "url": "https://arxiv.org/abs/2610.29086",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [],
+   "why": "Reward guidance samples an exponential tilt of the base density, usually via an extra drift term or reweighted transitions ('external guidance'). For discrete data on {−1,1}^d the authors show the denoiser of any linearly tilted density is exactly the base denoiser evaluated at a shifted, rescaled input, so guidance can change where the denoiser is evaluated instead. Training with random diagonal rescalings lets a single network handle these out-of-distribution inputs, sampling reward tilts, class labels and infilling without fine-tuning.",
+   "source": "discover",
+   "triaged": false,
+   "addedAt": "2026-10-26T08:37:48+00:00"
   }
  ]
 }
