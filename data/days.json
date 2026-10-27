@@ -1,5 +1,52 @@
 [
  {
+  "id": "2026-10-27",
+  "paper": "nilsen10",
+  "summary": "A short Nature review arguing that alternative splicing is the main way ~20,000 human genes produce a far larger proteome: sequencing suggests 95–100% of multi-exon human pre-mRNAs are alternatively processed, with anywhere from two to thousands of isoforms per gene. It walks through the four basic splicing modules, how a small set of mostly ubiquitous regulators (SR proteins, hnRNPs, a few tissue-specific factors) control >100,000 decisions, the kinetic coupling of splicing to transcription elongation and chromatin, and closes on the open question of how much of this diversity is functional.",
+  "takeaways": [
+   "Almost all alternative splicing is built from four modules — alternative 5′ site, alternative 3′ site, cassette exon, retained intron — combined to give e.g. >500 KCNMA1 isoforms or 38,016 possible Dscam isoforms.",
+   "Regulation is combinatorial and kinetic: SR-protein enhancers vs hnRNP silencers (the 'yin-yang' model), with outcomes also shaped by competing splice sites, Pol II elongation rate and marks like H3K36me3.",
+   "Whether most isoforms are functional or tolerated noise was unresolved in 2010, and the authors say so plainly."
+  ],
+  "keyFigure": "Fig. 2: generation of diverse mRNA repertoires — KCNMA1 (>500 isoforms from combined alternative exons and splice sites), Dscam's four clusters of mutually exclusive exons, and trans-splicing in mod(mdg4).",
+  "figUrl": "",
+  "relevance": "This is the biology behind your state space: each gene's isoforms are combinations of these modules, so isoform counts with a fixed gene total live on a lattice simplex whose dimension ranges from 2 to thousands. The point that a few dozen regulators (themselves expressed genes) drive most splicing decisions is also the biological case for scIso — predicting isoform usage from gene expression.",
+  "brief": "Read the first two sections and the 'Mechanisms' part carefully (Figs. 1–3); the bioinformatics and evolution sections can be skimmed. It builds directly on Kelemen et al. (Function of alternative splicing), which you read on Saturday — this one adds the regulatory mechanisms. Question to keep in mind: if splicing is kinetic competition between sites, what does that suggest about a sensible generative model for isoform proportions — independent per-isoform rates, or something structured by shared exons?",
+  "news": "",
+  "extras": [
+   {
+    "paper": "udl-7",
+    "summary": "Chapter 7 derives backpropagation — first on a scalar toy chain (sin, exp, cos) and then for a deep ReLU network — as a forward pass that stores activations followed by a backward pass that reuses derivatives layer by layer. It then shows why initialisation matters: with zero biases and N(0, σ²) weights, activation and gradient variances scale by ½·D_h·σ² per layer, so He initialisation (σ² = 2/D_h) keeps them stable.",
+    "takeaways": [
+     "Backprop = chain rule computed in reverse order so shared terms are reused; weight gradients are ∂ℓ/∂f_k · h_kᵀ, so they are proportional to the stored activations (Eq. 7.23–7.25).",
+     "Going backwards alternates two cheap steps: multiply by Ω_kᵀ, then mask with the ReLU indicator I[f > 0] — efficient in compute but memory-hungry because every activation must be stored.",
+     "He init σ² = 2/D_h (forward) or 2/D_h′ (backward), compromise 4/(D_h+D_h′); too small or too large gives vanishing or exploding signals (Fig. 7.7)."
+    ],
+    "pitfalls": [
+     "Students confuse ∂ℓ/∂f_k (pre-activations) with ∂ℓ/∂h_k (activations) — have them label both in the toy chain of Eq. 7.9 before touching matrices.",
+     "The transpose in ∂f/∂h = Ωᵀ looks arbitrary — explain it as 'gradients flow back along the same arrows, so the shapes must flip'; a 2×3 example on the whiteboard settles it.",
+     "Why ReLU gives the factor 2 in He init: half the pre-activations are clipped, so E[h²] = σ_f²/2 (Problem 7.14); Xavier/Glorot lacks this factor."
+    ],
+    "links": "Reverse-mode differentiation through a stored computational graph is exactly what makes your flow-matching and CTMC training loops cheap, and the memory cost of storing activations is the same issue adjoint methods (Neural ODEs, on your path) were designed to avoid."
+   },
+   {
+    "paper": "udl-10",
+    "summary": "Chapter 10 motivates convolutional layers from three properties of images (high dimension, local correlation, stability under translation) and defines invariance f[t[x]] = f[x] versus equivariance f[t[x]] = t[f[x]]. It builds 1D then 2D convolution (kernel size, stride, padding, dilation, channels, receptive fields), down/upsampling including transposed and 1×1 convolutions, and closes with AlexNet, VGG, YOLO and a segmentation network.",
+    "takeaways": [
+     "A convolutional layer is a fully connected layer with most weights zero and the rest shared (Fig. 10.4) — a strong inductive bias, which is why on MNIST-1D the CNN reaches ~17% test error versus ~40% for a fully connected net that could in principle represent it.",
+     "Convolution is translation-equivariant; pooling and downsampling add partial invariance, so classification nets end invariant while segmentation nets stay equivariant.",
+     "Shape bookkeeping: C_i × C_o × K × K weights plus C_o biases per layer; receptive fields grow with depth, stride and dilation; 1×1 convolutions change channel counts and act as a per-position fully connected network."
+    ],
+    "pitfalls": [
+     "Output-size arithmetic with padding/stride/dilation — give students the formula and have them check it against PyTorch's printed shapes before building anything.",
+     "Thinking a 3×3 kernel on an RGB image has 9 weights — it has 3×3×3 per output channel; drawing the kernel as a small cube helps.",
+     "Invariance vs equivariance get mixed up — use the classification vs segmentation example of Fig. 10.1 (label stays fixed vs mask moves with the image)."
+    ],
+    "links": "Equivariance as an architectural prior is the same idea that runs through the GRL track (Hamilton's book) and E(n)-equivariant GNNs on your path, just with the translation group in place of permutations or rotations."
+   }
+  ]
+ },
+ {
   "id": "2026-10-26",
   "paper": "jeffrey",
   "summary": "Standard guidance steers a diffusion model towards a single condition; Jeffrey guidance instead moves a whole marginal p(y) of some feature y = u(x) to a prescribed target p*(y) while keeping p(x|y) fixed, which by Jeffrey's rule gives p*(x) = ρ(u(x)) p(x) with ρ = p*/p. The density ratio ρ is estimated with a classifier separating target from model samples, and its gradient (evaluated at the Tweedie estimate x̂₀) is added to the score late in sampling. Matching Inception-embedding distributions cuts FID substantially on CIFAR-10 and FFHQ, and on CelebA-HQ it rebalances or decorrelates attributes.",

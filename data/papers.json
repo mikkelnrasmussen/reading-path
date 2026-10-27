@@ -6221,9 +6221,9 @@
   },
   {
    "key": "d-2026-10-26-3",
-   "seq": 0.61,
+   "seq": 7.5,
    "track": "GEO",
-   "pass": 1,
+   "pass": 2,
    "title": "Compatible Likelihoods for Flow Matching on Manifolds",
    "authors": "Ng, Batzolis & Girolami",
    "year": 2026,
@@ -6232,14 +6232,20 @@
    "inZotero": false,
    "byJes": false,
    "prereqs": [],
-   "why": "On the flat 1D torus, the authors construct a case where a recent likelihood-based extension of Riemannian flow matching is optimised by a velocity field that pushes samples away from the data. They define 'compatibility' — the objective's population minimiser recovers the true marginal velocity — give a general condition for it, and propose an exponential-family objective over endpoints that is compatible and only puts mass on feasible velocities. It improves NLL on two of four sphere geospatial benchmarks and on high-dimensional tori.",
+   "why": "When does a likelihood-based flow-matching objective on a manifold recover the true marginal velocity? A clean 'compatibility' condition worth knowing for simplex/manifold flows.",
    "source": "discover",
-   "triaged": false,
-   "addedAt": "2026-10-26T08:37:47+00:00"
+   "triaged": true,
+   "addedAt": "2026-10-26T08:37:47+00:00",
+   "tags": [
+    "Riemannian flow matching",
+    "likelihood",
+    "tori",
+    "spheres"
+   ]
   },
   {
    "key": "d-2026-10-26-2",
-   "seq": 0.61,
+   "seq": 6.6,
    "track": "CTRL",
    "pass": 1,
    "title": "Internal Guidance as a Sampling Method for Tilted Diffusion Models",
@@ -6250,14 +6256,20 @@
    "inZotero": false,
    "byJes": false,
    "prereqs": [],
-   "why": "Reward guidance samples an exponential tilt of the base density, usually via an extra drift term or reweighted transitions ('external guidance'). For discrete data on {−1,1}^d the authors show the denoiser of any linearly tilted density is exactly the base denoiser evaluated at a shifted, rescaled input, so guidance can change where the denoiser is evaluated instead. Training with random diagonal rescalings lets a single network handle these out-of-distribution inputs, sampling reward tilts, class labels and infilling without fine-tuning.",
+   "why": "Exact reward tilts by moving where the denoiser is evaluated rather than adding a drift — a natural sequel to Jeffrey guidance and the flow-matching guidance survey.",
    "source": "discover",
-   "triaged": false,
-   "addedAt": "2026-10-26T08:37:48+00:00"
+   "triaged": true,
+   "addedAt": "2026-10-26T08:37:48+00:00",
+   "tags": [
+    "guidance",
+    "exponential tilting",
+    "discrete diffusion",
+    "denoiser"
+   ]
   },
   {
    "key": "d-2026-10-26-1",
-   "seq": 0.61,
+   "seq": 6.5,
    "track": "DISC",
    "pass": 1,
    "title": "Binary Discrete Diffusion: Candidate-Set Diffusion for Logic and Planning Tasks",
@@ -6268,10 +6280,16 @@
    "inZotero": false,
    "byJes": false,
    "prereqs": [],
-   "why": "Masked and uniform discrete diffusion destroy a token's identity in one jump, so noisy states can't express 'one of these few options'. Binary Discrete Diffusion is a continuous-time process whose state is a set of candidate tokens per position (a binary membership vector), changed by adding and removing candidates. It beats tuned masked and uniform baselines on Sudoku-Extreme, Boxoban and graph colouring, and stays competitive on language modelling.",
+   "why": "A CTMC whose state is a candidate set per position — a different corruption kernel to compare with masked/uniform discrete diffusion and your lattice-simplex generators.",
    "source": "discover",
-   "triaged": false,
-   "addedAt": "2026-10-26T08:38:10+00:00"
+   "triaged": true,
+   "addedAt": "2026-10-26T08:38:10+00:00",
+   "tags": [
+    "discrete diffusion",
+    "CTMC",
+    "candidate sets",
+    "reasoning"
+   ]
   }
  ]
 }

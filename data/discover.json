@@ -1,5 +1,83 @@
 [
  {
+  "id": "2026-10-27-1",
+  "date": "2026-10-27",
+  "year": 2026,
+  "venue": "arXiv",
+  "title": "Trajectory Matching: Discrete Flow Matching with Structured Actions",
+  "authors": "Kemper, Lienen, Lüdke & Günnemann",
+  "url": "https://arxiv.org/abs/2610.32602",
+  "figUrl": "https://arxiv.org/html/2610.32602",
+  "track": "DISC",
+  "tags": [
+   "discrete flow matching",
+   "CTMC",
+   "conditional paths",
+   "graph generation",
+   "molecules"
+  ],
+  "summary": "Most discrete flow matching conditions only on endpoints and so is limited to independent, component-wise edits on fixed-size states. Trajectory matching instead conditions on a full sequence of user-defined actions connecting the endpoints (attach a fragment, add a node with its edge, grow a child), giving simulation-free training targets. They prove the objective recovers the marginal flow and strictly subsumes factorised DFM; on MOSES molecule generation validity rises from 92.8% to 99.2%.",
+  "takeaways": [
+   "Conditioning on a whole action path rather than just endpoints makes non-factorising and size-changing actions tractable.",
+   "The marginal flow is still recovered, so this is a generalisation of DFM, not an approximation.",
+   "The action vocabulary becomes a modelling choice — domain-aligned actions help structured outputs."
+  ],
+  "keyFigure": "",
+  "relevance": "Your lattice-simplex CTMC moves single counts between isoforms under a fixed gene total; this framework lets you define richer, structured moves (e.g. shifting mass between isoforms that share exons) while keeping a principled generator-matching target."
+ },
+ {
+  "id": "2026-10-27-2",
+  "date": "2026-10-27",
+  "title": "Generative Modeling via Nonlinear Schrödinger Bridges and Branching Diffusions",
+  "authors": "Grau & Henry-Labordère",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2610.29476",
+  "figUrl": "https://arxiv.org/html/2610.29476",
+  "track": "OT",
+  "tags": [
+   "Schrödinger bridge",
+   "mean-field games",
+   "branching diffusions",
+   "semilinear PDEs",
+   "generative modelling"
+  ],
+  "summary": "The authors extend the Schrödinger bridge to a nonlinear version (SBNL) defined by coupled forward–backward PDEs from mean-field game theory, so the bridge can include interaction terms and convex penalties. They solve it with branching diffusions — a probabilistic representation of semilinear PDEs — which is embarrassingly parallel and scales to high dimension. The method recovers the classical bridge, handles Gross–Pitaevskii-type and potential interactions, and generates MNIST and FFHQ images; score-based diffusion and Gaussian Schrödinger bridges appear as special cases.",
+  "takeaways": [
+   "Classical Schrödinger bridges are the linear case of a mean-field-game PDE system; adding nonlinearity lets samples interact.",
+   "Branching diffusions give a simulation-based, parallel solver for the resulting semilinear PDEs.",
+   "Diffusion models and tractable Gaussian bridges sit inside the framework as special cases."
+  ],
+  "keyFigure": "",
+  "relevance": "Bridges between populations are a natural tool for perturbation modelling (control vs perturbed cells); the interaction term is a way to encode population-level constraints, such as matching a target marginal, which links to the Jeffrey guidance paper you read yesterday."
+ },
+ {
+  "id": "2026-10-27-3",
+  "date": "2026-10-27",
+  "year": 2026,
+  "venue": "arXiv",
+  "title": "Closing the Modality Gap via Simplex-Constrained Representations",
+  "authors": "Gupta, Reddy, Taslakian, Zantedeschi & Subakan",
+  "url": "https://arxiv.org/abs/2610.32890",
+  "figUrl": "https://arxiv.org/html/2610.32890",
+  "track": "GEO",
+  "tags": [
+   "simplex",
+   "representation geometry",
+   "contrastive learning",
+   "multimodal",
+   "total variation"
+  ],
+  "summary": "Contrastive multimodal models like CLIP leave a persistent gap between image and text embeddings on the sphere. Moving the embeddings onto the probability simplex with lightweight softmax adapters and a Total Variation similarity reduces the centroid gap by 97–99% across five retrieval benchmarks while matching or beating retrieval of unconstrained models.",
+  "takeaways": [
+   "Sphere and simplex share intrinsic dimension, but the simplex's non-negativity and unit-mass constraints act as a shared coordinate system.",
+   "TV distance replaces cosine similarity as the natural similarity on the simplex.",
+   "A purely geometric change, with small adapters, nearly closes the modality gap."
+  ],
+  "keyFigure": "",
+  "relevance": "A spark: the simplex as a representation space rather than a data space. Your isoform proportions already live there — it's a nudge to think about which similarity (TV, Fisher–Rao, Aitchison) your models implicitly use on it."
+ },
+ {
   "id": "2026-10-26-1",
   "date": "2026-10-26",
   "title": "Binary Discrete Diffusion: Candidate-Set Diffusion for Logic and Planning Tasks",
