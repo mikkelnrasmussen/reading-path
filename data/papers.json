@@ -6308,6 +6308,24 @@
    "source": "discover",
    "triaged": false,
    "addedAt": "2026-10-27T15:40:04+00:00"
+  },
+  {
+   "key": "d-2026-10-27-1",
+   "seq": 0.61,
+   "track": "DISC",
+   "pass": 1,
+   "title": "Trajectory Matching: Discrete Flow Matching with Structured Actions",
+   "authors": "Kemper, Lienen, Lüdke & Günnemann",
+   "year": 2026,
+   "url": "https://arxiv.org/abs/2610.32602",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [],
+   "why": "Most discrete flow matching conditions only on endpoints and so is limited to independent, component-wise edits on fixed-size states. Trajectory matching instead conditions on a full sequence of user-defined actions connecting the endpoints (attach a fragment, add a node with its edge, grow a child), giving simulation-free training targets. They prove the objective recovers the marginal flow and strictly subsumes factorised DFM; on MOSES molecule generation validity rises from 92.8% to 99.2%.",
+   "source": "discover",
+   "triaged": false,
+   "addedAt": "2026-10-27T15:48:14+00:00"
   }
  ]
 }
