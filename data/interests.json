@@ -1,12 +1,14 @@
 {
- "updated": "2026-10-26",
- "summary": "The signal is still thin: no independent reads or ratings yet, so this is based on two Discover papers you added and your first reads. You lean towards deep latent variable models for single-cell data (scVI, VAE priors) and flow/generator matching with guidance, alongside splicing biology.",
+ "updated": "2026-10-28",
+ "summary": "The signal is still thin — no independent reads or ratings yet — but your Discover choices are consistent: you keep adding papers on discrete flow matching / CTMC generation and on geometry of the simplex, alongside VAE-style latent variable models for single-cell data and guidance. You also liked a Schrödinger-bridge paper, so bridge-style generative modelling is on the radar too.",
  "more": [
+  "discrete flow matching and CTMC generative models",
+  "simplex geometry and simplex-constrained models",
   "deep latent variable models / VAE priors for single-cell",
   "flow and generator matching",
   "guidance of generative models",
-  "splicing biology",
-  "flows for discrete/sequence data"
+  "Schrödinger bridges",
+  "splicing biology"
  ],
  "less": []
 }

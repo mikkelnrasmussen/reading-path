@@ -1,5 +1,67 @@
 [
  {
+  "id": "2026-10-28",
+  "paper": "illustrated",
+  "summary": "Jay Alammar's visual walkthrough of the Transformer from 'Attention Is All You Need': stacks of six encoders and decoders, where each word's embedding is projected to query, key and value vectors and self-attention mixes information across positions. It builds up multi-head attention (8 heads of 64-d Q/K/V from 512-d embeddings), sinusoidal positional encodings, residual + layer-norm sublayers, masked decoder self-attention and the final linear + softmax over the vocabulary.",
+  "takeaways": [
+   "Self-attention for one token = softmax(q·k_j / √d_k) weights over all positions, used to average the value vectors; in matrix form it is a few matmuls, which is why it parallelises where an RNN cannot.",
+   "Multi-head attention runs 8 independent Q/K/V projections, concatenates the outputs and mixes them with W_O — letting different heads attend to different positions and representation subspaces.",
+   "Attention is order-agnostic, so position must be injected (sinusoidal encodings added to the embeddings); the decoder additionally masks future positions with −∞ before the softmax and uses encoder–decoder attention with queries from the decoder and keys/values from the encoder."
+  ],
+  "keyFigure": "",
+  "figUrl": "",
+  "relevance": "Transformers are the backbone of the masked-diffusion and single-cell foundation models you build on (e.g. scGPT/Geneformer-style encoders), and the attention-as-weighted-average view is the natural way to let isoforms of the same gene share information in an scIso-style predictor. Having the mechanics crisp also pays off directly for supervising the deep learning course, where tomorrow's chapter is transformers.",
+  "brief": "Focus on the self-attention section (the Q/K/V and score → softmax → weighted sum steps) and the matrix form; the training/decoding part at the end can be skimmed. It pairs naturally with today's Goodfellow Ch. 10 reading — RNNs pass information through a sequential hidden state with O(τ) unparallelisable steps, attention replaces that with direct all-to-all mixing. Question to keep in mind: what does the √d_k scaling protect against, and what would go wrong in the softmax without it?",
+  "news": "",
+  "extras": [
+   {
+    "paper": "gf-10a",
+    "summary": "Sections 10.1–10.3 introduce RNNs via unfolding a recurrence h(t)=f(h(t−1),x(t);θ) into a computational graph with shared parameters, so one transition function handles any sequence length. They cover the standard hidden-to-hidden RNN (Eq. 10.8–10.14) and its training by back-propagation through time, output-recurrent networks trained with teacher forcing, RNNs as directed graphical models over y, conditioning on a context vector, and bidirectional RNNs.",
+    "takeaways": [
+     "Parameter sharing across time is the core idea: unfolding turns the recurrent circuit into a deep feedforward graph, and BPTT is just ordinary backprop on that graph — with O(τ) time and memory that cannot be parallelised over steps.",
+     "Teacher forcing follows from maximum likelihood: condition step t+1 on the true y(t); it decouples time steps for output-recurrent nets, but creates a train/test mismatch when the model later runs free on its own outputs (mitigated by mixing in generated inputs, scheduled-sampling style).",
+     "As a probabilistic model an RNN parametrises a fully connected directed graphical model over the sequence with O(1) parameters in τ, because the hidden state h(t) summarises the whole past; bidirectional RNNs add a backward-in-time state so o(t) can depend on past and future."
+    ],
+    "pitfalls": [
+     "'Unfolded graph' vs 'circuit diagram' confuses students — draw both for three steps and point out that W, U, V appear once in the circuit but at every step in the unfolded graph.",
+     "Why can't BPTT be parallelised? Show that h(t) needs h(t−1); contrast with an output-recurrent net under teacher forcing where every step's input is known from the data.",
+     "Exposure bias from teacher forcing — explain with a toy autoregressive sampler that drifts off the training distribution after one wrong prediction."
+    ],
+    "links": "The autoregressive factorisation and the teacher-forcing train/test gap are the same issues that motivate masked diffusion and discrete flow matching, which generate all positions in parallel and train on corrupted rather than ground-truth contexts."
+   },
+   {
+    "paper": "gf-10b",
+    "summary": "Sections 10.4–10.12 cover encoder–decoder (seq2seq) RNNs and their fixed-size context bottleneck, deep and recursive RNNs, and the central difficulty of long-term dependencies: repeated multiplication by the same Jacobian makes gradients vanish or explode with its spectral radius. The rest surveys remedies — echo state networks, skip connections and leaky units, gated units (LSTM, GRU), gradient norm clipping, and explicit memory with soft attention-style addressing.",
+    "takeaways": [
+     "Vanishing/exploding gradients come from powers of the recurrent Jacobian: eigenvalues with |λ|<1 shrink as λ^t and |λ|>1 blow up, so long-range signals are exponentially weaker than short-range ones (10.7).",
+     "Gated RNNs (LSTM, GRU) create paths through time whose derivative stays near 1 — a linear self-loop on the cell state whose weight is a learned, input-dependent forget gate — generalising fixed-time-constant leaky units.",
+     "Gradient norm clipping handles 'cliffs' in the loss landscape by rescaling large gradients while keeping their direction; it fixes explosion but not vanishing, which needs architectural changes."
+    ],
+    "pitfalls": [
+     "Students often think LSTMs 'remove' vanishing gradients entirely — explain that they add an additive memory path whose gradient is a product of forget-gate values, which the network can keep near 1 when it needs to.",
+     "Clipping by value vs by norm: norm clipping preserves the update direction; per-minibatch clipping is biased relative to the true gradient.",
+     "The seq2seq bottleneck — a single context vector for the whole input — is the natural bridge to attention (Bahdanau et al.), which the chapter mentions in 10.12 and the transformer chapter builds on."
+    ],
+    "links": "The spectral-radius argument is the same one behind initialisation (UDL Ch. 7, read yesterday) and reappears for any iterated map, including long CTMC/ODE sampling chains; leaky units and gating are the conceptual ancestors of residual streams in the transformers your models use."
+   },
+   {
+    "paper": "udl-14",
+    "summary": "A short chapter framing unsupervised learning: models learned from unlabelled data, of which generative models map latent variables to data and probabilistic ones (flows, VAEs, diffusion) also assign a likelihood, while GANs only sample. It lists desirable properties of generative models — efficient, high-quality sampling, coverage, well-behaved and disentangled latent spaces, efficient likelihood — and introduces evaluation by test likelihood, Inception score, FID and manifold precision/recall.",
+    "takeaways": [
+     "No single generative model family has all desirable properties (Fig. 14.3): GANs sample well but have no likelihood; flows give exact likelihoods; VAEs and diffusion only give bounds.",
+     "Evaluate likelihood on held-out data, never on training data — a model can memorise training points and still have terrible coverage.",
+     "IS, FID and precision/recall measure different things: IS rewards confident, class-balanced samples; FID compares Gaussian fits in Inception feature space; precision (realism) and recall (coverage) separate the two failure modes using k-NN hyperspheres."
+    ],
+    "pitfalls": [
+     "Students conflate 'generative' with 'probabilistic' — point out GANs generate but assign no probability, and autoregressive transformers are probabilistic without latent variables.",
+     "FID is often treated as ground truth — stress that it depends entirely on the feature extractor and its Gaussian approximation, and isn't meaningful outside natural images.",
+     "Precision vs recall intuition: mode collapse = high precision, low recall; blurry over-dispersed samples = high recall, low precision."
+    ],
+    "links": "For your single-cell and isoform models the image metrics don't transfer — the precision/recall idea (in a sensible feature space, or on held-out likelihood for the NB + multinomial model) is the one worth carrying over, and it sets up Friday's flows and VAE chapters."
+   }
+  ]
+ },
+ {
   "id": "2026-10-27",
   "paper": "nilsen10",
   "summary": "A short Nature review arguing that alternative splicing is the main way ~20,000 human genes produce a far larger proteome: sequencing suggests 95–100% of multi-exon human pre-mRNAs are alternatively processed, with anywhere from two to thousands of isoforms per gene. It walks through the four basic splicing modules, how a small set of mostly ubiquitous regulators (SR proteins, hnRNPs, a few tissue-specific factors) control >100,000 decisions, the kinetic coupling of splicing to transcription elongation and chromatin, and closes on the open question of how much of this diversity is functional.",

@@ -1,5 +1,81 @@
 [
  {
+  "id": "2026-10-28-1",
+  "date": "2026-10-28",
+  "title": "Birth, Death and Diff: Insertion-Based Sequence Generation with Corrections",
+  "authors": "Maram, Patel, Naseem, … & McCallum",
+  "year": 2026,
+  "venue": "arXiv (cs.LG)",
+  "url": "https://arxiv.org/abs/2610.34310",
+  "figUrl": "https://arxiv.org/html/2610.34310",
+  "track": "DISC",
+  "tags": [
+   "masked diffusion",
+   "insertion",
+   "variable length",
+   "self-correction"
+  ],
+  "summary": "Insertion-based masked diffusion models generate variable-length sequences by interleaving mask insertion with unmasking, but their decisions are irreversible, so aggressive parallel decoding accumulates errors. δMDM adds substitution and deletion operations, is trained on its own aggressive-decoding mistakes, and interleaves correction steps at inference.",
+  "takeaways": [
+   "Irreversibility is what forces conservative (many-NFE) decoding in masked/insertion diffusion; making states revisable relaxes it.",
+   "Training on errors induced by aggressive unmasking teaches the model to correct itself.",
+   "Pareto-dominates FlexMDM on speed vs quality; halves generative perplexity on OpenWebText at the highest budget and matches TinyGSM accuracy with half the NFEs."
+  ],
+  "keyFigure": "",
+  "relevance": "A neat example of enriching a CTMC's jump set (insert, substitute, delete) beyond pure unmasking — directly relevant if your lattice-simplex generator ever needs moves that 'undo' earlier count allocations."
+ },
+ {
+  "id": "2026-10-28-2",
+  "date": "2026-10-28",
+  "title": "Active Learning of Conditional Generative Models via the Transport Neural Tangent Kernel",
+  "authors": "Ryu, Cho & Lopez",
+  "year": 2026,
+  "venue": "arXiv (cs.LG)",
+  "url": "https://arxiv.org/abs/2610.35652",
+  "figUrl": "https://arxiv.org/html/2610.35652",
+  "track": "SC",
+  "tags": [
+   "active learning",
+   "neural tangent kernel",
+   "Gaussian processes",
+   "flow matching",
+   "perturbation"
+  ],
+  "summary": "When experiments produce distributions (e.g. single-cell perturbation responses), mean-based active learning ignores distributional shape. The authors decompose Wasserstein test risk into mean and shape terms and propose the transport NTK, which measures how sensitive a model's predicted distribution is to its parameters, and use it as a GP covariance to pick informative conditions.",
+  "takeaways": [
+   "Wasserstein test risk = mean term + shape term, so mean-based acquisition is blind to shape.",
+   "tNTK recovers the standard NTK in the deterministic limit and upper-bounds posterior Fréchet variance under small parameter perturbations.",
+   "Beats the conditional-mean NTK across conditional flow matching and Monge-gap models, including single-cell perturbation data."
+  ],
+  "keyFigure": "",
+  "relevance": "Combines three of your threads — GPs, conditional flow matching and single-cell perturbation modelling — and the 'which condition to measure next' question maps onto choosing cell types or tissues for isoform-resolved sequencing."
+ },
+ {
+  "id": "2026-10-28-3",
+  "date": "2026-10-28",
+  "title": "Escaping cells dilute CRISPR screen responses unequally across cell types",
+  "authors": "Huang",
+  "year": 2026,
+  "venue": "arXiv (q-bio.QM)",
+  "url": "https://arxiv.org/abs/2610.35508",
+  "figUrl": "https://arxiv.org/html/2610.35508",
+  "track": "SC",
+  "tags": [
+   "Perturb-seq",
+   "CRISPR screens",
+   "mixture models",
+   "benchmarking"
+  ],
+  "summary": "In single-cell CRISPR screens, cells that escaped knockdown keep growing while knocked-down cells are depleted, so the measured response is diluted. A two-group mixture on the targeted gene's counts estimates this escape fraction, which reaches about half of cells in hESCs and shrinks responses to (1−e)² of the true effect.",
+  "takeaways": [
+   "The escape fraction rises with gene essentiality and differs between cell types.",
+   "Dilution biases cross-cell-type transfer models and rewards benchmark predictions shrunk towards no change.",
+   "Response sizes should be compared on knocked-down cells or corrected for escape."
+  ],
+  "keyFigure": "",
+  "relevance": "A spark from the data side: if you ever train or benchmark perturbation models (e.g. for isoform responses), this is a simple count-mixture correction that changes what the 'ground truth' even is."
+ },
+ {
   "id": "2026-10-27-1",
   "date": "2026-10-27",
   "year": 2026,

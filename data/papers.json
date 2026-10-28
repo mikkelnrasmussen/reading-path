@@ -90,7 +90,7 @@
   {
    "authors": "Nilsen & Graveley",
    "byJes": false,
-   "inZotero": false,
+   "inZotero": true,
    "key": "nilsen10",
    "pass": 1,
    "prereqs": [
@@ -103,7 +103,7 @@
    "url": "https://doi.org/10.1038/nature08909",
    "why": "The classic 'only 20k genes, the gap is splicing' paper.",
    "year": 2010,
-   "zotero": "",
+   "zotero": "KAIP2IYJ",
    "pickOn": "2026-10-27"
   },
   {
@@ -6293,7 +6293,7 @@
   },
   {
    "key": "d-2026-10-27-3",
-   "seq": 0.61,
+   "seq": 4.6,
    "track": "GEO",
    "pass": 1,
    "title": "Closing the Modality Gap via Simplex-Constrained Representations",
@@ -6304,14 +6304,20 @@
    "inZotero": false,
    "byJes": false,
    "prereqs": [],
-   "why": "Contrastive multimodal models like CLIP leave a persistent gap between image and text embeddings on the sphere. Moving the embeddings onto the probability simplex with lightweight softmax adapters and a Total Variation similarity reduces the centroid gap by 97–99% across five retrieval benchmarks while matching or beating retrieval of unconstrained models.",
+   "why": "Puts contrastive embeddings on the probability simplex with a Total Variation similarity, a light way into simplex geometry as a representation space.",
    "source": "discover",
-   "triaged": false,
-   "addedAt": "2026-10-27T15:40:04+00:00"
+   "triaged": true,
+   "addedAt": "2026-10-27T15:40:04+00:00",
+   "tags": [
+    "probability simplex",
+    "representation learning",
+    "CLIP",
+    "total variation"
+   ]
   },
   {
    "key": "d-2026-10-27-1",
-   "seq": 0.61,
+   "seq": 4.5,
    "track": "DISC",
    "pass": 1,
    "title": "Trajectory Matching: Discrete Flow Matching with Structured Actions",
@@ -6321,11 +6327,19 @@
    "zotero": "",
    "inZotero": false,
    "byJes": false,
-   "prereqs": [],
-   "why": "Most discrete flow matching conditions only on endpoints and so is limited to independent, component-wise edits on fixed-size states. Trajectory matching instead conditions on a full sequence of user-defined actions connecting the endpoints (attach a fragment, add a node with its edge, grow a child), giving simulation-free training targets. They prove the objective recovers the marginal flow and strictly subsumes factorised DFM; on MOSES molecule generation validity rises from 92.8% to 99.2%.",
+   "prereqs": [
+    "genmatch"
+   ],
+   "why": "Extends discrete flow matching from endpoint-conditioned, component-wise edits to paths of structured actions — a useful contrast to your CTMC generator matching on the lattice simplex.",
    "source": "discover",
-   "triaged": false,
-   "addedAt": "2026-10-27T15:48:14+00:00"
+   "triaged": true,
+   "addedAt": "2026-10-27T15:48:14+00:00",
+   "tags": [
+    "discrete flow matching",
+    "CTMC",
+    "graph generation",
+    "structured edits"
+   ]
   }
  ]
 }
