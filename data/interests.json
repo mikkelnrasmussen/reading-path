@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-28",
- "summary": "The signal is still thin — no independent reads or ratings yet — but your Discover choices are consistent: you keep adding papers on discrete flow matching / CTMC generation and on geometry of the simplex, alongside VAE-style latent variable models for single-cell data and guidance. You also liked a Schrödinger-bridge paper, so bridge-style generative modelling is on the radar too.",
+ "updated": "2026-10-29",
+ "summary": "The signal is still fairly thin, but it is consistent: from Discover you keep adding discrete flow matching / CTMC generation, simplex geometry, VAE-style latent variable models for single-cell data and guidance, and you liked a Schrödinger-bridge paper. Your first logged read beyond the plan — the Set Transformer, with a note that gene and isoform expression can be treated as sets (as in scLDM) — adds permutation-invariant architectures for cells and isoforms to the list.",
  "more": [
   "discrete flow matching and CTMC generative models",
   "simplex geometry and simplex-constrained models",
@@ -8,7 +8,8 @@
   "flow and generator matching",
   "guidance of generative models",
   "Schrödinger bridges",
-  "splicing biology"
+  "splicing biology",
+  "set / permutation-invariant architectures for cells and isoforms"
  ],
  "less": []
 }
