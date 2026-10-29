@@ -1,5 +1,53 @@
 [
  {
+  "id": "2026-10-29",
+  "paper": "illustrated",
+  "carried": true,
+  "summary": "Jay Alammar's visual walkthrough of the Transformer from 'Attention Is All You Need': stacks of six encoders and decoders, where each word's embedding is projected to query, key and value vectors and self-attention mixes information across positions. It builds up multi-head attention (8 heads of 64-d Q/K/V from 512-d embeddings), sinusoidal positional encodings, residual + layer-norm sublayers, masked decoder self-attention and the final linear + softmax over the vocabulary.",
+  "takeaways": [
+   "Self-attention for one token = softmax(q·k_j / √d_k) weights over all positions, used to average the value vectors; in matrix form it is a few matmuls, which is why it parallelises where an RNN cannot.",
+   "Multi-head attention runs 8 independent Q/K/V projections, concatenates the outputs and mixes them with W_O — letting different heads attend to different positions and representation subspaces.",
+   "Attention is order-agnostic, so position must be injected (sinusoidal encodings added to the embeddings); the decoder additionally masks future positions with −∞ before the softmax and uses encoder–decoder attention with queries from the decoder and keys/values from the encoder."
+  ],
+  "keyFigure": "",
+  "figUrl": "",
+  "relevance": "Transformers are the backbone of the masked-diffusion and single-cell foundation models you build on (e.g. scGPT/Geneformer-style encoders), and the attention-as-weighted-average view is the natural way to let isoforms of the same gene share information in an scIso-style predictor. Having the mechanics crisp also pays off directly for supervising the deep learning course, where tomorrow's chapter is transformers.",
+  "brief": "Focus on the self-attention section (the Q/K/V and score → softmax → weighted sum steps) and the matrix form; the training/decoding part at the end can be skimmed. It pairs naturally with today's Goodfellow Ch. 10 reading — RNNs pass information through a sequential hidden state with O(τ) unparallelisable steps, attention replaces that with direct all-to-all mixing. Question to keep in mind: what does the √d_k scaling protect against, and what would go wrong in the softmax without it?",
+  "news": "",
+  "extras": [
+   {
+    "paper": "udl-12",
+    "summary": "Chapter 12 builds the transformer from dot-product self-attention: each output is a softmax-weighted routing of shared value vectors, with weights from query–key similarity, extended by positional encodings, √D_q scaling and multiple heads, then wrapped in residual + LayerNorm + per-token MLP layers. It then walks through encoders (BERT, masked-token pre-training then fine-tuning), decoders (GPT3, masked self-attention for autoregressive next-token prediction), encoder–decoders with cross-attention, sparse attention for long sequences, and ViT/SWin for images.",
+    "takeaways": [
+     "Self-attention = shared linear maps for values/queries/keys plus data-dependent mixing weights (Eq. 12.5–12.9): parameter count is independent of sequence length N, but compute is quadratic in N; without positional encodings it is permutation-equivariant.",
+     "Encoder vs decoder is a training-objective and masking choice: BERT predicts randomly masked tokens using both contexts; GPT sets future dot products to −∞ so every position contributes a next-token loss in one forward pass (Eq. 12.15).",
+     "Inductive bias trades against data: ViT has to learn the 2D structure CNNs get for free and only beat contemporary CNNs with very large pre-training sets."
+    ],
+    "pitfalls": [
+     "Shapes in the matrix form (X is D×N, softmax over columns of KᵀQ) — have students write the dimensions of every term in Eq. 12.8 before coding; the book's column convention differs from PyTorch's row convention.",
+     "Why √D_q? Large dot products saturate the softmax and kill gradients; a quick numerical demo with random vectors of growing dimension makes it concrete.",
+     "Causal masking confusion: the mask is applied to the logits (−∞ before softmax), not to the attention weights afterwards, and it is what lets training be parallel while generation stays sequential."
+    ],
+    "links": "BERT's masked-token objective is the one-step ancestor of the masked diffusion models (MDLM/MD4) on your path, and this chapter is the textbook companion to the Illustrated Transformer you have open."
+   },
+   {
+    "paper": "udl-13",
+    "summary": "Chapter 13 represents a graph by an adjacency matrix A, node embeddings X and edge embeddings E, and demands that every layer be equivariant to node permutations (H P = F[H P, PᵀAP]). It builds a simple GCN layer that sums neighbours via H(A+I), covers graph-, node- and edge-level tasks, inductive vs transductive settings with neighbourhood sampling and graph partitioning for huge graphs, and variants of aggregation (mean, Kipf normalisation, max, graph attention) plus edge graphs.",
+    "takeaways": [
+     "A GCN layer is convolution with a relational inductive bias: shared parameters at every node and messages aggregated from neighbours, H_{k+1} = a[β1ᵀ + Ω H_k (A+I)] (Eq. 13.10).",
+     "Node and edge outputs must be permutation-equivariant; graph-level outputs become invariant via pooling such as the mean H_K 1/N (Eq. 13.7).",
+     "Graph attention is self-attention masked to A+I (Eq. 13.24): the transformer is a GNN on a fully connected graph, and a GAT is attention restricted to the graph's edges."
+    ],
+    "pitfalls": [
+     "Equivariance vs invariance for graphs — use the toxic-molecule (invariant) vs per-atom label (equivariant) examples and verify Eq. 13.6 on a 3-node graph.",
+     "Transductive training on one big graph feels like 'cheating' to students — explain that only labelled nodes enter the loss, while unlabelled nodes still pass messages.",
+     "Sum vs mean vs Kipf normalisation — sum keeps degree information (structure), mean removes it; Kipf's D^{-1/2}AD^{-1/2} down-weights hub nodes. A star graph shows the difference immediately."
+    ],
+    "links": "This is the entry point to your GRL track (Hamilton's book) and the E(n)-equivariant GNNs behind protein SE(3) generation; the 'transformer = GNN on a complete graph' view also links today's two chapters to the Transformers are Graph Neural Networks paper on your path."
+   }
+  ]
+ },
+ {
   "id": "2026-10-28",
   "paper": "illustrated",
   "summary": "Jay Alammar's visual walkthrough of the Transformer from 'Attention Is All You Need': stacks of six encoders and decoders, where each word's embedding is projected to query, key and value vectors and self-attention mixes information across positions. It builds up multi-head attention (8 heads of 64-d Q/K/V from 512-d embeddings), sinusoidal positional encodings, residual + layer-norm sublayers, masked decoder self-attention and the final linear + softmax over the vocabulary.",

@@ -1,5 +1,83 @@
 [
  {
+  "id": "2026-10-29-1",
+  "date": "2026-10-29",
+  "title": "H-GLow: Accelerating Graph Generation via Hazard-Guided Discrete Flow Matching",
+  "authors": "Ayadi, Günnemann",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2610.33599",
+  "figUrl": "https://arxiv.org/html/2610.33599",
+  "track": "DISC",
+  "tags": [
+   "discrete flow matching",
+   "CTMC",
+   "generator matching",
+   "graph generation",
+   "few-step sampling"
+  ],
+  "summary": "Decomposes a CTMC generator into hazards (how fast something jumps) and conditional jump distributions (where it goes), and uses them to plan graph edits and adapt the sampling time to how active the graph is. It plugs into pretrained graph DFM models and also proposes a new model trained with conditional generator matching to predict hazards and jumps directly.",
+  "takeaways": [
+   "The CTMC generator splits into an exit rate (hazard) and a jump kernel, and these can drive the sampler rather than a fixed time grid.",
+   "The proposed objective decomposes exactly into hazard matching plus hazard-weighted jump prediction.",
+   "Reported gains: better graph quality with substantially fewer sampling steps on molecular and synthetic benchmarks."
+  ],
+  "keyFigure": "",
+  "relevance": "Very close to your lattice-simplex CTMC models: a hazard/jump parametrisation of the generator could be a natural way to model isoform-count moves under a fixed gene total, and the adaptive-time sampler speaks directly to sampling cost."
+ },
+ {
+  "id": "2026-10-29-2",
+  "date": "2026-10-29",
+  "title": "How Geometry Shapes Generative Model Evaluation on Riemannian Manifolds",
+  "authors": "Oberski, Oldenburg, Kekkos et al.",
+  "year": 2026,
+  "venue": "NeurIPS 2026 workshop (GDDL)",
+  "url": "https://arxiv.org/abs/2610.33731",
+  "figUrl": "https://arxiv.org/html/2610.33731",
+  "track": "GEO",
+  "tags": [
+   "evaluation",
+   "Riemannian manifolds",
+   "Wasserstein",
+   "MMD",
+   "flow matching"
+  ],
+  "summary": "Compares geodesic, ambient and tangent-space versions of Wasserstein distance and MMD for evaluating generative models on manifolds of different curvature and dimension, using controlled-noise perturbations and Riemannian Flow Matching samples. Finds that no metric is uniformly reliable and gives reporting and calibration recommendations.",
+  "takeaways": [
+   "On manifolds, curvature and dimension change distances and volume growth, so the choice of evaluation distance changes the measured gap.",
+   "Geodesic, ambient and tangent-space metrics can disagree in both magnitude and noise sensitivity.",
+   "Recommendation: report the evaluation distance and calibrate metrics to the geometry of the samples."
+  ],
+  "keyFigure": "",
+  "relevance": "Your simplex models live on a curved space (e.g. under the Fisher–Rao view); this is a useful checklist for how you report sample quality for isoform proportions, and it fits yesterday's UDL Ch. 14 on evaluating generative models."
+ },
+ {
+  "id": "2026-10-29-3",
+  "date": "2026-10-29",
+  "title": "HELICS: Biobank-scale Conditional Synthetic Genome Generation via Latent Flow Matching",
+  "authors": "Abdel-Azim, Lin",
+  "year": 2026,
+  "venue": "NeurIPS 2026",
+  "url": "https://arxiv.org/abs/2610.36361",
+  "figUrl": "https://arxiv.org/html/2610.36361",
+  "track": "FLOW",
+  "tags": [
+   "latent flow matching",
+   "genomics",
+   "synthetic data",
+   "transformers",
+   "conditional generation"
+  ],
+  "summary": "Generates genome-wide SNP genotypes by compressing each chromosome with a convolutional autoencoder (>600K SNPs to 4,096 latent tokens) and training a transformer conditional flow-matching model on the concatenated latents, trained on 417K UK Biobank genomes. Conditioning on ancestry and genetic-liability summaries steers generation.",
+  "takeaways": [
+   "Latent flow matching makes an ultra-high-dimensional discrete distribution tractable without haplotype phasing.",
+   "Reported to preserve allele frequencies and local and long-range SNP correlation better than haplotype-based simulators.",
+   "Raising the conditioned disease liability shifts generated SNP dosages in a way that correlates with published association weights."
+  ],
+  "keyFigure": "",
+  "relevance": "A spark from genetics: the same 'discrete data → continuous latent → flow matching' route you could contrast with your direct CTMC-on-counts approach, and conditional synthetic cohorts are an interesting analogue for scIso-style conditional generation."
+ },
+ {
   "id": "2026-10-28-1",
   "date": "2026-10-28",
   "title": "Birth, Death and Diff: Insertion-Based Sequence Generation with Corrections",

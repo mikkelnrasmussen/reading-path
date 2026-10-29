@@ -34,5 +34,15 @@
  "d-2026-10-24-2": {
   "state": "later",
   "at": "2026-10-25T19:15:09+00:00"
+ },
+ "z-EVMH89DR": {
+  "state": "read",
+  "readOn": "2026-10-28",
+  "via": "logged",
+  "note": "Adapting the transformer architecture to the sets.",
+  "notes": {
+   "text": "For sets positional encoding is e.g. not needed. Gene or isoform expression can be considered sets, and hence this type of transformer architecture should be more suitable. Set Transformers are used in scLDM."
+  },
+  "at": "2026-10-29T09:50:13+00:00"
  }
 }

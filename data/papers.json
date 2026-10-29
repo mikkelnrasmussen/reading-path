@@ -6338,6 +6338,50 @@
     "graph generation",
     "structured edits"
    ]
+  },
+  {
+   "key": "deepsets17",
+   "seq": 3.9,
+   "track": "GRL",
+   "pass": 1,
+   "title": "Deep Sets",
+   "authors": "Zaheer, Kottur, Ravanbakhsh, Póczos, Salakhutdinov, Smola",
+   "year": 2017,
+   "url": "https://arxiv.org/abs/1703.06114",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [],
+   "why": "The sum-decomposition characterisation of permutation-invariant functions that the Set Transformer builds on — the basic tool for models over unordered sets of cells or isoforms.",
+   "source": "gap",
+   "triaged": true,
+   "addedAt": "2026-10-29T09:46:52+00:00"
+  },
+  {
+   "key": "z-EVMH89DR",
+   "seq": 4,
+   "track": "TRF",
+   "pass": 2,
+   "title": "Set Transformer: A Framework for Attention-based Permutation-Invariant Neural Networks",
+   "authors": "Lee, Lee, Kim, Kosiorek, Choi, Teh",
+   "year": 2019,
+   "url": "https://arxiv.org/abs/1810.00825",
+   "zotero": "EVMH89DR",
+   "inZotero": true,
+   "byJes": false,
+   "prereqs": [
+    "vaswani17",
+    "deepsets17"
+   ],
+   "why": "Attention-based pooling over sets (ISAB/PMA) — a natural architecture for permutation-invariant inputs like cells or a gene's isoforms, and a direct follow-on to this week's transformer reading.",
+   "source": "zotero",
+   "triaged": true,
+   "addedAt": "2026-10-29T09:46:52+00:00",
+   "tags": [
+    "set models",
+    "attention",
+    "permutation invariance"
+   ]
   }
  ]
 }
