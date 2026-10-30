@@ -1,5 +1,53 @@
 [
  {
+  "id": "2026-10-30",
+  "paper": "illustrated",
+  "carried": true,
+  "summary": "Jay Alammar's visual walkthrough of the Transformer from 'Attention Is All You Need': stacks of six encoders and decoders, where each word's embedding is projected to query, key and value vectors and self-attention mixes information across positions. It builds up multi-head attention (8 heads of 64-d Q/K/V from 512-d embeddings), sinusoidal positional encodings, residual + layer-norm sublayers, masked decoder self-attention and the final linear + softmax over the vocabulary.",
+  "takeaways": [
+   "Self-attention for one token = softmax(q·k_j / √d_k) weights over all positions, used to average the value vectors; in matrix form it is a few matmuls, which is why it parallelises where an RNN cannot.",
+   "Multi-head attention runs 8 independent Q/K/V projections, concatenates the outputs and mixes them with W_O — letting different heads attend to different positions and representation subspaces.",
+   "Attention is order-agnostic, so position must be injected (sinusoidal encodings added to the embeddings); the decoder additionally masks future positions with −∞ before the softmax and uses encoder–decoder attention with queries from the decoder and keys/values from the encoder."
+  ],
+  "keyFigure": "",
+  "figUrl": "",
+  "relevance": "Transformers are the backbone of the masked-diffusion and single-cell foundation models you build on (e.g. scGPT/Geneformer-style encoders), and the attention-as-weighted-average view is the natural way to let isoforms of the same gene share information in an scIso-style predictor. Having the mechanics crisp also pays off directly for supervising the deep learning course, where tomorrow's chapter is transformers.",
+  "brief": "Focus on the self-attention section (the Q/K/V and score → softmax → weighted sum steps) and the matrix form; the training/decoding part at the end can be skimmed. It pairs naturally with today's Goodfellow Ch. 10 reading — RNNs pass information through a sequential hidden state with O(τ) unparallelisable steps, attention replaces that with direct all-to-all mixing. Question to keep in mind: what does the √d_k scaling protect against, and what would go wrong in the softmax without it?",
+  "news": "",
+  "extras": [
+   {
+    "paper": "udl-16",
+    "summary": "Normalizing flows build a density by pushing a standard normal through an invertible network and scoring data with the change-of-variables formula (Eq. 16.3): base log-density at f⁻¹(x) minus the log absolute Jacobian determinant. The chapter is mostly about which layers make that tractable — linear (LU-parameterised), elementwise, coupling, autoregressive and residual (iRevNet, iResNet) flows — then multi-scale flows, GLOW and fitting a flow to a target density via reverse KL.",
+    "takeaways": [
+     "The density goes down where the map stretches space and up where it compresses it; the |det Jacobian| term is exactly that volume correction, and training is plain maximum likelihood (Eq. 16.8).",
+     "Every layer must be invertible, cheap to invert and have a cheap Jacobian determinant; coupling flows get a triangular Jacobian by transforming half the variables conditioned on the other half, with permutations between layers so everything mixes.",
+     "Flows are the only model in the book with exact likelihoods, but the latent must have the same dimension as the data, and sampling quality lagged GANs and diffusion — which is the motivation for continuous-time flows and flow matching."
+    ],
+    "pitfalls": [
+     "Why the inverse of the Jacobian determinant appears: use the 1D picture (Fig. 16.2) — probability mass in an interval is conserved, so if the interval gets twice as wide the density must halve.",
+     "Masked autoregressive vs inverse autoregressive flows: one is fast to evaluate likelihoods (training) and slow to sample, the other the reverse — a 2×2 table of 'which direction is parallel' clears it up.",
+     "The conditioner network in a coupling layer need not be invertible — only g must be; students often think the whole network has to be bijective."
+    ],
+    "links": "This is the discrete-layer ancestor of the continuous flows in Lipman's flow matching and the generator matching guide you have read: replace the stack of layers with an ODE and the log-det sum becomes the integrated divergence (and Hutchinson's trace estimator, Eq. 16.24, shows up again in FFJORD-style likelihoods)."
+   },
+   {
+    "paper": "udl-17",
+    "summary": "Prince builds the VAE from the nonlinear latent variable model Pr(x)=∫Norm[f(z),σ²I]Norm[z;0,I]dz: the marginal likelihood is intractable, so Jensen's inequality gives the ELBO, which is tight when q equals the posterior. An amortised Gaussian encoder approximates that posterior, the ELBO is estimated with one Monte Carlo sample plus a closed-form KL, and the reparameterisation trick makes it differentiable; the chapter ends with importance-sampled likelihoods, generation, resynthesis and disentanglement.",
+    "takeaways": [
+     "The VAE is a training device for a latent variable model, not the model itself; the model is just prior + decoder.",
+     "The ELBO can be read three ways — Jensen bound, log-likelihood minus KL(q‖posterior), and reconstruction minus KL(q‖prior) — and the gap is exactly the KL to the true posterior (Fig. 17.6).",
+     "Reparameterisation (z = μ + Σ^{1/2}ε) moves the randomness to an input branch so gradients reach the encoder; better likelihood estimates come from importance sampling with the encoder as proposal."
+    ],
+    "pitfalls": [
+     "'Reconstruction loss' with a Gaussian decoder is MSE only up to σ²; with σ fixed, students don't see that the reconstruction–KL trade-off depends on it — show how scaling σ reweights the two terms.",
+     "Why vanilla VAE samples are blurry: the decoder mean is shown and the spherical Gaussian noise is dropped (Fig. 17.12); the noise model, not the network, is the bottleneck.",
+     "Prior vs aggregated posterior: sampling from N(0,I) can land in latent regions the encoder never uses — point to the aggregated-posterior trick and to hierarchical/learned priors."
+    ],
+    "links": "Familiar ground from scVI, which swaps the Gaussian decoder for a negative binomial one — the same move as your NB + multinomial isoform model; the importance-sampling estimator in 17.8.1 is the one-sample-to-K-sample step that IWAE (on your path) turns into a tighter bound."
+   }
+  ]
+ },
+ {
   "id": "2026-10-29",
   "paper": "illustrated",
   "carried": true,

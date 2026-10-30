@@ -1,5 +1,82 @@
 [
  {
+  "id": "2026-10-30-1",
+  "date": "2026-10-30",
+  "title": "Learning developmental dynamics from lineage context",
+  "authors": "Gowri, Fishman, Colgan et al.",
+  "year": 2026,
+  "venue": "arXiv (q-bio.QM, cs.LG)",
+  "url": "https://arxiv.org/abs/2610.40447",
+  "figUrl": "https://arxiv.org/html/2610.40447",
+  "track": "SC",
+  "tags": [
+   "single-cell",
+   "stochastic interpolants",
+   "lineage tracing",
+   "tree transformers",
+   "counterfactuals"
+  ],
+  "summary": "Introduces 'lineage inpainting', a generative model that uses the states of a cell's relatives in a lineage tree as context, combining tree-structured transformers with stochastic interpolants to model cell-state dynamics. On a lineage-traced mouse embryogenesis atlas it recovers dynamics not visible from expression alone, such as transcriptional convergence of distinct lineages.",
+  "takeaways": [
+   "Lineage context (sisters, cousins) is treated as conditioning information for a stochastic-interpolant generative model over cell states.",
+   "It resolves convergence events where different lineages reach a common transcriptional state.",
+   "Although trained only on unperturbed development, simulated counterfactuals agree in many cases with observed knockout phenotypes, including a single-cell Tbx5 knockout measurement."
+  ],
+  "keyFigure": "",
+  "relevance": "A worked example of interpolant-based single-cell generation with structured, set-like context — close to your scIso conditioning question and to the Set Transformer / scLDM idea of treating cells as sets."
+ },
+ {
+  "id": "2026-10-30-2",
+  "date": "2026-10-30",
+  "title": "End-to-End Guarantees for Masked Diffusion Models under Conditional Mixing",
+  "authors": "Sheriff",
+  "year": 2026,
+  "venue": "arXiv (cs.LG)",
+  "url": "https://arxiv.org/abs/2610.39444",
+  "figUrl": "https://arxiv.org/html/2610.39444",
+  "track": "DISC",
+  "tags": [
+   "masked diffusion",
+   "sample complexity",
+   "theory",
+   "parallel decoding"
+  ],
+  "summary": "Gives an end-to-end KL bound for masked diffusion models with a learned denoiser, for sources whose masked-token posteriors depend only weakly on distant tokens ('conditional mixing', correlation length τ_c). Training sample complexity is independent of sequence length, and a dilated schedule needs only O(τ_c log(N|V|/ε)) unmasking steps versus Ω(N) for a fixed random order.",
+  "takeaways": [
+   "Bounds KL(data‖sampler) ≤ ε + N·ε′, combining training error and sampling error rather than assuming an exact denoiser.",
+   "The number of training sequences needed scales with τ_c log|V| in the exponent, which the paper shows is minimax-optimal up to constants.",
+   "Block-autoregressive samplers chain across blocks with no added error."
+  ],
+  "keyFigure": "",
+  "relevance": "If you use masked diffusion over isoform tokens, this tells you when parallel unmasking is safe: it hinges on how local the dependencies are — worth asking how 'mixing' isoforms within a gene really are."
+ },
+ {
+  "id": "2026-10-30-3",
+  "date": "2026-10-30",
+  "title": "Annealed sampling of diffusion models in lattice field theory",
+  "authors": "Kanwar, Vega",
+  "year": 2026,
+  "venue": "arXiv (hep-lat)",
+  "url": "https://arxiv.org/abs/2610.35792",
+  "figUrl": "https://arxiv.org/html/2610.35792",
+  "track": "DIF",
+  "tags": [
+   "energy-based models",
+   "score matching",
+   "stochastic normalizing flows",
+   "replica exchange",
+   "physics"
+  ],
+  "summary": "Trains an energy-based diffusion model by score matching, then samples it exactly using stochastic normalizing flows or flow-transformed replica exchange (T-REX), choosing the sampler after training. Tested on scalar field theory and the O(3) sigma model, it follows the predicted exactness and scaling and clearly beats samplers without a learned component.",
+  "takeaways": [
+   "Parameterising the diffusion model as an energy lets you plug it into annealing/MCMC samplers with exactness guarantees.",
+   "Training (score matching) and sampling (SNF or T-REX) are decoupled, so the sampler can be swapped later.",
+   "Local-footprint energy models keep gradients and divergences cheap on lattices."
+  ],
+  "keyFigure": "",
+  "relevance": "A spark from physics: the EBM-as-diffusion idea connects to the guidance and SMC-style sampling papers on your path, and shows how to make a learned diffusion prior exact at sampling time."
+ },
+ {
   "id": "2026-10-29-1",
   "date": "2026-10-29",
   "title": "H-GLow: Accelerating Graph Generation via Hazard-Guided Discrete Flow Matching",
