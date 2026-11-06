@@ -1,5 +1,389 @@
 [
  {
+  "id": "2026-11-06-1",
+  "date": "2026-11-06",
+  "title": "Rethinking One Gene, One Token: Transcriptome-Aware Tokenization for Single-Cell Foundation Models",
+  "authors": "Xiong, Li, Zheng, … Zhou",
+  "year": 2026,
+  "venue": "arXiv (q-bio.GN)",
+  "url": "https://arxiv.org/abs/2611.05410",
+  "figUrl": "https://arxiv.org/html/2611.05410",
+  "track": "SC",
+  "tags": [
+   "single-cell foundation models",
+   "tokenization",
+   "transformers",
+   "gene sets"
+  ],
+  "summary": "scTAT replaces one-token-per-gene with a gene-set vocabulary of overlapping sets that recur with stable relative expression across the pretraining corpus, plus a per-cell tokenizer that lets gene sets and single genes compete for token positions (scores normalised by √set size). Training still reconstructs individual genes, so outputs stay at gene resolution.",
+  "takeaways": [
+   "Which genes share a token is decided per cell, not fixed in advance.",
+   "Matches the strongest one-gene-per-token model on frozen-embedding cell-type annotation with half the token budget; the advantage grows as the budget shrinks.",
+   "Gene-set tokens nearly halve the Transformer's matmul cost for the same genes."
+  ],
+  "keyFigure": "",
+  "relevance": "Grouping co-expressed features into shared tokens while decoding at fine resolution is close to the gene → isoform hierarchy in scIso: a gene token that is decoded into its isoform composition is the same pattern one level down. Pairs well with your Set Transformer note on treating expression as a set."
+ },
+ {
+  "id": "2026-11-06-2",
+  "date": "2026-11-06",
+  "title": "Masked diffusion as random sequential adsorption: an exactly solvable model for parallel decoding",
+  "authors": "Baule",
+  "year": 2026,
+  "venue": "arXiv (cond-mat.stat-mech)",
+  "url": "https://arxiv.org/abs/2611.07845",
+  "figUrl": "https://arxiv.org/html/2611.07845",
+  "track": "DISC",
+  "tags": [
+   "masked diffusion",
+   "parallel decoding",
+   "unmasking schedules",
+   "thermodynamic metric",
+   "statistical physics"
+  ],
+  "summary": "Shows that the error of revealing several tokens in parallel in a masked diffusion model equals the entropy production of generation relative to the reversed masking process. For Markov data the generation is a random sequential adsorption process that is solved exactly for any number of steps, and for many steps the error becomes a dissipation set by a closed-form thermodynamic metric built from mutual information between tokens.",
+  "takeaways": [
+   "Parallel-decoding error = entropy production relative to the reversed masking process, for any data.",
+   "Optimal unmasking schedules are geodesics of a thermodynamic metric derived from inter-token mutual information.",
+   "With longer-range correlations the error concentrates early, so schedules that start with small steps do better and need fewer steps."
+  ],
+  "keyFigure": "",
+  "relevance": "Directly informs schedule design for your masked-diffusion model of isoform counts: isoforms within a gene are strongly correlated, which this analysis says should push you toward small early unmasking steps. It is also a neat bridge between your DISC and GEO tracks (schedules as geodesics)."
+ },
+ {
+  "id": "2026-11-06-3",
+  "date": "2026-11-06",
+  "title": "A Night at the LLM Zoo: Data Conditioned Flow Matching for Generating Pretrained LLM Weights",
+  "authors": "Biggs, Soro, Gupta, Andreis, …",
+  "year": 2026,
+  "venue": "arXiv (cs.LG)",
+  "url": "https://arxiv.org/abs/2611.07103",
+  "figUrl": "https://arxiv.org/html/2611.07103",
+  "track": "FLOW",
+  "tags": [
+   "weight-space generation",
+   "flow matching",
+   "model zoos",
+   "data mixtures"
+  ],
+  "summary": "The authors train a zoo of GPT-2 models (51M, 124M and 355M parameters, 100 per size) while systematically varying the pretraining data mixture, then fit a flow-matching model of full weights in a Gram-PCA compressed weight space, conditioned on the mixture composition. Generated models for held-out mixtures perform similarly to trained ones on perplexity and capability benchmarks.",
+  "takeaways": [
+   "Variation across the zoo is structured by data-mixture composition.",
+   "Conditioning on a point on the simplex of mixtures lets the generator generalise zero-shot to unseen mixtures.",
+   "Weight generation is made tractable by compressing weights (Gram-PCA) before flow matching."
+  ],
+  "keyFigure": "",
+  "relevance": "An exploratory spark: flow matching conditioned on a composition (a point on the simplex) is the mirror image of your setting, where the composition is the output. A fun example to show students in the course of how far 'generate X with flow matching' now reaches."
+ },
+ {
+  "id": "2026-11-05-1",
+  "date": "2026-11-05",
+  "title": "Coupling cellular trajectories and RNA kinetics on continuous expression manifolds with ManifoldVelo",
+  "authors": "Zhou, Li, Liu, Pan et al.",
+  "year": 2026,
+  "venue": "arXiv (q-bio.QM)",
+  "url": "https://arxiv.org/abs/2611.03056",
+  "figUrl": "https://arxiv.org/html/2611.03056",
+  "track": "SC",
+  "tags": [
+   "RNA velocity",
+   "splicing kinetics",
+   "pseudotime",
+   "single-cell",
+   "trajectory inference"
+  ],
+  "summary": "ManifoldVelo jointly learns cell coordinates (pseudotime), continuous unspliced/spliced RNA trajectories and regulatory kinetics, matching trajectory derivatives to transcription–splicing–degradation dynamics, also between observed cells. It handles cyclic, multibranch and smooth trajectories, and new cells get pseudotime and velocity from spliced RNA alone without refitting.",
+  "takeaways": [
+   "Pseudotime and RNA velocity are estimated together, so ordering, reconstruction and kinetics inform each other instead of being fitted in sequence.",
+   "Kinetic consistency is enforced on a continuous manifold, including between observed cells, rather than only at data points.",
+   "The fitted model works as a reusable dynamic reference: new samples are projected using spliced counts only."
+  ],
+  "keyFigure": "",
+  "relevance": "Splicing kinetics enter here through unspliced/spliced counts per gene; it is a useful contrast to your isoform-level view, where splicing shows up as compositions over isoforms with a fixed gene total — and a reminder that time/trajectory could be a conditioning variable for scIso-style prediction."
+ },
+ {
+  "id": "2026-11-05-2",
+  "date": "2026-11-05",
+  "title": "Logical Guidance of Stochastic Interpolants",
+  "authors": "Gerhartz, Alesiani, Warrell, Christiansen et al.",
+  "year": 2026,
+  "venue": "arXiv (cs.LG)",
+  "url": "https://arxiv.org/abs/2610.38648",
+  "figUrl": "https://arxiv.org/html/2610.38648",
+  "track": "CTRL",
+  "tags": [
+   "guidance",
+   "stochastic interpolants",
+   "flow matching",
+   "composition"
+  ],
+  "summary": "The paper asks when logical combinations of conditions (negation, XOR, conjunction) can be imposed by composing velocity fields in flow matching / stochastic interpolants. Negation and exclusive disjunction compose exactly on any interpolant, but conjunction is exact only on Gaussian paths; LOGSI fixes this by alternating transport steps with score-based re-equilibration.",
+  "takeaways": [
+   "Score composition rules from diffusion do not carry over to velocities for free: conjunction incurs a drift-interaction error on non-Gaussian paths.",
+   "Negation and XOR remain exact for any interpolant, so some guidance logic is path-independent.",
+   "LOGSI interleaves transport with score re-equilibration and improves rule conformity at equal compute on images and QM9 molecular editing."
+  ],
+  "keyFigure": "",
+  "relevance": "If you want to guide your lattice-simplex / generator-matching models on several conditions at once (cell type AND perturbation, say), this paper shows exactly where naive composition of learned fields stops being exact — worth knowing before trying it on non-Gaussian paths."
+ },
+ {
+  "id": "2026-11-05-3",
+  "date": "2026-11-05",
+  "title": "Learning hidden-state dynamics from unpaired snapshots with lift-project SDEs",
+  "authors": "Wang, George, Jacobs",
+  "year": 2026,
+  "venue": "arXiv (cs.LG)",
+  "url": "https://arxiv.org/abs/2611.00742",
+  "figUrl": "https://arxiv.org/html/2611.00742",
+  "track": "OT",
+  "tags": [
+   "snapshot data",
+   "SDEs",
+   "hidden variables",
+   "Schrödinger bridges",
+   "trajectory inference"
+  ],
+  "summary": "From unpaired population snapshots, methods that evolve only the observed coordinate (time-dependent SDEs, Schrödinger bridges, OT) are shown, for a scalar observation, to always have non-negative lagged covariance — a computable error floor. The lift-project SDE adds a few hidden coordinates, trained only to match the snapshots, and gets below that floor on oscillator benchmarks.",
+  "takeaways": [
+   "Snapshot data fixes marginals but not temporal coupling; the modelling prior decides the coupling.",
+   "Observed-only Markov models cannot produce negative lagged covariance (via a comparison theorem), so oscillatory dynamics are out of reach.",
+   "One hidden coordinate already helps, and one model can fit experiments that differ only in hidden initial state."
+  ],
+  "keyFigure": "",
+  "relevance": "A spark from dynamical systems: single-cell snapshot methods (Schrödinger bridges, OT trajectory inference) are exactly the observed-only class critiqued here, which makes it a thought-provoking angle on latent states in cell dynamics."
+ },
+ {
+  "id": "2026-11-04-1",
+  "date": "2026-11-04",
+  "title": "IsoAlign: Isoform-Aware DNA-Protein Alignment via Joint-Embedding Predictive Architectures",
+  "authors": "Sadjadi, Seyed-Ahmadi, … Wang, Subasri",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2611.00241",
+  "figUrl": "https://arxiv.org/html/2611.00241",
+  "track": "ISO",
+  "tags": [
+   "alternative splicing",
+   "isoforms",
+   "genomic foundation models",
+   "JEPA",
+   "DNA-protein alignment"
+  ],
+  "summary": "Genomic foundation models usually ignore alternative splicing. IsoAlign pretrains DNA representations by aligning transcripts to their protein isoforms with two JEPA objectives: DP-JEPA predicts protein embeddings from DNA with contrastive alignment, and IM-JEPA masks protein isoforms of the same gene and predicts them from the others.",
+  "takeaways": [
+   "Isoform-level DNA-protein pairing is used as the pretraining signal, rather than plain masked-token prediction on DNA.",
+   "IM-JEPA explicitly models relationships among the alternative isoforms of one gene via masked prediction in protein-embedding space.",
+   "The authors report improved downstream performance on pathogenicity, fitness, gene-expression and TF-binding tasks over standard self-supervised GFM pretraining."
+  ],
+  "keyFigure": "",
+  "relevance": "IM-JEPA's 'predict a masked isoform from its siblings within a gene' is the sequence-side analogue of your within-gene compositional view of isoform counts; its isoform embeddings could be a useful per-isoform feature for scIso or for conditioning a lattice-simplex generator."
+ },
+ {
+  "id": "2026-11-04-2",
+  "date": "2026-11-04",
+  "title": "Coarse-Graining Optimal Transport for Rollout-Free Post-Training of Flow Matching",
+  "authors": "Lim, Gupta, Mahoney, Erichson",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2610.41269",
+  "figUrl": "https://arxiv.org/html/2610.41269",
+  "track": "OT",
+  "tags": [
+   "flow matching",
+   "optimal transport couplings",
+   "post-training",
+   "few-step sampling"
+  ],
+  "summary": "Making flow-matching couplings more OT-like does not reliably help at low NFE, because the source is continuous, targets are finite and networks have finite capacity. ReCouple builds controllable coarse-grained OT couplings for rollout-free post-training; ReCouple+ refines source resolution toward semi-discrete OT, and ReCouple++ adds spatial regularisation of the velocity field.",
+  "takeaways": [
+   "Coupling optimality, neural realizability and sample quality interact in an NFE-dependent way — 'more OT' is not automatically better.",
+   "Coarse-graining the OT coupling gives a knob between independent and fully OT couplings, used to post-train an existing flow without simulating rollouts.",
+   "Straight trajectories need not mean spatially simple velocity fields, which motivates regularising the velocity field itself (ReCouple++)."
+  ],
+  "keyFigure": "",
+  "relevance": "Directly relevant to your OT-CFM / minibatch-OT background and to choosing couplings for simplex flow matching: the finding that coupling optimality must be traded against what the network can represent is a useful lens for isoform-proportion flows with few sampling steps."
+ },
+ {
+  "id": "2026-11-04-3",
+  "date": "2026-11-04",
+  "title": "Steerable Single-step Retrosynthesis with Electron-pushing Discrete Flow Matching and Feynman-Kac Steering",
+  "authors": "Susanu, Xuan-Vu, Schwaller",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2611.03696",
+  "figUrl": "https://arxiv.org/html/2611.03696",
+  "track": "DISC",
+  "tags": [
+   "discrete flow matching",
+   "CTMC",
+   "Feynman-Kac steering",
+   "chemistry",
+   "retrosynthesis"
+  ],
+  "summary": "Verso MAELLE represents a retrosynthetic disconnection as a CTMC over edits in 'electron space' (electron-pushing arrows) and trains it with discrete flow matching. At inference, Feynman-Kac steering with rewards pushes it toward under-represented reaction types, e.g. ring-forming cyclisations and domino sequences.",
+  "takeaways": [
+   "The CTMC state space is chosen to match domain mechanics (electron redistribution) rather than generic tokens or graph edits.",
+   "Feynman-Kac (SMC-style) steering lets a pretrained discrete flow be redirected by a reward without retraining.",
+   "Steering can reach modes the training data under-represents, shown with a ring-breaking reward and a domino-incentivising reward."
+  ],
+  "keyFigure": "",
+  "relevance": "A spark from chemistry, but methodologically close to home: a CTMC on a domain-shaped discrete state space plus reward-based FK steering mirrors your lattice-simplex generator matching, and suggests how one could steer isoform-count samples toward e.g. a desired isoform switch."
+ },
+ {
+  "id": "2026-11-03-1",
+  "date": "2026-11-03",
+  "title": "CytoWave: Perturbation-Centric Pretraining for Single-Cell Response Prediction",
+  "authors": "Miao, Yan, Ma et al.",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2611.02311",
+  "figUrl": "https://arxiv.org/html/2611.02311",
+  "track": "SC",
+  "tags": [
+   "single-cell",
+   "perturbation",
+   "pretraining",
+   "masked modelling",
+   "cross-species"
+  ],
+  "summary": "CytoWave is a pretraining framework for predicting single-cell responses to genetic perturbations. It unifies large cross-species perturbation datasets via orthology, first learns control cell states with masked gene-expression recovery, then pretrains to predict perturbed expression from control state plus perturbation signal, with a contrastive term aligning response latents to perturbation embeddings.",
+  "takeaways": [
+   "Two-stage training: masked recovery on unperturbed cells, then perturbation-conditioned prediction.",
+   "Orthology mapping lets perturbation screens from several species be pooled for pretraining.",
+   "Evaluation holds out whole datasets, a stricter test of generalisation than within-dataset splits."
+  ],
+  "keyFigure": "",
+  "relevance": "A useful reference point for perturbation modelling as conditional prediction from a control state — the same \"predict expression given context\" framing as scIso, and a reminder to evaluate with dataset-level hold-outs."
+ },
+ {
+  "id": "2026-11-03-2",
+  "date": "2026-11-03",
+  "title": "Online Class Posteriors for Interpretable and Controllable Discrete Diffusion",
+  "authors": "Koulischer, Van De Velde, Remy, Develder, Demeester",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2611.03454",
+  "figUrl": "https://arxiv.org/html/2611.03454",
+  "track": "DISC",
+  "tags": [
+   "discrete diffusion",
+   "guidance",
+   "masked diffusion",
+   "classifier-free guidance"
+  ],
+  "summary": "The authors track the class-conditional posterior online during discrete (masked) diffusion by combining conditional and unconditional model predictions. This posterior gives interpretable dynamics and enables logical guidance (AND, OR, NOT), and they point out that discrete classifier-free guidance mixes data distributions whereas continuous CFG mixes marginals.",
+  "takeaways": [
+   "The class posterior can be updated step by step from conditional vs unconditional predictions, without a separate classifier.",
+   "Logical compositions of conditions (including NOT, i.e. avoiding a class) become possible in discrete diffusion.",
+   "Discrete and continuous CFG are not the same object: one mixes data distributions, the other mixes marginals."
+  ],
+  "keyFigure": "",
+  "relevance": "Directly relevant to guiding your masked-diffusion / CTMC models of isoform counts — e.g. conditioning on cell type or steering away from a state — and the CFG mismatch point is worth checking before you port continuous guidance tricks."
+ },
+ {
+  "id": "2026-11-03-3",
+  "date": "2026-11-03",
+  "title": "Generative diffusion in long-range correlated landscapes: Speciation cascade and the foam structure of the score",
+  "authors": "Garnier-Brun, Biroli, Mézard, Bouchaud",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2611.02955",
+  "figUrl": "https://arxiv.org/html/2611.02955",
+  "track": "DIF",
+  "tags": [
+   "diffusion theory",
+   "statistical physics",
+   "speciation",
+   "score function"
+  ],
+  "summary": "Using an analytically tractable data model (the Gibbs measure of a high-dimensional random potential with long-range correlations), the authors study the exact score of a variance-exploding diffusion. The single speciation threshold becomes a speciation window in which the reverse process commits to ever finer branches of a hierarchy of states, and the score looks like a \"foam\" of cells separated by shock-like boundaries.",
+  "takeaways": [
+   "For hierarchically structured data, commitment to a mode happens progressively over a window of noise levels, not at one threshold.",
+   "The exact score is piecewise smooth with sharp boundaries between cells — a \"foam\".",
+   "Those boundaries may be where trained models misplace probability mass."
+  ],
+  "keyFigure": "",
+  "relevance": "An exploratory spark: a physics view of why the full reverse process matters. The hierarchy picture (coarse class first, finer states later) is a nice lens for cell types → subtypes → isoform usage in your generative models."
+ },
+ {
+  "id": "2026-11-02-1",
+  "date": "2026-11-02",
+  "title": "scAnyOmics: Foundation-Model Distillation for Any-to-Any Completion of Multi-omics Virtual Cells",
+  "authors": "Song, Du, Iwasawa, Matsuo, Niu",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2610.41399",
+  "figUrl": "https://arxiv.org/html/2610.41399",
+  "track": "SC",
+  "tags": [
+   "single-cell foundation models",
+   "multi-omics",
+   "missing modalities",
+   "distillation",
+   "cross-modal prediction"
+  ],
+  "summary": "scAnyOmics distils a frozen single-cell foundation model into a multimodal student that maps scRNA-seq, protein markers and scATAC-seq into one shared representation, so any missing modality can be predicted from the ones observed. It is trained on 690,880 cells from six public studies with paired and partially paired measurements and evaluated on held-out donors.",
+  "takeaways": [
+   "Any-to-any completion: one shared latent is used to reconstruct whichever modality is missing, rather than training a separate model per direction.",
+   "Knowledge from a frozen foundation model is transferred by distillation, which lets partially paired data contribute.",
+   "Reported to beat baselines on held-out donors, and also used for cell-type annotation, perturbation-response prediction and biological-age estimation."
+  ],
+  "keyFigure": "",
+  "relevance": "This is the same problem shape as scIso — predicting an unmeasured layer (isoforms) from a measured one (gene expression) — so its handling of partially paired data and foundation-model distillation is a useful comparison point for how you train with few long-read cells and many short-read ones."
+ },
+ {
+  "id": "2026-11-02-2",
+  "date": "2026-11-02",
+  "title": "An ODE-based Sampler for Discrete Diffusion Models",
+  "authors": "Gourevitch, Janati, Moulines, Xing, Durmus, Zanella",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2610.40618",
+  "figUrl": "https://arxiv.org/html/2610.40618",
+  "track": "DISC",
+  "tags": [
+   "discrete diffusion",
+   "CTMC",
+   "probability flow ODE",
+   "masked diffusion",
+   "distillation"
+  ],
+  "summary": "The paper asks whether discrete (CTMC) diffusion has an analogue of the probability-flow ODE and answers yes with exponential residual flows: each token carries a continuous residual that evolves by a piecewise ODE driven by the current state and the forward/backward rate matrices, and the discrete state jumps when a residual hits zero. They prove the construction preserves the diffusion's marginals and specialise it to masked and uniform diffusion.",
+  "takeaways": [
+   "All the randomness can be moved into the initial residuals, so after initialisation the sampler is deterministic yet keeps the CTMC marginals exactly.",
+   "Jumps happen when a residual reaches zero — essentially an exponential-clock construction of the jump times, made deterministic given the clocks.",
+   "Deterministic trajectories make consistency distillation possible for discrete diffusion; they report gains over earlier approaches on code and text generation."
+  ],
+  "keyFigure": "",
+  "relevance": "Your lattice-simplex generator-matching models are CTMCs, so a marginal-preserving deterministic sampler is directly applicable — and could enable few-step distilled sampling of isoform counts. Worth checking whether the construction needs a factorised (per-token) rate, since your jumps move counts between isoforms under a fixed gene total."
+ },
+ {
+  "id": "2026-11-02-3",
+  "date": "2026-11-02",
+  "title": "Second-order Sinkhorn Geometry and √n-Inference",
+  "authors": "Saidi, Gunsilius, Mena",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2610.36488",
+  "figUrl": "https://arxiv.org/html/2610.36488",
+  "track": "OT",
+  "tags": [
+   "optimal transport",
+   "Sinkhorn divergence",
+   "Riemannian geometry",
+   "parallel transport",
+   "statistical inference"
+  ],
+  "summary": "Building on a formal Riemannian metric tensor that quadratically approximates the Sinkhorn divergence, the authors derive its Levi-Civita covariant derivative and obtain geodesic and parallel-transport equations as ODEs in a fixed RKHS. Linearising these gives √n Gaussian limits and bootstrap consistency for plug-in estimates of the exponential and log maps, parallel transport and the induced distance.",
+  "takeaways": [
+   "The Sinkhorn divergence is not a metric, but it can be given a formal Riemannian structure on the space of measures via a quadratic approximation.",
+   "With a covariant derivative, geodesics and parallel transport become smooth ODEs on a fixed RKHS — much more tractable than in Wasserstein geometry.",
+   "They claim the first √n limit theorems and bootstrap consistency for geometric operations in a transport geometry on measures."
+  ],
+  "keyFigure": "",
+  "relevance": "A spark connecting your OT and differential-geometry tracks: tangent spaces, log maps and parallel transport between cell populations, with uncertainty. A possible tool for comparing distributions of isoform proportions across cell types with error bars."
+ },
+ {
   "id": "2026-10-30-1",
   "date": "2026-10-30",
   "title": "Learning developmental dynamics from lineage context",

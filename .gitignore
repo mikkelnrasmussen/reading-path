@@ -2,3 +2,7 @@
 __pycache__/
 .DS_Store
 reading-path.json
+
+reading-path*.json
+config.json
+books/

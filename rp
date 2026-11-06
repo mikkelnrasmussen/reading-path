@@ -5,7 +5,7 @@ Reading
   rp today                       today's paper: summary, takeaways, relevance, how to read it
   rp next [-n N]                 what's unlocked next on the path
   rp ls [-s STATE] [-t TRACK] [--group] [-n N]
-                                 STATE: read known later skipped open done independent any
+                                 STATE: read skimmed known later skipped open done independent any
   rp search TERM...              titles, authors, notes, why
   rp show KEY                    full record (KEY can be the key, an arXiv id or a DOI)
   rp open KEY                    open in your browser
@@ -14,11 +14,20 @@ Reading
   rp stats                       progress per field
 
 Writing (same effect as the website)
-  rp read KEY [-n NOTE] [-r 1-5]   mark read     (also: known, later, skip)
+  rp read KEY [-n NOTE] [-r 1-5]   mark read     (also: skim, known, later, skip)
+  rp busy [until YYYY-MM-DD|off]   pause the plan (no new papers, streak frozen) or resume
   rp note KEY "text"               set your note
   rp log QUERY [-n NOTE] [-r N] [--title T --authors A --year Y]
                                  log a paper you read; QUERY = arXiv id/link, DOI or title.
                                  On the path -> marked read. Otherwise -> independent read.
+
+Memory, meetings, writing
+  rp recall                      go through today's recall questions
+  rp agenda [add "question" [-k KEY]] [done ID]
+                                 your list for the next supervisor meeting
+  rp draft "topic" [-i "instructions"]
+                                 queue a related-work draft (or write it now if config.json has an Anthropic key)
+  rp sort [-n N]                 quick-sort undecided papers: k = know it, w = want to read, n = not for me, q = quit
 
 Citing and sharing
   rp bib [KEY...] [-s STATE]     BibTeX (default: read or known)
@@ -30,9 +39,9 @@ import argparse, datetime as dt, json, os, re, subprocess, sys, textwrap, webbro
 
 ROOT = os.path.dirname(os.path.realpath(__file__))
 sys.path.insert(0, ROOT)
-import server as srv  # noqa: E402  (shares data access, lookup and logging with the website)
+import rpcore as srv  # noqa: E402  (shared with the website)
 
-DONE = {"read", "known", "skipped"}
+DONE = {"read", "known", "skipped", "skimmed"}
 
 
 def data():
@@ -59,26 +68,27 @@ def find(P, key):
 
 
 def line(p):
-    mark = {"read": "✓", "known": "·", "later": "→", "skipped": "×"}.get(p["_state"], " ")
+    mark = {"read": "✓", "skimmed": "~", "known": "·", "later": "→", "skipped": "×"}.get(p["_state"], " ")
     r = p["_s"].get("rating"); seq = "—" if p["seq"] is None else ("%g" % p["seq"])
     return f"{mark} {seq:>6} {p.get('track') or '?':<4} {p['title'][:76]:<76}  {p.get('authors','')[:24]} {p.get('year','')}" + (f"  ★{r}" if r else "") + f"  [{p['key']}]"
 
 
 def upcoming(P, days, n):
-    assigned = {d["paper"] for d in days} | {k for d in days for k in d.get("replaced", [])}
+    # Same rule as the website: a paper only counts as covered once it is read, skimmed, known or skipped,
+    # so nothing that builds on an unread paper is unlocked. Missed picks simply go back in the queue.
+    current = {days[0]["paper"]} if days else set()
     out = []
-    ok = lambda k: any(q["key"] == k and q["_state"] in DONE for q in P) or k in assigned or any(o["key"] == k for o in out)
+    ok = lambda k: any(q["key"] == k and q["_state"] in DONE for q in P) or any(o["key"] == k for o in out)
     for p in P:
         if len(out) >= n: break
-        if p["seq"] is None or p["_state"] in DONE or p["key"] in assigned or p["_state"] == "later": continue
+        if p["seq"] is None or p.get("due") or p["_state"] in DONE or p["key"] in current or p["_state"] == "later": continue
         if all(ok(k) for k in p.get("prereqs", [])): out.append(p)
     return out
 
 
 def set_status(key, **patch):
-    s = srv.load("status"); cur = s.get(key, {})
-    cur.update({k: v for k, v in patch.items() if v not in (None, "")}); cur["at"] = srv.now()
-    s[key] = cur; srv.save("status", s); srv.setup_git(True); srv.commit("rp: %s %s" % (key, patch.get("state") or "note"))
+    srv.setup_git(True)
+    srv.set_status(key, {k: v for k, v in patch.items() if v is not None}, "rp: %s %s" % (key, patch.get("state") or "note"))
 
 
 def bib(p):
@@ -106,7 +116,12 @@ def main():
     x = sub.add_parser("notes"); x.add_argument("-t", "--track")
     x = sub.add_parser("disc"); x.add_argument("--liked", action="store_true"); x.add_argument("--added", action="store_true")
     sub.add_parser("stats")
-    for c in ("read", "known", "later", "skip"):
+    sub.add_parser("recall")
+    x = sub.add_parser("agenda"); x.add_argument("op", nargs="?"); x.add_argument("arg", nargs="?"); x.add_argument("-k", "--key")
+    x = sub.add_parser("draft"); x.add_argument("topic"); x.add_argument("-i", "--instructions", default="")
+    x = sub.add_parser("sort"); x.add_argument("-n", type=int, default=50)
+    x = sub.add_parser("busy"); x.add_argument("op", nargs="?", default="show"); x.add_argument("date", nargs="?")
+    for c in ("read", "skim", "known", "later", "skip"):
         x = sub.add_parser(c); x.add_argument("key"); x.add_argument("-n", "--note"); x.add_argument("-r", "--rating", type=int)
     x = sub.add_parser("note"); x.add_argument("key"); x.add_argument("text")
     x = sub.add_parser("log"); x.add_argument("query"); x.add_argument("-n", "--note"); x.add_argument("-r", "--rating", type=int)
@@ -141,7 +156,15 @@ def main():
     elif a.cmd == "show":
         q = find(P, a.key); print(json.dumps({**{k: v for k, v in q.items() if not k.startswith("_")}, "status": q["_s"]}, indent=1, ensure_ascii=False))
     elif a.cmd == "open":
-        webbrowser.open(find(P, a.key)["url"])
+        u = find(P, a.key)["url"]
+        if not u.startswith("http"):  # a book chapter stored in this folder, e.g. books/x.pdf#page=9
+            try:
+                import urllib.request; urllib.request.urlopen("http://localhost:8765/api/ping", timeout=2)
+                u = "http://localhost:8765/" + u   # through the server, so #page= works in the browser
+            except Exception:
+                path, _, page = u.partition("#"); u = "file://" + os.path.join(os.path.dirname(os.path.abspath(__file__)), path)
+                print("Opening %s%s" % (path, " (go to " + page.replace("=", " ") + ")" if page else ""))
+        webbrowser.open(u)
     elif a.cmd == "notes":
         for q in sorted(P, key=lambda q: q["_s"].get("at", ""), reverse=True):
             n = q["_s"].get("note")
@@ -159,10 +182,22 @@ def main():
             ps = [q for q in P if q.get("track") == t and q["seq"] is not None]; dn = sum(q["_state"] in DONE for q in ps)
             print(f"{name:<45} {dn:>3}/{len(ps):<3} " + "█" * round(20 * dn / max(1, len(ps))))
         print(f"\nIndependent reads: {sum(q.get('source') == 'independent' for q in P)}")
-    elif a.cmd in ("read", "known", "later", "skip"):
-        q = find(P, a.key); st = "skipped" if a.cmd == "skip" else a.cmd
-        set_status(q["key"], state=st, note=a.note, rating=a.rating, readOn=dt.date.today().isoformat() if st == "read" else None)
+    elif a.cmd in ("read", "skim", "known", "later", "skip"):
+        q = find(P, a.key); st = {"skip": "skipped", "skim": "skimmed"}.get(a.cmd, a.cmd)
+        set_status(q["key"], state=st, note=a.note, rating=a.rating, readOn=dt.date.today().isoformat() if st in ("read", "skimmed") else None)
         print(f"{st}: {q['title']}")
+    elif a.cmd == "busy":
+        s = srv.load("settings"); t = dt.date.today().isoformat()
+        if a.op == "until" and a.date:
+            pz = [x for x in s.get("pauses", []) if x["to"] < t] + [{"from": t, "to": a.date}]
+            srv.setup_git(True); srv.settings_update({"busyUntil": a.date, "pauses": pz}); print("Paused until %s. The plan waits; your streak is frozen." % a.date)
+        elif a.op == "off":
+            pz = s.get("pauses", [])
+            if pz and pz[-1]["to"] >= t: pz[-1]["to"] = (dt.date.today() - dt.timedelta(days=1)).isoformat()
+            pz = [x for x in pz if x["to"] >= x["from"]]
+            srv.setup_git(True); srv.settings_update({"busyUntil": "", "pauses": pz}); print("Resumed.")
+        else:
+            print("Paused until %s." % s["busyUntil"] if s.get("busyUntil", "") >= t else "Not paused. Use: rp busy until YYYY-MM-DD")
     elif a.cmd == "note":
         q = find(P, a.key); set_status(q["key"], note=a.text); print("Saved.")
     elif a.cmd == "log":
@@ -179,9 +214,44 @@ def main():
             if match_state(q, a.state) and q["_id"]: print(q["_id"].replace("arxiv:", "arXiv:"))
     elif a.cmd == "serve":
         os.execvp(sys.executable, [sys.executable, os.path.join(ROOT, "server.py"), "--port", a.port])
+    elif a.cmd == "recall":
+        rc = srv.load("recall"); t = dt.date.today().isoformat(); due = [(k, e) for k, e in rc.items() if not e.get("done") and e.get("due") and e["due"] <= t and k in by]
+        if not due: print("Nothing due."); return
+        for k, e in due:
+            q = by[k]; qs = e.get("questions") or []; qa = qs[e["stage"] % len(qs)] if qs else None
+            print("\n" + textwrap.fill(qa["q"] if qa else "What was the key idea of '%s', and how would you use it?" % q["title"], 88))
+            input("  (Enter to reveal) ")
+            print(textwrap.fill(qa["a"] if qa else (srv.compose_note(q["_s"]) or q.get("why", "")), 88, initial_indent="  ", subsequent_indent="  "))
+            r = input("  Remembered? [y/n/s=skip] ").strip().lower()
+            if r in ("y", "n"): srv.setup_git(True); srv.recall_result(k, "remembered" if r == "y" else "shaky")
+    elif a.cmd == "agenda":
+        srv.setup_git(True)
+        if a.op == "add": print("Added:", srv.agenda_add(a.arg or "", a.key)["id"]); return
+        if a.op == "done": srv.agenda_update(a.arg, done=srv.now()); print("Marked discussed."); return
+        for it in srv.load("agenda"):
+            if not it.get("done"):
+                q = by.get(it.get("key")); print(f"[{it['id']}] {it['text']}" + (f"\n    {q['title']} — {srv.compose_note(q['_s']).splitlines()[0] if srv.compose_note(q['_s']) else ''}" if q else ""))
+    elif a.cmd == "draft":
+        srv.setup_git(True)
+        import server
+        req = {"id": "r" + dt.datetime.now().strftime("%y%m%d%H%M%S"), "topic": a.topic, "instructions": a.instructions, "keys": [], "created": srv.now(), "status": "queued"}
+        d = server.draft_now(req) if (srv.config().get("anthropic") or {}).get("apiKey") else None
+        if d: print(d["md"] + "\n\nSaved to " + d["file"]); return
+        r = srv.load("requests"); r.append(req); srv.save("requests", r); srv.commit("draft request: " + a.topic[:50])
+        print("Queued. It will be drafted in the next morning update (drafts/ folder and the Writing section).")
+    elif a.cmd == "sort":
+        cand = [q for q in P if q["seq"] is not None and q["_state"] == "open" and q.get("pass", 0) >= 1]
+        cand.sort(key=lambda q: (q["pass"], q["seq"]))
+        srv.setup_git(True)
+        for q in cand[: a.n]:
+            print(f"\n[{q['track']}] {q['title']}\n  {q.get('authors','')} {q.get('year','')}\n  " + textwrap.fill(q.get("why", ""), 86, subsequent_indent="  "))
+            c = input("  k = know it, w = want to read, n = not for me, q = quit: ").strip().lower()
+            if c == "q": break
+            if c in ("k", "n"): srv.set_status(q["key"], {"state": "known" if c == "k" else "skipped"}, "quick sort: %s" % q["key"])
     elif a.cmd == "publish":
-        run = lambda *c: subprocess.run(["git", *c], cwd=ROOT)
-        run("add", "-A"); run("commit", "-m", a.message); run("push")
+        srv.setup_git(True); srv.commit(a.message)
+        err = srv.sync_remote() if srv.GIT["remote"] else "no remote configured (see README: Putting it online)"
+        print(err or "Pushed.")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,12 @@
+{
+  "zotero": {
+    "userId": "1234567",
+    "apiKey": "paste a Zotero API key with library read/write access",
+    "collection": "Reading Path",
+    "dataDir": "~/Zotero"
+  },
+  "anthropic": {
+    "apiKey": "optional: sk-ant-... for instant related-work drafts",
+    "model": "claude-opus-5-5"
+  }
+}

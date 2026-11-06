@@ -3,79 +3,129 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Mikkel's Reading Path</title>
+<title>Mikkel's Reading Sky</title>
+<script>try{var t=localStorage.getItem("rp-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t;}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f5f8b'/%3E%3Cpath d='M9 8h10a4 4 0 0 1 4 4v12H13a4 4 0 0 1-4-4z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1430'/%3E%3Cpath d='M7 22 L13 15 L19 18 L25 8' stroke='%239fb6ff' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='7' cy='22' r='2' fill='%23fff'/%3E%3Ccircle cx='13' cy='15' r='2' fill='%23fff'/%3E%3Ccircle cx='19' cy='18' r='1.6' fill='%23fff'/%3E%3Ccircle cx='25' cy='8' r='3.2' fill='none' stroke='%23ffb347' stroke-width='1.8'/%3E%3C/svg%3E">
 </head>
 <body>
+<div class="sky" id="sky">
+  <svg id="skySvg" role="group" aria-label="Sky chart: each field is a constellation, each paper a star">
+    <defs>
+      <radialGradient id="glow"><stop offset="0" stop-color="var(--star-glow)" stop-opacity=".55"/><stop offset="1" stop-color="var(--star-glow)" stop-opacity="0"/></radialGradient>
+    </defs>
+    <g id="bgStars"></g><g id="skyView"></g>
+  </svg>
+  <div class="skytools" aria-label="Chart controls">
+    <button class="tool" id="zIn" aria-label="Zoom in" title="Zoom in">+</button>
+    <button class="tool" id="zOut" aria-label="Zoom out" title="Zoom out">&minus;</button>
+    <button class="tool" id="zFit" aria-label="Show the whole sky" title="Whole sky">&#9711;</button>
+    <button class="tool" id="zHere" aria-label="Go to today's star" title="Today's star">&#8982;</button>
+  </div>
+</div>
 
+<header class="top">
+  <a class="brand" href="#today" aria-label="Today">
+    <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 23 L12 15 L19 18 L26 7" fill="none"/><circle cx="5" cy="23" r="2"/><circle cx="12" cy="15" r="2.2"/><circle cx="19" cy="18" r="1.6"/><circle class="m-here" cx="26" cy="7" r="3.4"/></svg>
+    <span><span class="brand-name">Reading Sky</span><span class="brand-sub">one paper a day, star by star</span></span>
+  </a>
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <a role="tab" href="#today" data-tab="today">Tonight</a>
+    <a role="tab" href="#atlas" data-tab="atlas">Sky chart</a>
+    <a role="tab" href="#ask" data-tab="ask">Ask</a>
+    <a role="tab" href="#discover" data-tab="discover">Discover <span class="badge" id="discBadge" hidden></span></a>
+    <a role="tab" href="#library" data-tab="library">Logbook</a>
+    <a role="tab" href="#more" data-tab="more">More</a>
+  </nav>
+  <div class="top-right">
+    <div class="journey" id="journey" aria-label="Reading habit"></div>
+    <button class="tool theme" id="themeBtn" aria-label="Colour theme" title="Theme"></button>
+  </div>
+</header>
+<p class="modebar" id="mode" hidden></p>
 
-<div class="wrap">
-  <header>
-    <span class="eyebrow">Weekday reading · one paper a day</span>
-    <h1>Mikkel's Reading Path</h1>
-    <p>An ordered path through current work in Jes Frellsen's group, probabilistic ML, isoforms, generative modelling, transformers, proteins and single-cell ML. Core papers across all fields come first, then recommended, then deep dives. Each paper's prerequisites come before it.</p>
-  </header>
-
+<main class="wrap">
   <p class="modebar" id="mode" hidden></p>
-  <nav class="tabs" aria-label="Sections"><a href="#today-s">Today</a><a href="#log" class="needs-write">Log a read</a><a href="#discover">Discover</a><a href="#path">The path</a><a href="#library">Library</a></nav>
 
-  <section id="today-s" aria-labelledby="h-today" style="display:grid;gap:12px">
-    <h2 id="h-today">Today</h2>
-    <div class="today" id="today"><p class="empty">Loading today's paper…</p></div>
-  </section>
-
-  <section class="needs-write" id="log" aria-labelledby="h-log" style="display:grid;gap:12px">
-    <h2 id="h-log">Log a paper you read</h2>
-    <p class="empty" style="max-width:65ch">Read something outside the plan? Paste an arXiv link, DOI or title. If it's already on your path it's marked read and the plan moves past it. If it's new, it goes into your library as an independent read, and the next morning update uses it to tune your interests, your Discover picks and the papers queued on your path.</p>
-    <form class="add" id="logForm" autocomplete="off">
-      <div class="actions" style="flex-wrap:nowrap"><input id="lQuery" required placeholder="arXiv link or ID, DOI, or title" style="flex:1;min-width:0"><button class="btn" type="button" id="lLookup">Look up</button></div>
-      <p class="status" id="lMatch"></p>
-      <input id="lTitle" placeholder="Title">
-      <input id="lAuthors" placeholder="Authors (e.g. Smith et al.)">
-      <div class="actions" style="flex-wrap:nowrap"><input id="lYear" placeholder="Year" inputmode="numeric" style="width:6em"><input id="lDate" type="date" aria-label="Date read" style="flex:1"></div>
-      <select id="lTrack" aria-label="Field"></select>
-      <textarea id="lNote" rows="3" placeholder="Your takeaway (optional)"></textarea>
-      <div class="actions"><span class="stars" id="lStars" aria-label="Rating"></span><button class="btn primary" type="submit">Log as read</button><span class="status" id="lStatus"></span></div>
-    </form>
-  </section>
-
-  <section id="discover" aria-labelledby="h-disc" style="display:grid;gap:12px">
-    <h2 id="h-disc">Discover</h2>
-    <p class="empty" style="max-width:65ch">Three papers each weekday morning to browse, not study: a summary, takeaways, the key figure and what it could mean for your isoform models. Add one to your reading list with one click. Your reactions shape what shows up next.</p>
-    <p class="interests" id="interests"></p>
-    <div class="cards" id="disc"><p class="empty">The first picks arrive Monday morning.</p></div>
-    <details id="discOlder" hidden><summary>Earlier discoveries</summary><div class="cards" id="discOld" style="margin-top:12px"></div></details>
-  </section>
-
-  <section aria-labelledby="h-prog" style="display:grid;gap:14px">
-    <h2 id="h-prog">Progress</h2>
-    <p class="summary" id="summary"></p>
-    <div class="progress" id="progress"></div>
-  </section>
-
-  <section aria-labelledby="h-hist" style="display:grid;gap:10px">
-    <h2 id="h-hist">Recent days</h2>
-    <div class="hist" id="hist"><p class="empty">No days yet. The first pick appears here once it is scheduled.</p></div>
-  </section>
-
-  <section id="path" aria-labelledby="h-path" style="display:grid;gap:12px">
-    <h2 id="h-path">The path</h2>
-    <p class="empty" style="max-width:65ch">First time here? Filter to <em>Core</em> and mark anything you've already read as <strong>Known</strong>. The daily pick skips those and moves on to what builds on them.</p>
-    <div class="filters">
-      <select id="fTrack" aria-label="Field"><option value="">All fields</option></select>
-      <select id="fPass" aria-label="Depth"><option value="">All depths</option><option value="1">Core</option><option value="2">Recommended</option><option value="3">Deep dive</option></select>
-      <select id="fState" aria-label="Status"><option value="">Any status</option><option value="jes">Jes and current group</option><option value="open">Not read</option><option value="done">Read or known</option><option value="later">Later</option></select>
-      <input id="fText" type="search" placeholder="Search titles and authors" aria-label="Search">
+  <!-- TODAY -->
+  <section class="tab side-tab" id="tab-today" data-panel="today" aria-labelledby="h-today">
+    <h1 class="sr" id="h-today">Tonight's star</h1>
+    <div class="side">
+      <article class="today" id="today"><p class="empty">Loading today's paper…</p></article>
+      <div class="panel course" id="coursePanel" hidden><div class="panel-h">Course prep <span class="cprog" id="courseProg"></span></div><div id="courseList"></div></div>
+      <div class="panel" id="recallPanel" hidden><div class="panel-h">Recall</div><div id="recallList"></div></div>
+      <div class="panel"><div class="panel-h">Next stars, if you have time</div><div id="upnextList"></div></div>
     </div>
-    <div class="list" id="list"></div>
-    <button class="btn more" id="more" hidden>Show more</button>
-    <details class="needs-write">
-      <summary>Add a paper to the path (to read later)</summary>
-      <p class="empty" style="max-width:65ch;margin:8px 0 0">Paste what you have. The next morning update checks it, sets its field and prerequisites, and slots in any background papers it builds on that you haven't read.</p>
-      <form class="add" id="addForm">
+  </section>
+
+  <!-- ASK -->
+  <section class="tab plate" id="tab-ask" data-panel="ask" aria-labelledby="h-ask" hidden>
+    <div class="section-head"><h1 id="h-ask">Ask about a paper</h1>
+      <p>Builds a briefing for a Claude chat: the paper, what you already know, how you like answers, and things you've struggled with before. Paste it into a new chat and ask away. When you're done, ask Claude to “wrap up” and paste its summary back here, so the next briefing knows more.</p></div>
+    <div class="ask-grid">
+      <div class="panel">
+        <label class="lbl" for="askPaper">Paper</label>
+        <select id="askPaper"></select>
+        <label class="lbl" for="askQ">Your question (optional)</label>
+        <textarea id="askQ" rows="3" placeholder="e.g. Why does the interpolant need the extra noise term γ(t)z?"></textarea>
+        <div class="actions"><button class="btn primary" id="askGo">Copy briefing and open Claude</button><button class="btn" id="askPreviewBtn">Preview</button><span class="status" id="askStatus"></span></div>
+        <pre class="briefing" id="askPreview" hidden></pre>
+        <details class="needs-write" id="saveBack"><summary>Save what you learned</summary>
+          <p class="hint">Paste Claude's “wrap up” block (or just write a few lines yourself).</p>
+          <textarea id="tutorPaste" rows="6" placeholder='```reading-path&#10;{"paper": "...", "questions": [...], "struggled": [...], "style": {...}}&#10;```'></textarea>
+          <div class="actions"><button class="btn primary" id="tutorSave">Save</button><span class="status" id="tutorStatus"></span></div>
+        </details>
+      </div>
+      <div class="panel">
+        <div class="panel-h">Tutor memory</div>
+        <label class="lbl" for="stylePrefs">How you like answers <span class="hint">one per line</span></label>
+        <textarea id="stylePrefs" rows="5" class="needs-write-ro"></textarea>
+        <div class="actions needs-write"><button class="btn" id="styleSave">Save preferences</button><span class="status" id="styleStatus"></span></div>
+        <div class="panel-h" style="margin-top:14px">Things you've struggled with</div>
+        <div id="struggles" class="chips"></div>
+        <div class="panel-h" style="margin-top:14px">Questions you've asked</div>
+        <div id="pastQs"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCOVER -->
+  <section class="tab plate" id="tab-discover" data-panel="discover" aria-labelledby="h-disc" hidden>
+    <div class="section-head"><h1 id="h-disc">Discover</h1>
+      <p>Three recent papers each weekday, to browse rather than study. One click puts a paper on your path; your reactions steer what shows up next.</p>
+      <p class="interests" id="interests"></p></div>
+    <div class="cards" id="disc"><p class="empty">The first picks arrive on the next weekday morning.</p></div>
+    <details id="discOlder" hidden><summary>Earlier discoveries</summary><div class="cards" id="discOld"></div></details>
+  </section>
+
+  <!-- ATLAS -->
+  <section class="tab side-tab" id="tab-atlas" data-panel="atlas" aria-labelledby="h-atlas" hidden>
+    <div class="side">
+    <div class="section-head"><h1 id="h-atlas">Sky chart</h1>
+      <p>Each field is a constellation. Papers are stars, spiralling out from the field's core in reading order; the lines are the core papers. Every paper you read lights a star. Drag to pan, scroll or pinch to zoom, tap a star for details.</p></div>
+    <div class="atlas-tools">
+      <div class="legend"><span><i class="lg read"></i>read</span><span><i class="lg skimmed"></i>skimmed</span><span><i class="lg known"></i>known</span><span><i class="lg new"></i>newly added</span><span><i class="lg open"></i>ahead</span><span><i class="lg here"></i>tonight</span><span class="hint">bigger = core</span></div>
+      <div class="actions needs-write"><button class="btn" id="qsOpen">Quick sort</button><span class="status" id="qsInfo"></span></div>
+    </div>
+    <div class="added-box" id="addedBox" hidden><div class="panel-h">Recently added to your path</div><div id="addedList"></div></div>
+    <div class="consts" id="atlas"></div>
+    <div class="milestones"><div class="panel-h">Milestones</div><div id="milestones"></div></div>
+    <details class="listview"><summary>All papers as a list</summary>
+      <div class="filters">
+        <select id="fTrack" aria-label="Field"><option value="">All fields</option></select>
+        <select id="fPass" aria-label="Depth"><option value="">All depths</option><option value="1">Core</option><option value="2">Recommended</option><option value="3">Deep dive</option></select>
+        <select id="fState" aria-label="Status"><option value="open" selected>Still to read</option><option value="">Everything</option><option value="jes">Jes and current group</option><option value="done">Read or known</option><option value="later">Later</option></select>
+        <input id="fText" type="search" placeholder="Search titles and authors" aria-label="Search">
+      </div>
+      <div class="list" id="list"></div>
+      <button class="btn more" id="more" hidden>Show more</button>
+    </details>
+    <details class="needs-write"><summary>Add a paper to read later</summary>
+      <p class="hint">The next morning update checks it, sets its field and prerequisites, and queues background papers it builds on.</p>
+      <form class="form" id="addForm">
         <input id="aTitle" required placeholder="Title">
         <input id="aAuthors" placeholder="Authors, year (e.g. Smith et al., 2026)">
         <input id="aUrl" type="url" placeholder="Link (arXiv, DOI, bioRxiv)">
@@ -85,24 +135,97 @@
         <div class="actions"><button class="btn primary" type="submit">Add paper</button><span class="status" id="aStatus"></span></div>
       </form>
     </details>
+    </div>
   </section>
 
-  <section id="library" aria-labelledby="h-lib" style="display:grid;gap:12px">
-    <h2 id="h-lib">Library</h2>
-    <p class="empty" style="max-width:65ch">Everything you've read, known, rated or noted, plus discoveries you liked. Export it for your terminal or reference manager. For clean citations, copy the identifiers and paste them into Zotero's <em>Add Item by Identifier</em> (the magic-wand button); it fetches full metadata for DOIs and arXiv IDs.</p>
+  <!-- LIBRARY -->
+  <section class="tab plate" id="tab-library" data-panel="library" aria-labelledby="h-lib" hidden>
+    <div class="section-head"><h1 id="h-lib">Logbook</h1>
+      <p>Everything you've read or noted. For clean citations, copy the identifiers into Zotero's <em>Add Item by Identifier</em> (magic wand).</p></div>
+    <details class="needs-write logbox" id="logBox"><summary>Log a paper you read outside the plan</summary>
+      <p class="hint">On your path already: it's marked read and the plan moves past it. New: it's kept as an independent read and shapes your interests, Discover picks and what gets queued.</p>
+      <form class="form" id="logForm" autocomplete="off">
+        <div class="row-inline"><input id="lQuery" required placeholder="arXiv link or ID, DOI, or title"><button class="btn" type="button" id="lLookup">Look up</button></div>
+        <p class="status" id="lMatch"></p>
+        <input id="lTitle" placeholder="Title">
+        <input id="lAuthors" placeholder="Authors (e.g. Smith et al.)">
+        <div class="row-inline"><input id="lYear" placeholder="Year" inputmode="numeric" style="max-width:7em"><input id="lDate" type="date" aria-label="Date read"></div>
+        <select id="lTrack" aria-label="Field"></select>
+        <div class="tmpl" data-tmpl="l"></div>
+        <div class="actions"><span class="stars" id="lStars" aria-label="Rating"></span><button class="btn primary" type="submit">Log as read</button><span class="status" id="lStatus"></span></div>
+      </form>
+    </details>
     <div class="filters">
-      <select id="lState" aria-label="Show"><option value="engaged">Read, known, rated or noted</option><option value="read">Read</option><option value="independent">Independent reads</option><option value="noted">With notes</option><option value="all">Whole path</option></select>
+      <select id="lState" aria-label="Show"><option value="engaged">Read, known, rated or noted</option><option value="read">Read</option><option value="skimmed">Skimmed (to revisit)</option><option value="independent">Independent reads</option><option value="noted">With notes</option><option value="all">Whole path</option></select>
       <input id="lText" type="search" placeholder="Search library" aria-label="Search library">
     </div>
     <div class="exports">
-      <button class="btn" data-exp="bib">BibTeX</button><button class="btn" data-exp="csv">CSV</button><button class="btn" data-exp="json">JSON</button><button class="btn" data-exp="md">Notes (Markdown)</button><button class="btn" id="copyIds">Copy IDs for Zotero</button>
+      <button class="btn" data-exp="bib">BibTeX</button><button class="btn" data-exp="csv">CSV</button><button class="btn" data-exp="json">JSON</button><button class="btn" data-exp="md">Notes (Markdown)</button><button class="btn" id="copyIds">Copy IDs for Zotero</button><button class="btn" id="zsyncAll" hidden>Sync notes to Zotero</button>
       <span class="status" id="expStatus"></span>
     </div>
-    <textarea id="idsBox" readonly hidden rows="5" style="font-family:var(--f-mono);font-size:.8rem;width:100%;padding:8px;border-radius:7px;border:1px solid var(--line);background:var(--bg);color:var(--fg)"></textarea>
+    <textarea id="idsBox" readonly hidden rows="5" class="mono"></textarea>
+    <div class="heat panel"><div class="panel-h">Reading calendar</div><div id="heatmap"></div></div>
     <div class="tablewrap"><table class="lib"><thead><tr><th>Paper</th><th>Field</th><th>Status</th><th>When</th><th>★</th><th>Note</th></tr></thead><tbody id="libBody"></tbody></table></div>
   </section>
-</div>
 
+  <!-- MORE -->
+  <section class="tab plate" id="tab-more" data-panel="more" aria-labelledby="h-more" hidden>
+    <h1 class="sr" id="h-more">More</h1>
+    <div class="more-grid">
+      <section class="panel" aria-labelledby="h-meet">
+        <h2 id="h-meet">Meeting prep</h2>
+        <p class="hint">Questions for your next meeting with your supervisors (Jes and Kristoffer).</p>
+        <form class="needs-write row-inline" id="agendaForm"><input id="agendaText" placeholder="A question or topic for your supervisors"><button class="btn" type="submit">Add</button></form>
+        <div id="agendaList"></div>
+        <div class="actions"><button class="btn" id="agendaCopy">Copy as Markdown</button><button class="btn needs-write" id="agendaDoneAll">Mark all discussed</button><span class="status" id="agendaStatus"></span></div>
+        <details><summary>Discussed earlier</summary><div id="agendaOld"></div></details>
+      </section>
+      <section class="panel" aria-labelledby="h-dig">
+        <h2 id="h-dig">Weekly digests</h2>
+        <div id="digestList"><p class="empty">Your first digest arrives on Friday afternoon.</p></div>
+      </section>
+      <section class="panel" aria-labelledby="h-write">
+        <h2 id="h-write">Writing</h2>
+        <p class="hint">A related-work draft from papers you've read and your notes, cited with the Library's BibTeX keys. Saved to <code>drafts/</code>.</p>
+        <form class="form needs-write" id="draftForm">
+          <input id="dTopic" required placeholder="Topic, e.g. generative models on the probability simplex">
+          <textarea id="dInstr" rows="2" placeholder="Extra instructions (optional)"></textarea>
+          <div class="actions"><button class="btn primary" type="submit" id="dNow" hidden>Draft now</button><button class="btn" type="button" id="dQueue">Queue for the next morning update</button><span class="status" id="dStatus"></span></div>
+        </form>
+        <div id="draftList" class="cards"></div>
+      </section>
+      <section class="panel needs-write" aria-labelledby="h-set">
+        <h2 id="h-set">Settings</h2>
+        <form class="form" id="settingsForm">
+          <label class="lbl" for="sGoal">Weekly goal (papers)</label>
+          <input id="sGoal" type="number" min="1" max="20" style="max-width:7em">
+          <label class="check"><input type="checkbox" id="sRecall"> Recall questions about papers you've read (one at a time, a week and a month later)</label>
+          <label class="check"><input type="checkbox" id="sNotes"> Structured notes (problem, method, limitation, use for my work)</label>
+          <div class="actions"><button class="btn primary" type="submit">Save settings</button><span class="status" id="setStatus"></span></div>
+        </form>
+        <h3 class="sub-h">Progress by field</h3>
+        <p class="summary" id="summary"></p>
+        <div class="progress" id="progress"></div>
+      </section>
+    </div>
+  </section>
+</main>
+
+<div class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-labelledby="drTitle"><div class="drawer-bg" onclick="document.getElementById('drClose').click()"></div><div class="drawer-in" id="drawerIn"></div></div>
+<div class="pop" id="pop" hidden role="dialog" aria-modal="false" aria-labelledby="popTitle"></div>
+
+<div class="qs" id="qs" hidden role="dialog" aria-modal="true" aria-labelledby="qsTitle">
+  <div class="qsbox">
+    <div class="qs-top"><span class="eyebrow" id="qsProg"></span><button class="btn" id="qsClose">Close</button></div>
+    <div id="qsCard"></div>
+    <div class="actions qsbtns">
+      <button class="btn" data-qs="known">Know it <kbd>K</kbd></button>
+      <button class="btn primary" data-qs="keep">Want to read <kbd>W</kbd></button>
+      <button class="btn" data-qs="skipped">Not for me <kbd>N</kbd></button>
+      <button class="btn" data-qs="undo">Undo <kbd>U</kbd></button>
+    </div>
+  </div>
+</div>
 
 <script src="assets/app.js"></script>
 </body>
