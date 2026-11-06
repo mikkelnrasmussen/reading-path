@@ -6401,6 +6401,24 @@
    "source": "you",
    "triaged": false,
    "addedAt": "2026-11-06T10:17:15+00:00"
+  },
+  {
+   "key": "umw4tnfbm",
+   "seq": -0.39,
+   "track": "OS",
+   "pass": 1,
+   "title": "VERIFIER-CONSTRAINED FLOW EXPANSION FOR DISCOVERY BEYOND THE DATA",
+   "authors": "Riccardo De Santi et al.",
+   "year": 2026,
+   "url": "https://arxiv.org/pdf/2602.15984",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [],
+   "why": "Added by you.",
+   "source": "you",
+   "triaged": false,
+   "addedAt": "2026-11-06T10:18:31+00:00"
   }
  ]
 }
