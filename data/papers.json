@@ -14,7 +14,8 @@
   "GRL": "Graphs & geometric deep learning",
   "OT": "Optimal transport",
   "COMP": "Count & compositional data",
-  "DLC": "Deep learning course prep"
+  "DLC": "Deep learning course prep",
+  "OS": "Out-of-distribution sampling"
  },
  "papers": [
   {
@@ -6382,6 +6383,24 @@
     "attention",
     "permutation invariance"
    ]
+  },
+  {
+   "key": "umw4tlsur",
+   "seq": -0.39,
+   "track": "OS",
+   "pass": 1,
+   "title": "Active Flow Expansion for Out-of-Distribution Discovery: from Theory to Molecules",
+   "authors": "Riccardo De Santi et al.",
+   "year": 2026,
+   "url": "https://arxiv.org/pdf/2606.08802",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [],
+   "why": "Added by you.",
+   "source": "you",
+   "triaged": false,
+   "addedAt": "2026-11-06T10:17:15+00:00"
   }
  ]
 }
