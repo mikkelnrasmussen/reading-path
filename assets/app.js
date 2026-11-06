@@ -625,6 +625,7 @@
     const L = [];
     L.push("Please be my tutor for a research paper I'm reading. Keep this context in mind for the whole conversation.", "");
     if (p.book) L.push(`READING: ${p.title}`, `This is part of the book "${p.book}" by ${p.authors} (${p.year}), pages ${p.pages} of the PDF. I'll upload those pages (or the whole book) in this chat.`, "");
+    else if (p.file) L.push(`PAPER: ${p.title} — ${p.authors} (${p.year})`, ...(/^https?:/.test(p.url) ? [`Link: ${p.url}`] : []), "I've attached the PDF to this chat.", "");
     else L.push(`PAPER: ${p.title} — ${p.authors} (${p.year})`, `Link: ${p.url}`, "If you can't open the link, tell me and I'll upload the PDF.", "");
     L.push("ABOUT ME: " + ABOUT_ME, "");
     if (style.length) L.push("HOW I LIKE ANSWERS:", ...style.map((x) => "- " + x), "");
@@ -647,6 +648,8 @@
     $("askPreview").hidden = false;
     if (!copied) { const r = document.createRange(); r.selectNodeContents($("askPreview")); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); }
     $("askStatus").textContent = copied ? "Briefing copied. Paste it into the new chat (⌘V)." : "Copy the selected briefing below, then paste it into the chat.";
+    const p = byKey()[key];
+    if (p && p.file && !p.book) $("askStatus").insertAdjacentHTML("beforeend", ` Then attach the PDF: <a href="${esc(p.file)}" download>download it</a> and drag it into the chat.`);
     window.open("https://claude.ai/new", "_blank", "noopener");
     $("saveBack").open = true;
   }
@@ -940,14 +943,32 @@
   // ---------- add to path, settings ----------
   async function submitAdd(e) {
     e.preventDefault(); const all = papers(); const title = $("aTitle").value.trim(); if (!title) return;
-    const track = $("aTrack").value; let seq;
+    let track = $("aTrack").value, newTrack = null, seq;
+    if (track === "+new") {
+      const name = $("aTrackName").value.trim(); if (!name) { $("aStatus").textContent = "Give the new field a name."; return; }
+      const hit = Object.entries(S.tracks).find(([, v]) => v.toLowerCase() === name.toLowerCase());
+      if (hit) track = hit[0]; else { newTrack = { code: trackCode(name), name }; track = newTrack.code; }
+    }
     if ($("aWhen").value === "next") { const open = all.filter((p) => !DONE.has(st(p.key)) && p.key !== S.days[0]?.paper); seq = open.length ? open[0].seq - 0.5 : all.length + 1; }
     else { const same = all.filter((p) => p.pass === 2); seq = same.length ? Math.max(...same.map((p) => p.seq)) + 0.5 : all.length + 1; }
     const au = $("aAuthors").value.trim(); const ym = au.match(/(19|20)\d\d/);
     const doc = { key: "u" + Date.now().toString(36), seq, track, pass: $("aWhen").value === "next" ? 1 : 2, title, authors: au.replace(/,?\s*(19|20)\d\d\s*$/, ""), year: ym ? +ym[0] : "", url: $("aUrl").value.trim() || "https://scholar.google.com/scholar?q=" + encodeURIComponent(title), zotero: "", inZotero: false, byJes: false, prereqs: [], why: $("aWhy").value.trim() || "Added by you.", source: "you", triaged: false };
+    if (newTrack) doc.newTrack = newTrack;
     $("aStatus").textContent = "Adding…";
-    try { await api("paper", doc); await loadAll(); $("aStatus").textContent = "Added to the path"; e.target.reset(); } catch (err) { $("aStatus").textContent = "Could not add it: " + err.message; }
+    try {
+      const f = $("aPdf").files[0]; if (f) doc.pdf = await pdfBase64(f);
+      await api("paper", doc); await loadAll(); $("aStatus").textContent = "Added to the path"; e.target.reset();
+      S.lastAdded = doc.key; $("aAsk").hidden = false; $("aTrackName").hidden = true; if (newTrack) fillTrackSelects();
+    } catch (err) { $("aStatus").textContent = "Could not add it: " + err.message; }
   }
+  function trackCode(name) {
+    const w = name.normalize("NFD").toUpperCase().replace(/[^A-Z ]/g, "").split(/\s+/).filter(Boolean);
+    let c = (w.length > 1 ? w.map((x) => x[0]).join("") : w[0] || "").slice(0, 4);
+    if (c.length < 2) c = (c + "FLD").slice(0, 3);
+    for (let i = 2, b = c; S.tracks[c]; i++) c = b + i;
+    return c;
+  }
+  const pdfBase64 = (f) => new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(",")[1]); r.onerror = rej; r.readAsDataURL(f); });
   function fillSettings() { $("sGoal").value = setting("weeklyGoal", 5); $("sRecall").checked = !!setting("recall", false); $("sNotes").checked = !!setting("structuredNotes", false); }
   async function saveSettings(e) {
     e.preventDefault();
@@ -956,7 +977,7 @@
   }
   function fillTrackSelects() {
     const opts = Object.entries(S.tracks).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join("");
-    $("fTrack").innerHTML = '<option value="">All fields</option>' + opts; $("aTrack").innerHTML = opts;
+    $("fTrack").innerHTML = '<option value="">All fields</option>' + opts; $("aTrack").innerHTML = opts + '<option value="+new">+ New field…</option>';
     $("lTrack").innerHTML = '<option value="">Field: let Claude decide</option>' + opts;
   }
 
@@ -988,6 +1009,8 @@
   let tm; $("fText").addEventListener("input", () => { clearTimeout(tm); tm = setTimeout(() => { S.limit = 60; renderList(); }, 150); });
   $("more").onclick = () => { S.limit += 80; renderList(); };
   $("addForm").addEventListener("submit", submitAdd);
+  $("aTrack").onchange = () => { $("aTrackName").hidden = $("aTrack").value !== "+new"; if (!$("aTrackName").hidden) $("aTrackName").focus(); };
+  $("aAsk").onclick = () => goAsk(S.lastAdded);
   $("logForm").addEventListener("submit", submitLog);
   $("lLookup").onclick = lookup;
   ["lQuery", "lTitle"].forEach((id) => $(id).addEventListener("change", showMatch));

@@ -10,7 +10,7 @@ has a remote (e.g. GitHub), it is pulled on start and every 10 minutes, and chan
 Optional integrations live in config.json (see config.example.json): Zotero two-way sync and instant
 related-work drafts through the Anthropic API.
 """
-import argparse, json, os, re, sys, threading, time, urllib.parse
+import argparse, base64, json, os, re, sys, threading, time, urllib.parse
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import rpcore as core
 import zotero_sync
@@ -147,6 +147,25 @@ class Handler(SimpleHTTPRequestHandler):
                 p = load("papers")
                 if any(x["key"] == b["key"] for x in p["papers"]):
                     return {"error": "key exists"}
+                nt = b.pop("newTrack", None)
+                if nt:
+                    code, name = nt["code"].strip().upper(), nt["name"].strip()
+                    if not re.fullmatch(r"[A-Z][A-Z0-9]{1,5}", code) or not name:
+                        raise ValueError("bad field code or name")
+                    p["tracks"].setdefault(code, name); b["track"] = code
+                pdf = b.pop("pdf", None)
+                if pdf:
+                    if not re.fullmatch(r"[A-Za-z0-9_-]+", b["key"]):
+                        raise ValueError("bad key")
+                    raw = base64.b64decode(pdf)
+                    if not raw.startswith(b"%PDF"):
+                        raise ValueError("that file is not a PDF")
+                    os.makedirs(os.path.join(core.ROOT, "uploads"), exist_ok=True)
+                    b["file"] = "uploads/%s.pdf" % b["key"]
+                    with open(os.path.join(core.ROOT, b["file"]), "wb") as f:
+                        f.write(raw)
+                    if not b.get("url") or "scholar.google" in b["url"]:
+                        b["url"] = b["file"]
                 b.setdefault("addedAt", now()); p["papers"].append(b)
                 save("papers", p); core.commit("add paper: %s" % b.get("title", b["key"])[:60])
             return {"ok": True, "key": b["key"]}

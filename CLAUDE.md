@@ -42,6 +42,8 @@ server, and JSON files in `data/`. The folder is a git repo; the server auto-com
   - `seq` = position on the path (fractions allowed; null = off-plan, e.g. independent reads).
   - Book/course sessions also have `book, file (books/…pdf), pages ("55–65")`; their `url` is
     `books/<file>.pdf#page=N`, served by the local server.
+  - Papers added with a PDF (add form) have `file: uploads/<key>.pdf` (gitignored); `url` points there if
+    no link was given. The add form can also create a new track (`newTrack {code, name}` in `/api/paper`).
   - `due: YYYY-MM-DD` = course-prep chapter (track DLC) read alongside the daily paper, never the daily pick.
   - `pickOn: YYYY-MM-DD` = a planned daily paper for that date.
   - Tracks: GRP (Jes's group, newest first), PML, DLC, ISO, COMP, DIF, FLOW, OT, GEO, DISC, CTRL, TRF,

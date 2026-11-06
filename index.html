@@ -130,9 +130,12 @@
         <input id="aAuthors" placeholder="Authors, year (e.g. Smith et al., 2026)">
         <input id="aUrl" type="url" placeholder="Link (arXiv, DOI, bioRxiv)">
         <select id="aTrack" aria-label="Field"></select>
+        <input id="aTrackName" placeholder="Name of the new field (e.g. Causal inference)" aria-label="New field name" hidden>
+        <label class="lbl" for="aPdf">PDF <span class="hint">optional, stays on this computer (uploads/)</span></label>
+        <input id="aPdf" type="file" accept="application/pdf,.pdf">
         <select id="aWhen" aria-label="When"><option value="next">Read it next</option><option value="end">Add at the end of its depth</option></select>
         <textarea id="aWhy" rows="2" placeholder="Why it matters (optional)"></textarea>
-        <div class="actions"><button class="btn primary" type="submit">Add paper</button><span class="status" id="aStatus"></span></div>
+        <div class="actions"><button class="btn primary" type="submit">Add paper</button><button class="btn" type="button" id="aAsk" hidden>Ask about it</button><span class="status" id="aStatus"></span></div>
       </form>
     </details>
     </div>
