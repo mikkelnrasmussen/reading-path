@@ -44,5 +44,10 @@
    "text": "For sets positional encoding is e.g. not needed. Gene or isoform expression can be considered sets, and hence this type of transformer architecture should be more suitable. Set Transformers are used in scLDM."
   },
   "at": "2026-10-29T09:50:13+00:00"
+ },
+ "umw4tlsur": {
+  "state": "read",
+  "at": "2026-11-06T10:17:46+00:00",
+  "readOn": "2026-11-06"
  }
 }
