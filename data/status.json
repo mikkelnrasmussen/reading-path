@@ -49,5 +49,12 @@
   "state": "read",
   "at": "2026-11-06T10:17:46+00:00",
   "readOn": "2026-11-06"
+ },
+ "i-on-the-selectivity-of-generative-models-160520": {
+  "state": "read",
+  "readOn": "2026-11-10",
+  "via": "logged",
+  "note": "Benchmark of small molecule on- and off-target selectively with autoregressive, flow- and difussion models plus CFG and FKC guidance.",
+  "at": "2026-11-10T15:05:20+00:00"
  }
 }

@@ -6458,6 +6458,24 @@
    "source": "gap",
    "triaged": true,
    "addedAt": "2026-11-06T13:51:58+00:00"
+  },
+  {
+   "key": "i-on-the-selectivity-of-generative-models-160520",
+   "seq": null,
+   "track": "",
+   "pass": 0,
+   "title": "On the Selectivity of Generative Models in Structure-Based Drug Design",
+   "authors": "Rajaonson et al.",
+   "year": 2026,
+   "url": "https://arxiv.org/abs/2610.24124",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [],
+   "why": "Read independently on 2026-11-10.",
+   "source": "independent",
+   "triaged": false,
+   "addedAt": "2026-11-10T15:05:20+00:00"
   }
  ]
 }
