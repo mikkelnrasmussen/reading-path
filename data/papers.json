@@ -6390,35 +6390,74 @@
    "track": "OS",
    "pass": 1,
    "title": "Active Flow Expansion for Out-of-Distribution Discovery: from Theory to Molecules",
-   "authors": "Riccardo De Santi et al.",
+   "authors": "De Santi, Lee, Perez Jensen, Protopapas, Tang, Liu, Chatterjee, Yue, Krause",
    "year": 2026,
-   "url": "https://arxiv.org/pdf/2606.08802",
+   "url": "https://arxiv.org/abs/2606.08802",
    "zotero": "",
    "inZotero": false,
    "byJes": false,
-   "prereqs": [],
-   "why": "Added by you.",
+   "prereqs": [
+    "fmguide",
+    "umw4tnfbm"
+   ],
+   "why": "Continued pre-training that uses verifier feedback to expand a flow model's generable set beyond the data — a principled take on generating valid designs the training data never covered.",
    "source": "you",
-   "triaged": false,
-   "addedAt": "2026-11-06T10:17:15+00:00"
+   "triaged": true,
+   "addedAt": "2026-11-06T10:17:15+00:00",
+   "tags": [
+    "flow matching",
+    "out-of-distribution generation",
+    "verifier feedback",
+    "active exploration",
+    "molecular design"
+   ]
   },
   {
    "key": "umw4tnfbm",
    "seq": -0.39,
    "track": "OS",
    "pass": 1,
-   "title": "VERIFIER-CONSTRAINED FLOW EXPANSION FOR DISCOVERY BEYOND THE DATA",
-   "authors": "Riccardo De Santi et al.",
+   "title": "Verifier-Constrained Flow Expansion for Discovery Beyond the Data",
+   "authors": "De Santi, Protopapas, Hsieh, Krause",
    "year": 2026,
-   "url": "https://arxiv.org/pdf/2602.15984",
+   "url": "https://arxiv.org/abs/2602.15984",
    "zotero": "",
    "inZotero": false,
    "byJes": false,
-   "prereqs": [],
-   "why": "Added by you.",
+   "prereqs": [
+    "fmguide"
+   ],
+   "why": "Expands a pre-trained flow model's density beyond the data via verifier-constrained entropy maximisation (mirror descent) — the companion to Active Flow Expansion, with convergence guarantees.",
    "source": "you",
-   "triaged": false,
-   "addedAt": "2026-11-06T10:18:31+00:00"
+   "triaged": true,
+   "addedAt": "2026-11-06T10:18:31+00:00",
+   "tags": [
+    "flow matching",
+    "entropy maximization",
+    "mirror descent",
+    "verifier constraints",
+    "fine-tuning"
+   ]
+  },
+  {
+   "key": "mementropy",
+   "seq": -0.4,
+   "track": "OS",
+   "pass": 1,
+   "title": "Provable Maximum Entropy Manifold Exploration via Diffusion Models",
+   "authors": "De Santi, Vlastelica, Hsieh, Shen, He, Krause",
+   "year": 2025,
+   "url": "https://arxiv.org/abs/2506.15385",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [
+    "fmguide"
+   ],
+   "why": "Foundation for both Flow Expansion papers: exploration as entropy maximisation over a diffusion model's manifold, solved by mirror-descent fine-tuning using the entropy–score connection (ICML 2025).",
+   "source": "gap",
+   "triaged": true,
+   "addedAt": "2026-11-06T13:51:58+00:00"
   }
  ]
 }

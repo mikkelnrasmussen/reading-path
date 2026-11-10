@@ -1,5 +1,160 @@
 [
  {
+  "id": "2026-11-10-1",
+  "date": "2026-11-10",
+  "title": "Discrete Diffusion Playground: A 2D Benchmark for Discrete Generative Models",
+  "authors": "Shao, Park, Koes, Chikina",
+  "year": 2026,
+  "venue": "arXiv (cs.LG)",
+  "url": "https://arxiv.org/abs/2611.11068",
+  "figUrl": "https://arxiv.org/html/2611.11068",
+  "track": "DISC",
+  "tags": [
+   "discrete diffusion",
+   "masked diffusion",
+   "evaluation",
+   "benchmark"
+  ],
+  "summary": "A diagnostic benchmark that maps known 2D continuous densities to binary token sequences through an exact discretised bijection, so samples from a discrete generative model can be decoded back to 2D and compared against ground truth. It supports exact grid divergences, Wasserstein distances and two-sample tests.",
+  "takeaways": [
+   "Standard proxy metrics can hide whether a discrete model has really learned the target distribution; an exact bijection to a known 2D density makes failures visible.",
+   "Masked diffusion models learn meaningful adaptive reveal orders but are less stable than autoregressive baselines on smooth targets.",
+   "On tilted checkerboards masked diffusion largely fails while autoregressive models keep the geometry, and reversed/interleaved token orders show this is not just a favourable bit order."
+  ],
+  "keyFigure": "",
+  "relevance": "A cheap, ground-truth sanity check for your masked-diffusion and CTMC models before moving to isoform counts, where the true distribution is unknown; the failure on sharp, coordinate-dependent structure is worth testing against your lattice-simplex models."
+ },
+ {
+  "id": "2026-11-10-2",
+  "date": "2026-11-10",
+  "title": "A Trust Region Approach for Learning Schrödinger Bridges",
+  "authors": "Koshizuka, Blessing, Zimmer, Pokutta, Richter",
+  "year": 2026,
+  "venue": "arXiv (cs.LG / stat.ML)",
+  "url": "https://arxiv.org/abs/2611.11649",
+  "figUrl": "https://arxiv.org/html/2611.11649",
+  "track": "CTRL",
+  "tags": [
+   "Schrödinger bridges",
+   "IPF",
+   "sampling",
+   "mirror descent",
+   "stochastic control"
+  ],
+  "summary": "For Schrödinger bridges where only an unnormalised target density is available (no samples), IPF and its variants are numerically unstable because the control problems are ill-conditioned and the solution can be far from initialisation. The authors constrain each IPF update to stay at a fixed KL divergence from the current iterate, which they show is mirror descent with an adaptive step size.",
+  "takeaways": [
+   "The sampling (density-only) setting is where IPF-style Schrödinger bridge solvers become unstable.",
+   "A KL trust region on successive IPF updates markedly improves stability.",
+   "The trust-region scheme can be read as mirror descent with an adaptively chosen step size."
+  ],
+  "keyFigure": "",
+  "relevance": "You liked a Schrödinger-bridge paper recently; this is a clean view of IPF as optimisation over path measures, and the trust-region/mirror-descent idea transfers to fine-tuning or guiding your generative models towards reward-tilted targets."
+ },
+ {
+  "id": "2026-11-10-3",
+  "date": "2026-11-10",
+  "title": "Geometry and Stochastic Analysis of Flow and Diffusion Models: A Survey",
+  "authors": "Mirafzali, Marinescu",
+  "year": 2026,
+  "venue": "arXiv (math.PR)",
+  "url": "https://arxiv.org/abs/2611.12107",
+  "figUrl": "https://arxiv.org/html/2611.12107",
+  "track": "GEO",
+  "tags": [
+   "survey",
+   "flow matching",
+   "diffusion",
+   "geometry",
+   "Malliavin calculus"
+  ],
+  "summary": "A mathematical survey organising flow and diffusion models around three geometries: the state space, the space of probability measures, and path space. It argues every score identity used in training is an integration by parts (on noise, data or Wiener space) and follows this through flows, flow matching, diffusion convergence, conditioning, Schrödinger bridges, manifolds, discrete spaces and jump processes.",
+  "takeaways": [
+   "State-space, measure-space and path-space geometry are three distinct lenses behind the many named methods.",
+   "Score identities are integration-by-parts results; Malliavin calculus extends them to nonlinear and infinite-dimensional diffusions.",
+   "It covers extensions to discrete spaces and jump processes and ends with a list of open problems (and a speculative link to statistical physics and holography)."
+  ],
+  "keyFigure": "",
+  "relevance": "An exploratory pick: the jump-process and discrete-space chapters sit next to your CTMC/generator-matching work, and the geometric framing links your GEO reading (Hauberg) to flow matching; dip into a section rather than reading cover to cover."
+ },
+ {
+  "id": "2026-11-09-1",
+  "date": "2026-11-09",
+  "title": "Modeling Gene Expression Noise: From Transcriptional Dynamics to Cell Growth and Division",
+  "authors": "Sukys, Ham, Öcal, Holehouse, Grima",
+  "year": 2026,
+  "venue": "arXiv (q-bio.MN), review",
+  "url": "https://arxiv.org/abs/2611.06537",
+  "figUrl": "https://arxiv.org/html/2611.06537",
+  "track": "COMP",
+  "tags": [
+   "telegraph model",
+   "bursty expression",
+   "count distributions",
+   "cell cycle",
+   "single-cell noise"
+  ],
+  "summary": "A review of stochastic gene-expression models that go beyond a static cell: how growth, genome replication and division leave a fluctuation signature on mRNA and protein counts. It covers the telegraph and bursty models, cyclo-stationary behaviour and when static steady-state models are a good approximation, and how such models are fitted to single-cell data while separating biological variability from measurement noise.",
+  "takeaways": [
+   "The telegraph and simpler bursty models fit single-cell count distributions well and are the standard route to transcriptional kinetic parameters — but they assume a static cell.",
+   "Growing and dividing cells settle into cyclo-stationary behaviour; the review discusses when this is well approximated by the static steady state, and shows the measured count distributions depend sensitively on the experimental setup.",
+   "Fitting at scale (thousands of genes) requires separating biological variability from measurement noise; the review covers the computational advances that make this feasible and lists open problems."
+  ],
+  "keyFigure": "",
+  "relevance": "Your hierarchical NB + multinomial model treats gene totals as NB — the bursty model is exactly the mechanistic origin of NB counts, so this review tells you which biological effects (cell cycle, gene dosage) that NB layer is silently absorbing, and how others separate them from technical noise."
+ },
+ {
+  "id": "2026-11-09-2",
+  "date": "2026-11-09",
+  "title": "Multi-Objective Generative Optimization via Expected Hypervolume Fine-Tuning",
+  "authors": "Guevara, De Santi, Krause, Astudillo",
+  "year": 2026,
+  "venue": "arXiv (cs.LG)",
+  "url": "https://arxiv.org/abs/2611.05207",
+  "figUrl": "https://arxiv.org/html/2611.05207",
+  "track": "CTRL",
+  "tags": [
+   "fine-tuning",
+   "multi-objective",
+   "hypervolume",
+   "discrete diffusion",
+   "flow matching"
+  ],
+  "summary": "HVFT fine-tunes a pretrained flow or diffusion generator to maximise the expected hypervolume of its samples — rewarding both quality and coverage of trade-offs — while staying KL-close to the pretrained model. Since expected hypervolume is not an expectation of a fixed per-sample reward, they use its first variation (a sample's expected marginal hypervolume contribution) as an adaptive reward and solve a sequence of KL-proximal scalar-reward problems.",
+  "takeaways": [
+   "Expected hypervolume is a distribution-level objective: it cannot be written as E[r(x)] for a fixed reward, so standard reward fine-tuning does not apply directly.",
+   "Its first variation gives a tractable, unbiased-estimable per-sample reward that changes as the model changes — the same functional-derivative trick as in De Santi et al.'s flow-expansion work.",
+   "The procedure comes with concavity, relative smoothness and convergence guarantees, and works for both discrete diffusion (peptides) and continuous flow matching (molecules)."
+  ],
+  "keyFigure": "",
+  "relevance": "A direct sibling of the De Santi flow-expansion paper you read: same KL-proximal, first-variation machinery, now for steering a generator toward several competing properties at once — a template if you ever want to steer an isoform generator toward multiple splicing targets with a discrete (CTMC) model."
+ },
+ {
+  "id": "2026-11-09-3",
+  "date": "2026-11-09",
+  "title": "Constraint-Preserving Flow Matching for Spectral Graph Generation",
+  "authors": "Yang, Kawarabayashi, Jung",
+  "year": 2026,
+  "venue": "arXiv (cs.LG)",
+  "url": "https://arxiv.org/abs/2611.05436",
+  "figUrl": "https://arxiv.org/html/2611.05436",
+  "track": "GRL",
+  "tags": [
+   "graph generation",
+   "Stiefel manifold",
+   "Riemannian flow matching",
+   "graph Laplacian",
+   "guidance"
+  ],
+  "summary": "Generates graphs through the eigenvalues and eigenvectors of their Laplacians, but notes that existing spectral generators only keep eigenvectors orthonormal and can produce eigensystems inconsistent with any Laplacian. LaSFM does flow matching on a constrained Stiefel manifold that also enforces the Laplacian nullspace condition and positive eigenvalues, and extends to property-guided generation.",
+  "takeaways": [
+   "Spectral graph generation replaces discrete adjacency construction with a continuous object (Laplacian eigensystem) — but that object lives on a constrained manifold.",
+   "Enforcing the constant-vector nullspace alongside orthonormality defines a constrained Stiefel manifold, on which they formulate flow matching.",
+   "The constraint can be kept during property-guided generation, improving both spectral and graph-level metrics."
+  ],
+  "keyFigure": "",
+  "relevance": "A spark from geometric DL: the same move as your lattice-simplex work — figure out exactly which manifold your objects live on, then build the flow there rather than projecting afterwards; a nice concrete example of Riemannian flow matching on a quotient-like constraint set."
+ },
+ {
   "id": "2026-11-06-1",
   "date": "2026-11-06",
   "title": "Rethinking One Gene, One Token: Transcriptome-Aware Tokenization for Single-Cell Foundation Models",

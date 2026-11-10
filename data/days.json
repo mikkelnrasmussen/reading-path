@@ -1,5 +1,37 @@
 [
  {
+  "id": "2026-11-10",
+  "paper": "illustrated",
+  "carried": true,
+  "summary": "Jay Alammar's visual walkthrough of the Transformer from 'Attention Is All You Need': stacks of six encoders and decoders, where each word's embedding is projected to query, key and value vectors and self-attention mixes information across positions. It builds up multi-head attention (8 heads of 64-d Q/K/V from 512-d embeddings), sinusoidal positional encodings, residual + layer-norm sublayers, masked decoder self-attention and the final linear + softmax over the vocabulary.",
+  "takeaways": [
+   "Self-attention for one token = softmax(q·k_j / √d_k) weights over all positions, used to average the value vectors; in matrix form it is a few matmuls, which is why it parallelises where an RNN cannot.",
+   "Multi-head attention runs 8 independent Q/K/V projections, concatenates the outputs and mixes them with W_O — letting different heads attend to different positions and representation subspaces.",
+   "Attention is order-agnostic, so position must be injected (sinusoidal encodings added to the embeddings); the decoder additionally masks future positions with −∞ before the softmax and uses encoder–decoder attention with queries from the decoder and keys/values from the encoder."
+  ],
+  "keyFigure": "",
+  "figUrl": "",
+  "relevance": "Transformers are the backbone of the masked-diffusion and single-cell foundation models you build on (e.g. scGPT/Geneformer-style encoders), and the attention-as-weighted-average view is the natural way to let isoforms of the same gene share information in an scIso-style predictor. Having the mechanics crisp also pays off directly for supervising the deep learning course, where tomorrow's chapter is transformers.",
+  "brief": "Focus on the self-attention section (the Q/K/V and score → softmax → weighted sum steps) and the matrix form; the training/decoding part at the end can be skimmed. It pairs naturally with today's Goodfellow Ch. 10 reading — RNNs pass information through a sequential hidden state with O(τ) unparallelisable steps, attention replaces that with direct all-to-all mixing. Question to keep in mind: what does the √d_k scaling protect against, and what would go wrong in the softmax without it?",
+  "news": ""
+ },
+ {
+  "id": "2026-11-09",
+  "paper": "illustrated",
+  "carried": true,
+  "summary": "Jay Alammar's visual walkthrough of the Transformer from 'Attention Is All You Need': stacks of six encoders and decoders, where each word's embedding is projected to query, key and value vectors and self-attention mixes information across positions. It builds up multi-head attention (8 heads of 64-d Q/K/V from 512-d embeddings), sinusoidal positional encodings, residual + layer-norm sublayers, masked decoder self-attention and the final linear + softmax over the vocabulary.",
+  "takeaways": [
+   "Self-attention for one token = softmax(q·k_j / √d_k) weights over all positions, used to average the value vectors; in matrix form it is a few matmuls, which is why it parallelises where an RNN cannot.",
+   "Multi-head attention runs 8 independent Q/K/V projections, concatenates the outputs and mixes them with W_O — letting different heads attend to different positions and representation subspaces.",
+   "Attention is order-agnostic, so position must be injected (sinusoidal encodings added to the embeddings); the decoder additionally masks future positions with −∞ before the softmax and uses encoder–decoder attention with queries from the decoder and keys/values from the encoder."
+  ],
+  "keyFigure": "",
+  "figUrl": "",
+  "relevance": "Transformers are the backbone of the masked-diffusion and single-cell foundation models you build on (e.g. scGPT/Geneformer-style encoders), and the attention-as-weighted-average view is the natural way to let isoforms of the same gene share information in an scIso-style predictor. Having the mechanics crisp also pays off directly for supervising the deep learning course, where tomorrow's chapter is transformers.",
+  "brief": "Focus on the self-attention section (the Q/K/V and score → softmax → weighted sum steps) and the matrix form; the training/decoding part at the end can be skimmed. It pairs naturally with today's Goodfellow Ch. 10 reading — RNNs pass information through a sequential hidden state with O(τ) unparallelisable steps, attention replaces that with direct all-to-all mixing. Question to keep in mind: what does the √d_k scaling protect against, and what would go wrong in the softmax without it?",
+  "news": ""
+ },
+ {
   "id": "2026-11-06",
   "paper": "illustrated",
   "carried": true,
