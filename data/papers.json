@@ -6462,10 +6462,10 @@
   {
    "key": "i-on-the-selectivity-of-generative-models-160520",
    "seq": null,
-   "track": "",
+   "track": "CTRL",
    "pass": 0,
    "title": "On the Selectivity of Generative Models in Structure-Based Drug Design",
-   "authors": "Rajaonson et al.",
+   "authors": "Rajaonson, Lee, Chau, Aspuru-Guzik, Sanchez-Lengeling, Beaini, Neklyudov, Skreta",
    "year": 2026,
    "url": "https://arxiv.org/abs/2610.24124",
    "zotero": "",
@@ -6474,8 +6474,36 @@
    "prereqs": [],
    "why": "Read independently on 2026-11-10.",
    "source": "independent",
-   "triaged": false,
-   "addedAt": "2026-11-10T15:05:20+00:00"
+   "triaged": true,
+   "addedAt": "2026-11-10T15:05:20+00:00",
+   "tags": [
+    "structure-based drug design",
+    "selectivity",
+    "guidance",
+    "benchmark",
+    "diffusion"
+   ]
+  },
+  {
+   "key": "fkc",
+   "seq": 0.09999999999999998,
+   "track": "CTRL",
+   "pass": 1,
+   "title": "Feynman-Kac Correctors in Diffusion: Annealing, Guidance, and Product of Experts",
+   "authors": "Skreta, Akhound-Sadegh, Ohanesian, Bondesan, Aspuru-Guzik, Doucet, Brekelmans, Tong, Neklyudov",
+   "year": 2025,
+   "url": "https://arxiv.org/abs/2503.02819",
+   "zotero": "",
+   "inZotero": false,
+   "byJes": false,
+   "prereqs": [],
+   "why": "Because you read On the Selectivity of Generative Models in Structure-Based Drug Design: this is the FKC guidance method it benchmarks — SMC reweighting that makes annealing, CFG and product-of-experts sampling exact, and a natural sibling to the group's SMC-guidance work.",
+   "source": "followup",
+   "triaged": true,
+   "addedAt": "2026-11-11T08:56:35+00:00",
+   "background": [
+    "cfg"
+   ]
   }
  ]
 }

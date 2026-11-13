@@ -1,5 +1,239 @@
 [
  {
+  "id": "2026-11-13-1",
+  "date": "2026-11-13",
+  "title": "scBIG++: Learning Across Genes and Cells to Predict Single-Cell Perturbation Responses",
+  "authors": "Ruan, Qiao, Yang, Quan, Yang",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2611.11217",
+  "figUrl": "https://arxiv.org/html/2611.11217",
+  "track": "SC",
+  "tags": [
+   "perturbation modelling",
+   "single-cell",
+   "latent flow",
+   "set encoder",
+   "full-gene prediction"
+  ],
+  "summary": "scBIG++ predicts single-cell responses to genetic and chemical perturbations across all assayed protein-coding genes rather than only highly variable genes. Genes are organised into shared windows with expression-dependent soft submodule memberships, a set-based graph autoencoder exchanges information about matching gene groups across control cells, and a latent flow conditioned on the pooled population summary and the perturbation generates the response, decoded back to a full expression profile.",
+  "takeaways": [
+   "Keeping the full gene set (6,539-19,451 genes) instead of HVGs preserves expression changes that downstream analysis needs.",
+   "Response heterogeneity is modelled by expression-dependent gene-module memberships plus population-conditioned generation, not a single per-perturbation shift.",
+   "Reported as competitive on six genetic and chemical settings, including unseen targets and combinations, cross-cell-line transfer and held-out compounds."
+  ],
+  "keyFigure": "",
+  "relevance": "The set-over-cells encoder plus latent flow is a close cousin of the scLDM-style designs you have been reading, and grouping genes into shared modules is structurally similar to grouping isoforms within a gene in scIso - a useful reference for how to condition a flow on a population summary rather than a single cell."
+ },
+ {
+  "id": "2026-11-13-2",
+  "date": "2026-11-13",
+  "title": "Masked diffusion as random sequential adsorption: an exactly solvable model for parallel decoding",
+  "authors": "Adrian Baule",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2611.07845",
+  "figUrl": "https://arxiv.org/html/2611.07845",
+  "track": "DISC",
+  "tags": [
+   "masked diffusion",
+   "parallel decoding",
+   "entropy production",
+   "unmasking schedules",
+   "exact solution"
+  ],
+  "summary": "This paper maps parallel decoding in masked diffusion onto the statistical physics of driven many-particle systems. The error from revealing several tokens at once equals the entropy production of the generation process relative to the exact reverse of masking; for Markov data generation becomes a random sequential adsorption process with labelled gaps, solved exactly for any number of steps.",
+  "takeaways": [
+   "Parallel-decoding error = KL between the parallel sampler and the exact reverse masking process, i.e. entropy production, vanishing in the one-token-at-a-time limit.",
+   "In the many-step limit the error becomes a dissipation integral with a thermodynamic metric G(p) given in closed form by the mutual information between tokens at each lag.",
+   "Optimal unmasking schedules are geodesics of that metric (p-dot proportional to G^(-1/2)) with minimum error Lambda^2/N; longer-range correlations push the error to the start of generation, so schedules should begin with small steps."
+  ],
+  "keyFigure": "Fig. 2: binary-chain results - the metric G(p), path error vs correlation length, convergence in the number of steps, and excess cross-entropy.",
+  "relevance": "You work with masked diffusion where coordinates (isoform counts in a gene) are strongly correlated by construction, so this gives a principled, computable answer to how many entries you can safely unmask per step and how to shape the schedule from pairwise mutual information."
+ },
+ {
+  "id": "2026-11-13-3",
+  "date": "2026-11-13",
+  "title": "CupOFMoCA: Coupled Objective-Guided Discrete Flows for Molecular Conjugate Assembly",
+  "authors": "Zhang, Li, Gu, Chatterjee",
+  "year": 2026,
+  "venue": "arXiv",
+  "url": "https://arxiv.org/abs/2611.16099",
+  "figUrl": "https://arxiv.org/html/2611.16099",
+  "track": "CTRL",
+  "tags": [
+   "discrete flows",
+   "guidance",
+   "constrained generation",
+   "molecular design",
+   "validity masking"
+  ],
+  "summary": "CupOFMoCA generates molecular conjugates (PROTACs, peptide-drug conjugates) jointly rather than designing components separately and gluing them afterwards. Starting from a pre-trained discrete flow, an unguided phase denoises until a valid state is reached, after which per-site distributions are exponentially reweighted by design objectives and proposals violating a chemical-validity indicator are masked out entirely.",
+  "takeaways": [
+   "Restricting guided updates to a feasible set (a hard validity mask) is a cheap way to keep guided discrete flows inside a constrained state space.",
+   "Coupled generation reached 100% conjugation validity among valid peptides versus roughly 3-65% for staged post-hoc pipelines, at comparable predicted binding scores.",
+   "On three PROTAC systems it gave the highest assembly validity on two and more valid molecules per second than the baselines."
+  ],
+  "keyFigure": "Fig. 1: overview of CupOFMoCA - (A) guidance of a pre-trained discrete flow from unassembled components to assembled PDCs/PROTACs, (B) objective-guided sampling with a validity mask.",
+  "relevance": "This is exactly the structure of your own constraint problem in a different costume: a discrete flow whose guided transitions must stay on a feasible set, which for you is the fixed-gene-total lattice simplex. Worth reading for how they combine exponential tilting with a hard feasibility mask without retraining."
+ },
+ {
+  "id": "2026-11-12-1",
+  "date": "2026-11-09",
+  "title": "Zero-inflated generalized linear latent variable models for microbiome compositional data",
+  "authors": "Tang, Korhonen, Niku, Nordhausen, Taskinen",
+  "year": 2026,
+  "venue": "arXiv (stat.ME)",
+  "url": "https://arxiv.org/abs/2611.12163",
+  "figUrl": "https://arxiv.org/html/2611.12163",
+  "track": "COMP",
+  "tags": [
+   "Dirichlet-multinomial",
+   "zero inflation",
+   "latent variable models",
+   "variational inference",
+   "compositional counts"
+  ],
+  "summary": "The authors put a Dirichlet–multinomial likelihood inside the generalized linear latent variable model (GLLVM) framework, so that overdispersed, high-dimensional compositional counts get a low-rank covariance among taxa. They add zero inflation to model why zeros occur instead of replacing them, and fit the intractable marginal likelihood with a variational approximation, evaluated in simulations and on two microbiome datasets.",
+  "takeaways": [
+   "Dirichlet–multinomial handles overdispersion for counts with a fixed total; a low-rank latent layer captures co-variation among categories.",
+   "Zero inflation is modelled explicitly rather than handled by ad-hoc zero replacement.",
+   "With no closed-form marginal likelihood, a variational approximation makes estimation tractable."
+  ],
+  "keyFigure": "",
+  "relevance": "Microbiome taxa within a sample are the same structure as isoforms within a gene: counts with a fixed total and extra zeros. Their ZI Dirichlet–multinomial with low-rank latents is a useful classical baseline (and likelihood choice) next to your hierarchical NB + multinomial model."
+ },
+ {
+  "id": "2026-11-12-2",
+  "date": "2026-11-05",
+  "title": "SpecCTMC: Exact Speculative Simulation of Diffusion Language Model Continuous-Time Markov Chains",
+  "authors": "Kasa, Dai, Negi, Li",
+  "year": 2026,
+  "venue": "arXiv (cs.CL)",
+  "url": "https://arxiv.org/abs/2611.08362",
+  "figUrl": "https://arxiv.org/html/2611.08362",
+  "track": "DISC",
+  "tags": [
+   "CTMC",
+   "masked diffusion",
+   "exact sampling",
+   "speculative decoding",
+   "parallel sampling"
+  ],
+  "summary": "Exact continuous-time sampling of a masked-diffusion CTMC avoids the factorisation error of parallel decoding but needs one sequential model call per token. SpecCTMC reuses earlier predictions to propose several successive jumps, checks the intermediate states in parallel, and applies an exact accept-and-correct step, proven to preserve the joint law of jump times, order and values. It needs 1.73–4.38× fewer sequential model calls on LLaDA-8B and Dream-7B.",
+  "takeaways": [
+   "Parallel decoding of masked diffusion changes the output distribution; exact CTMC simulation does not, but is sequential.",
+   "Speculation with exact acceptance/correction keeps the CTMC path law intact — no time-discretisation or factorisation error.",
+   "Training-free and needs no draft model: proposals come from predictions the model already made."
+  ],
+  "keyFigure": "",
+  "relevance": "Your lattice-simplex generator-matching models are also sampled by simulating a CTMC; if exact (Gillespie-style) sampling is your bottleneck, the speculate-and-correct idea may carry over to isoform jumps within a fixed gene total."
+ },
+ {
+  "id": "2026-11-12-3",
+  "date": "2026-11-10",
+  "title": "The Dose Makes the Poison: Exposure-Aware Evaluation of Generative Drug Design",
+  "authors": "Franz, Erichson",
+  "year": 2026,
+  "venue": "arXiv (q-bio.QM, cs.LG)",
+  "url": "https://arxiv.org/abs/2611.13398",
+  "figUrl": "https://arxiv.org/html/2611.13398",
+  "track": "PROT",
+  "tags": [
+   "drug design",
+   "evaluation",
+   "pharmacokinetics",
+   "generative models",
+   "PARP1"
+  ],
+  "summary": "Generated molecules are usually ranked by predicted properties like potency and toxicity, ignoring whether a practical dose actually reaches the target. Re-scoring 60 shortlisted molecules from three PARP1 generative pipelines with physiologically based pharmacokinetic simulations, seven never reach enough target exposure, 28% of the rest show safety risks at their required dose, and 85% of the dosable ones are beaten by molecules the static selection overlooked.",
+  "takeaways": [
+   "Static property scores can mis-rank generated molecules once dose and exposure are taken into account.",
+   "PBPK simulation is a cheap extra filter that changes which candidates look promising.",
+   "How you evaluate a generative pipeline can matter as much as the generator itself."
+  ],
+  "keyFigure": "",
+  "relevance": "A spark following your selectivity-benchmark read: another case where the proxy objective used to steer or select generated samples drifts from what actually matters — worth keeping in mind when choosing guidance targets or evaluation metrics for generated cells."
+ },
+ {
+  "id": "2026-11-11-1",
+  "date": "2026-11-10",
+  "title": "When Covariance Is Not Enough: Kernel-Based Regularization for Single-Cell Counterfactuals",
+  "authors": "Traeuble, de Brouwer, Verma, Haviv, Fletez-Brant",
+  "year": 2026,
+  "venue": "arXiv (cs.LG, q-bio.GN)",
+  "url": "https://arxiv.org/abs/2611.13748",
+  "figUrl": "https://arxiv.org/html/2611.13748",
+  "track": "SC",
+  "tags": [
+   "single-cell",
+   "counterfactuals",
+   "concept bottleneck",
+   "HSIC",
+   "disentanglement"
+  ],
+  "summary": "Concept-bottleneck generative models split a cell's latent into known factors and unknown residuals so that editing a known factor gives a counterfactual cell. The usual linear cross-covariance penalty fails to separate the two when covariate effects are non-linear; the authors add a normalised HSIC penalty and show it recovers true intervention effects in simulation and improves counterfactual expression across tissue environments in scRNA-seq.",
+  "takeaways": [
+   "Zero cross-covariance between known and unknown latents does not imply independence — non-linear leakage remains.",
+   "A normalised HSIC kernel penalty closes that gap and recovers known intervention effects in controlled simulations.",
+   "Faithful counterfactuals should preserve the individual cell, not just move it to the condition mean."
+  ],
+  "keyFigure": "",
+  "relevance": "Directly relevant to scIso-style conditioning: if you condition isoform generation on gene expression plus covariates, HSIC-type penalties are a cheap way to keep a residual latent from leaking condition information."
+ },
+ {
+  "id": "2026-11-11-2",
+  "date": "2026-11-08",
+  "title": "Identifiable alignment of unpaired representations",
+  "authors": "Syrota, Lopez i Serrano, Franck, Hauberg",
+  "year": 2026,
+  "venue": "arXiv (stat.ML)",
+  "url": "https://arxiv.org/abs/2611.11460",
+  "figUrl": "https://arxiv.org/html/2611.11460",
+  "track": "GEO",
+  "tags": [
+   "pullback metric",
+   "Gromov-Wasserstein",
+   "identifiability",
+   "representation alignment",
+   "single-cell"
+  ],
+  "summary": "From Søren Hauberg's DTU group: two models of the same data-generating process share a canonical distance — the pullback of the data metric — whatever their architecture, prior or loss. Aligning with this distance is identifiable when the data breaks the manifold's symmetries (generically true), making the coupling the unique optimum of Gromov–Wasserstein; their NGMA method aligns image models and single-cell models trained on disjoint cells without any pairs.",
+  "takeaways": [
+   "Euclidean or spherical latent distances are arbitrary; the pullback metric is a principled shared geometry.",
+   "Identifiability of unpaired alignment reduces to symmetry breaking of the data distribution on the manifold.",
+   "Works for single-cell models trained on disjoint cells, where Euclidean alignment fails."
+  ],
+  "keyFigure": "",
+  "relevance": "Ties the Hauberg geometry chapters on your path to single-cell practice; useful if you ever need to compare or merge latent spaces of isoform models trained on different datasets or modalities."
+ },
+ {
+  "id": "2026-11-11-3",
+  "date": "2026-11-10",
+  "title": "Compositional random forest",
+  "authors": "Masoumifard, van der Westhuizen, Gardner-Lubbe",
+  "year": 2026,
+  "venue": "arXiv (stat.ML)",
+  "url": "https://arxiv.org/abs/2611.14275",
+  "figUrl": "https://arxiv.org/html/2611.14275",
+  "track": "COMP",
+  "tags": [
+   "compositional data",
+   "random forests",
+   "simplex",
+   "log-ratio",
+   "directional statistics"
+  ],
+  "summary": "A random-forest framework for compositional responses that works on the simplex, in log-ratio coordinates, or on the sphere via the square-root map. They introduce a tangent-normal distribution on the sphere and use logistic-normal likelihoods so that split gains come from closed-form additive sufficient statistics; which forest wins depends on the covariance structure of the composition.",
+  "takeaways": [
+   "The Dirichlet's covariance is pinned down by its mean, which limits it as a split criterion.",
+   "The square-root map to the sphere and the log-ratio map to Euclidean space give more flexible, closed-form likelihoods.",
+   "No single representation of compositions dominates — it depends on the covariance structure."
+  ],
+  "keyFigure": "",
+  "relevance": "A non-deep, fast baseline for predicting isoform proportions from covariates, and a compact refresher on the three geometries of the simplex (Aitchison, sphere, raw) you trade off in simplex flow matching."
+ },
+ {
   "id": "2026-11-10-1",
   "date": "2026-11-10",
   "title": "Discrete Diffusion Playground: A 2D Benchmark for Discrete Generative Models",
